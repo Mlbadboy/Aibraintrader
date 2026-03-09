@@ -1,0 +1,40 @@
+AI Trading Brain - Core Architecture Explanation
+==============================================
+
+1. Data Intake & Price Details
+------------------------------
+The application fetches historical and live OHLCV (Open, High, Low, Close, Volume) data from robust providers:
+- Stocks, Indices, Mutual Funds, Forex: Yahoo Finance (via `yfinance`).
+- Cryptocurrency: Binance (via `ccxt`).
+This raw pricing data forms the backbone of the analysis, perfectly synced with TradingView widget charts in the frontend dashboard. 
+
+2. Technical Feature Engineering
+--------------------------------
+Before passing data to AI models, the `FeatureEngineer` calculates standard institutional indicators:
+- Trend: SMA, EMA, MACD.
+- Momentum: RSI, Stochastic.
+- Volatility: Bollinger Bands, ATR.
+Additionally, the system utilizes pattern recognition engines to spot standard Candlestick Formations (Doji, Hammer, Engulfing) and Chart Patterns (Head & Shoulders, Double Tops).
+
+3. AI Prediction Models
+-----------------------
+The application uses an **Ensemble Machine Learning Approach** to predict market movements, rather than a single LLM. LLMs are generative language models; for absolute quantitative predictions, specialized quantitative models are far superior:
+- **XGBoost (Gradient Boosting)**: Excellent at handling tabular data, finding non-linear relationships, and detecting trend continuations based on the engineered features.
+- **LSTM (Long Short-Term Memory Networks)**: A type of Recurrent Neural Network (RNN) perfectly suited for time-series forecasting, capturing sequential momentum and deep historical contexts.
+
+The `EnsembleModel` adapts the weighting between these two models dynamically depending on the current "Market Regime". For instance, if the `RegimeAgent` detects a highly trending market, XGBoost may be weighted heavier; in ranging markets, momentum reversion (LSTM) may take priority.
+
+4. News & Sentiment Understanding
+---------------------------------
+To understand market psychology and external trends, the `SentimentEngine` performs web scraping:
+- It connects live to the Yahoo Finance news feed for the specific asset being analyzed.
+- It parses the HTML using `BeautifulSoup` to extract the top 10 most recent news headlines.
+- It performs Natural Language Processing (NLP) / Lexicon keyword matching to score the text. It computes a ratio of bullish keywords (e.g., "surge", "growth", "beat") against bearish keywords (e.g., "crash", "plunge", "miss"), outputting a normalized Sentiment Score between 0.0 (bearish) and 1.0 (bullish).
+
+5. Decision Resolution (The Debate Agent)
+-----------------------------------------
+The core of the "Agentic" methodology lies in the `DebateAgent`. It acts as the final judge, taking the raw mathematical probabilities from the Ensemble ML models (Bull vs. Bear percentages) and adjusting them significantly based on the News Sentiment Score. If the ML models suggest a BUY, but the real-time news is overwhelmingly negative (e.g., a sudden crash reported), the Debate Agent can veto the trade or downgrade the confidence, acting as a human portfolio manager would.
+
+6. Conclusion
+-------------
+Ultimately, the predicted trade directions, entry prices, and dynamically calculated stop-losses (based on ATR) are pushed to the frontend, empowering the user with institutional-grade, multi-dimensional analysis on any given asset.

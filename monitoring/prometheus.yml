@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "ai-trading-engine"
+    static_configs:
+      - targets:
+          - "market-service:8002"
+          - "ml-service:8003"
+          - "ml-ops-service:8006"
+          - "trading-service:8005"
+    metrics_path: "/metrics"

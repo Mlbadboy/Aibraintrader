@@ -1,0 +1,51 @@
+# Secrets
+.env
+.env.local
+.env.production
+*.key
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.env/
+.venv/
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Node/Frontend
+node_modules/
+dist/
+dist-ssr/
+*.local
+.eslintcache
+.stylelintcache
+
+# Logs
+*.log
+logs/
+
+# Databases
+*.sqlite3
+*.db
+!app/feedback/feedback.db # Keep schema-only seed if needed, but usually better to ignore data
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker_compose_check

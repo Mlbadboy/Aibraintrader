@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart SIP &amp; Goal Planner | AI Invest Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                        "emerald-accent": "#10b981",
+                        "card-dark": "#161f2c",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Inter', sans-serif; }
+        .chart-gradient {
+            fill: url(#chart-poly-grad);
+        }
+        .gauge-conic {
+            background: conic-gradient(from 180deg at 50% 100%, #10b981 0deg, #10b981 120deg, #f59e0b 140deg, #ef4444 180deg);
+            mask: radial-gradient(farthest-side, transparent 75%, white 76%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-64 flex-shrink-0 bg-slate-50 dark:bg-[#111822] border-r border-slate-200 dark:border-slate-800 flex flex-col h-full">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="size-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">auto_graph</span>
+</div>
+<div>
+<h1 class="text-slate-900 dark:text-white text-base font-bold leading-tight">AI Invest Pro</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Institutional</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px]">explore</span>
+<span class="text-sm font-semibold">Discover</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px]">pie_chart</span>
+<span class="text-sm font-semibold">Portfolio</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px]">memory</span>
+<span class="text-sm font-semibold">AI Forecast</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 bg-primary/10 text-primary rounded-lg transition-colors border-r-2 border-primary" href="#">
+<span class="material-symbols-outlined text-[22px]">calendar_month</span>
+<span class="text-sm font-semibold">SIP Planner</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="text-sm font-semibold">Alerts</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6">
+<div class="bg-slate-100 dark:bg-slate-800/50 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
+<p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Market Status</p>
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-emerald-accent animate-pulse"></div>
+<span class="text-sm font-semibold dark:text-emerald-accent">NYSE Open</span>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark">
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-8 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<div class="flex flex-col">
+<h2 class="text-xl font-bold text-slate-900 dark:text-white">Smart SIP &amp; Goal Planner</h2>
+<p class="text-xs text-slate-500 font-medium">Model-driven systematic investment forecasting</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span>Saved Scenarios</span>
+</button>
+<div class="size-10 rounded-full border-2 border-primary/20 overflow-hidden">
+<img alt="User" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArgX_sJnMIixamO89AnIY50TY7f40pvOJfaC-C93c-QUq-k3mlMiFhs-UNYjcknnnc-OE9zeYCjvVUsk5RZeSwVRfodotwPs2LX72tAI6QWKTUO-DLUlzGCdRNdnYXPOTjZxGwH0EIt8yLzn2BfgIKMonVTGB4Gur18-HZGuqL5vd30oqYOQ13BX3KmyWJlHRBbXiz_DC4F-YzSu3dJkDRKaCOwqkZtbJkkftmDcz63t_RoFYRk-ZhkkCJJtSI_cacr63d_nHCpXk"/>
+</div>
+</div>
+</header>
+<div class="p-8 grid grid-cols-12 gap-8">
+<div class="col-span-12 lg:col-span-4 space-y-6">
+<div class="bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+<h3 class="text-lg font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">target</span>
+                        Goal Configuration
+                    </h3>
+<form class="space-y-5">
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">What are you planning for?</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="p-3 border-2 border-primary bg-primary/5 rounded-lg text-sm font-bold flex flex-col items-center gap-1" type="button">
+<span class="material-symbols-outlined">blind</span>
+                                    Retirement
+                                </button>
+<button class="p-3 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-bold flex flex-col items-center gap-1 hover:border-primary transition-colors" type="button">
+<span class="material-symbols-outlined">home</span>
+                                    New Home
+                                </button>
+<button class="p-3 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-bold flex flex-col items-center gap-1 hover:border-primary transition-colors" type="button">
+<span class="material-symbols-outlined">school</span>
+                                    Education
+                                </button>
+<button class="p-3 border border-slate-200 dark:border-slate-700 rounded-lg text-sm font-bold flex flex-col items-center gap-1 hover:border-primary transition-colors" type="button">
+<span class="material-symbols-outlined">more_horiz</span>
+                                    Custom
+                                </button>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Target Amount</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-bold text-slate-400">$</span>
+<input class="w-full bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 rounded-lg pl-8 py-2.5 font-bold" type="number" value="2500000"/>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Monthly Investment (SIP)</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-bold text-slate-400">$</span>
+<input class="w-full bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 rounded-lg pl-8 py-2.5 font-bold" type="number" value="5000"/>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<label class="block text-xs font-bold text-slate-500 uppercase tracking-wider">Duration (Years)</label>
+<span class="text-xs font-bold text-primary">15 Years</span>
+</div>
+<input class="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-primary" max="40" min="1" type="range" value="15"/>
+</div>
+<button class="w-full py-3 bg-primary text-white font-bold rounded-lg shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">calculate</span>
+                            Recalculate Projections
+                        </button>
+</form>
+</div>
+<div class="bg-gradient-to-br from-slate-900 to-primary/40 p-[1px] rounded-xl shadow-xl overflow-hidden">
+<div class="bg-slate-900 p-5 rounded-[11px] space-y-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">psychology</span>
+<h3 class="text-white font-bold text-sm uppercase tracking-widest">AI Optimizer</h3>
+</div>
+<div class="bg-white/5 border border-white/10 p-4 rounded-lg">
+<p class="text-white text-xs font-semibold mb-3">Suggested Fund Mix for 92% Probability:</p>
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<span class="text-slate-400 text-xs font-medium">Aggressive Growth</span>
+<span class="text-emerald-accent text-xs font-bold">65%</span>
+</div>
+<div class="w-full h-1 bg-white/10 rounded-full">
+<div class="h-full bg-emerald-accent rounded-full" style="width: 65%"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-slate-400 text-xs font-medium">Global Bluechips</span>
+<span class="text-primary text-xs font-bold">25%</span>
+</div>
+<div class="w-full h-1 bg-white/10 rounded-full">
+<div class="h-full bg-primary rounded-full" style="width: 25%"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-slate-400 text-xs font-medium">Hedging Assets</span>
+<span class="text-yellow-500 text-xs font-bold">10%</span>
+</div>
+<div class="w-full h-1 bg-white/10 rounded-full">
+<div class="h-full bg-yellow-500 rounded-full" style="width: 10%"></div>
+</div>
+</div>
+</div>
+<button class="w-full py-2.5 text-xs font-bold text-white bg-white/10 border border-white/20 rounded-lg hover:bg-white/20 transition-colors">
+                            Apply Strategy
+                        </button>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-8 space-y-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-800 p-6 flex flex-col items-center text-center">
+<h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Goal Success Probability</h3>
+<div class="relative size-40">
+<div class="gauge-conic w-full h-full rounded-full"></div>
+<div class="absolute inset-2 bg-white dark:bg-card-dark rounded-full flex flex-col items-center justify-center">
+<span class="text-3xl font-black text-slate-900 dark:text-white leading-none">84%</span>
+<span class="text-[10px] font-bold text-emerald-accent uppercase tracking-tighter mt-1">Highly Likely</span>
+</div>
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-slate-900 dark:bg-white rounded-full border-4 border-white dark:border-slate-800 shadow-lg"></div>
+</div>
+<p class="mt-4 text-xs text-slate-500 max-w-[200px]">Based on current market volatility and AI forecasted returns.</p>
+</div>
+<div class="bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-800 p-6 grid grid-cols-1 gap-4">
+<div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+<p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Total Invested</p>
+<h4 class="text-xl font-bold text-slate-900 dark:text-white">$900,000</h4>
+</div>
+<div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+<p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Estimated Wealth Gain</p>
+<h4 class="text-xl font-bold text-emerald-accent">+$1,600,000</h4>
+</div>
+<div class="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-100 dark:border-slate-800">
+<p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Corpus at Maturity</p>
+<h4 class="text-xl font-bold text-primary">$2,500,000</h4>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-800 p-8">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Projected Wealth Accumulation</h3>
+<p class="text-sm text-slate-500">Wealth growth curve with 12.5% CAGR assumption</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5">
+<div class="size-3 rounded-full bg-primary"></div>
+<span class="text-xs font-bold text-slate-400 uppercase">Growth</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="size-3 rounded-full bg-slate-300 dark:bg-slate-700"></div>
+<span class="text-xs font-bold text-slate-400 uppercase">Principal</span>
+</div>
+</div>
+</div>
+<div class="h-[300px] w-full relative">
+<svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 300">
+<defs>
+<linearGradient id="chart-poly-grad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#136dec" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#136dec" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+<path d="M0 280 L 1000 150" fill="none" stroke="#475569" stroke-dasharray="8" stroke-width="2"></path>
+<path class="chart-gradient" d="M0 280 Q 250 270, 500 200 T 750 120 T 1000 40 V 300 H 0 Z"></path>
+<path d="M0 280 Q 250 270, 500 200 T 750 120 T 1000 40" fill="none" stroke="#136dec" stroke-width="4"></path>
+</svg>
+<div class="flex justify-between mt-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+<span>Year 0</span>
+<span>Year 3</span>
+<span>Year 6</span>
+<span>Year 9</span>
+<span>Year 12</span>
+<span>Year 15</span>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Projected Portfolio Breakdown</h3>
+</div>
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50">
+<tr>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-500 uppercase">Asset Class</th>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-500 uppercase">Weight</th>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-500 uppercase">Exp. Return</th>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-500 uppercase">Risk Level</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 text-sm font-bold">Nifty 50 Index / S&amp;P 500</td>
+<td class="px-6 py-4 text-sm font-medium">45%</td>
+<td class="px-6 py-4 text-sm text-emerald-accent font-bold">14.2%</td>
+<td class="px-6 py-4"><span class="px-2 py-0.5 rounded-full bg-yellow-400/10 text-yellow-500 text-[10px] font-bold border border-yellow-400/20 uppercase">Moderate</span></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 text-sm font-bold">Tech Focused AI Alpha Fund</td>
+<td class="px-6 py-4 text-sm font-medium">35%</td>
+<td class="px-6 py-4 text-sm text-emerald-accent font-bold">19.5%</td>
+<td class="px-6 py-4"><span class="px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-500 text-[10px] font-bold border border-rose-500/20 uppercase">Aggressive</span></td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4 text-sm font-bold">Liquid Debt / Arbitrage</td>
+<td class="px-6 py-4 text-sm font-medium">20%</td>
+<td class="px-6 py-4 text-sm text-emerald-accent font-bold">7.1%</td>
+<td class="px-6 py-4"><span class="px-2 py-0.5 rounded-full bg-emerald-accent/10 text-emerald-accent text-[10px] font-bold border border-emerald-accent/20 uppercase">Safe</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

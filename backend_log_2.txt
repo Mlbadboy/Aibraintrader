@@ -1,0 +1,341 @@
+E:\Stock Analysier and pedction machine\app\main.py:254: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+E:\Stock Analysier and pedction machine\app\main.py:264: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Started server process [12524]
+INFO:     Waiting for application startup.
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Added job "radar_job" to job store "default"
+INFO:apscheduler.scheduler:Added job "fast_price_job" to job store "default"
+INFO:apscheduler.scheduler:Added job "refresh_watchlist_job" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+INFO:app.radar.scheduler:Radar Scheduler Started. Will dynamically poll the watchlist.
+INFO:     Application startup complete.
+INFO:apscheduler.executors.default:Running job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-07 13:39:40 IST)" (scheduled at 2026-03-07 13:39:40.856720+05:30)
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:app.radar.scheduler:Scanning AAPL for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on AAPL: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning TSLA for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on TSLA: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning BTC for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on BTC: 'NoneType' object has no attribute 'fetch_crypto_data'
+INFO:app.radar.scheduler:Scanning NIFTY for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on NIFTY: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning SENSEX for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on SENSEX: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning BANKNIFTY for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on BANKNIFTY: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning GOLD for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on GOLD: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning SILVER for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on SILVER: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning GOLDBEES for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on GOLDBEES: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning RELIANCE.NS for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on RELIANCE.NS: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning BAJAJFINSV.NS for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on BAJAJFINSV.NS: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning GOLDBEES.NS for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on GOLDBEES.NS: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning BTCUSDT for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on BTCUSDT: 'NoneType' object has no attribute 'fetch_crypto_data'
+INFO:apscheduler.executors.default:Job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-07 13:44:40 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:40:00 IST)" (scheduled at 2026-03-07 13:39:50.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:40:00 IST)" skipped: maximum number of running instances reached (1)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:40:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:40:20 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:40:30 IST)" (scheduled at 2026-03-07 13:40:20.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:40:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:40:40 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:40:50 IST)" (scheduled at 2026-03-07 13:40:40.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:40:50 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:41:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:41:10 IST)" (scheduled at 2026-03-07 13:41:00.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:41:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:41:20 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:41:30 IST)" (scheduled at 2026-03-07 13:41:20.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:41:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:41:40 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:41:50 IST)" (scheduled at 2026-03-07 13:41:40.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:41:50 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:42:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:42:10 IST)" (scheduled at 2026-03-07 13:42:00.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:42:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:42:20 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:42:30 IST)" (scheduled at 2026-03-07 13:42:20.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:42:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:42:40 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:42:50 IST)" (scheduled at 2026-03-07 13:42:40.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:42:50 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:43:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:43:10 IST)" (scheduled at 2026-03-07 13:43:00.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:43:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:43:20 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:43:30 IST)" (scheduled at 2026-03-07 13:43:20.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:43:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:43:40 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:43:50 IST)" (scheduled at 2026-03-07 13:43:40.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:43:50 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:44:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:44:10 IST)" (scheduled at 2026-03-07 13:44:00.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:44:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:44:20 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:44:30 IST)" (scheduled at 2026-03-07 13:44:20.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:44:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:44:40 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-07 13:49:40 IST)" (scheduled at 2026-03-07 13:44:40.856720+05:30)
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:44:40 IST)" (scheduled at 2026-03-07 13:44:40.859843+05:30)
+INFO:app.radar.scheduler:Scanning AAPL for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on AAPL: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning TSLA for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on TSLA: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning BTC for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on BTC: 'NoneType' object has no attribute 'fetch_crypto_data'
+INFO:app.radar.scheduler:Scanning NIFTY for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on NIFTY: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning SENSEX for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on SENSEX: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning BANKNIFTY for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on BANKNIFTY: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning GOLD for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on GOLD: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning SILVER for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on SILVER: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning GOLDBEES for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on GOLDBEES: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning RELIANCE.NS for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on RELIANCE.NS: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning BAJAJFINSV.NS for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on BAJAJFINSV.NS: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning GOLDBEES.NS for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on GOLDBEES.NS: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning BTCUSDT for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on BTCUSDT: 'NoneType' object has no attribute 'fetch_crypto_data'
+INFO:apscheduler.executors.default:Job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-07 13:49:40 IST)" executed successfully
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:44:50 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:45:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:45:10 IST)" (scheduled at 2026-03-07 13:45:00.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:45:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:45:20 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:45:30 IST)" (scheduled at 2026-03-07 13:45:20.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:45:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:45:40 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:45:50 IST)" (scheduled at 2026-03-07 13:45:40.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:45:50 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:46:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:46:10 IST)" (scheduled at 2026-03-07 13:46:00.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:46:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:46:20 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:46:30 IST)" (scheduled at 2026-03-07 13:46:20.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:46:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:46:40 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:46:50 IST)" (scheduled at 2026-03-07 13:46:40.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:46:50 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:47:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:47:10 IST)" (scheduled at 2026-03-07 13:47:00.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:47:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:47:20 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:47:30 IST)" (scheduled at 2026-03-07 13:47:20.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:47:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:47:40 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:47:50 IST)" (scheduled at 2026-03-07 13:47:40.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:47:50 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:48:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:48:10 IST)" (scheduled at 2026-03-07 13:48:00.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:48:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:48:20 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:48:30 IST)" (scheduled at 2026-03-07 13:48:20.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:48:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:48:40 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:48:50 IST)" (scheduled at 2026-03-07 13:48:40.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:48:50 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:49:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:49:10 IST)" (scheduled at 2026-03-07 13:49:00.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:49:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:49:20 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:49:30 IST)" (scheduled at 2026-03-07 13:49:20.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:49:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:49:40 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:49:50 IST)" (scheduled at 2026-03-07 13:49:40.859843+05:30)
+INFO:apscheduler.executors.default:Running job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-07 13:54:40 IST)" (scheduled at 2026-03-07 13:49:40.856720+05:30)
+INFO:app.radar.scheduler:Scanning AAPL for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on AAPL: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning TSLA for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on TSLA: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning BTC for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on BTC: 'NoneType' object has no attribute 'fetch_crypto_data'
+INFO:app.radar.scheduler:Scanning NIFTY for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on NIFTY: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning SENSEX for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on SENSEX: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning BANKNIFTY for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on BANKNIFTY: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning GOLD for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on GOLD: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning SILVER for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on SILVER: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning GOLDBEES for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on GOLDBEES: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning RELIANCE.NS for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on RELIANCE.NS: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning BAJAJFINSV.NS for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on BAJAJFINSV.NS: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning GOLDBEES.NS for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on GOLDBEES.NS: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning BTCUSDT for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on BTCUSDT: 'NoneType' object has no attribute 'fetch_crypto_data'
+INFO:apscheduler.executors.default:Job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-07 13:54:40 IST)" executed successfully
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:49:50 IST)" skipped: maximum number of running instances reached (1)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:50:00 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:50:10 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:50:20 IST)" (scheduled at 2026-03-07 13:50:10.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:50:20 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:50:30 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:50:40 IST)" (scheduled at 2026-03-07 13:50:30.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:50:40 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:50:50 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:51:00 IST)" (scheduled at 2026-03-07 13:50:50.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:51:00 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:51:10 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:51:20 IST)" (scheduled at 2026-03-07 13:51:10.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:51:20 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:51:30 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:51:40 IST)" (scheduled at 2026-03-07 13:51:30.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:51:40 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:51:50 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:52:00 IST)" (scheduled at 2026-03-07 13:51:50.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:52:00 IST)" skipped: maximum number of running instances reached (1)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:52:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:52:20 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:52:30 IST)" (scheduled at 2026-03-07 13:52:20.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:52:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:60236 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60236 - "GET /openapi.json HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:52:40 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:52:50 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:53:00 IST)" (scheduled at 2026-03-07 13:52:50.859843+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:53:00 IST)" skipped: maximum number of running instances reached (1)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:53:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:53:20 IST)" executed successfully
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:53:30 IST)" (scheduled at 2026-03-07 13:53:20.859843+05:30)
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:53:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:53:40 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:53:50 IST)" executed successfully
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:54:00 IST)" (scheduled at 2026-03-07 13:53:50.859843+05:30)
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:54:00 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:54:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:54:20 IST)" executed successfully
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:54:30 IST)" (scheduled at 2026-03-07 13:54:20.859843+05:30)
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:54:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:54:40 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Running job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-07 13:59:40 IST)" (scheduled at 2026-03-07 13:54:40.856720+05:30)
+INFO:app.radar.scheduler:Scanning AAPL for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on AAPL: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning TSLA for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on TSLA: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning BTC for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on BTC: 'NoneType' object has no attribute 'fetch_crypto_data'
+INFO:app.radar.scheduler:Scanning NIFTY for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on NIFTY: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning SENSEX for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on SENSEX: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning BANKNIFTY for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on BANKNIFTY: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning GOLD for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on GOLD: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning SILVER for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on SILVER: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning GOLDBEES for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on GOLDBEES: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning RELIANCE.NS for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on RELIANCE.NS: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning BAJAJFINSV.NS for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on BAJAJFINSV.NS: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning GOLDBEES.NS for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on GOLDBEES.NS: 'NoneType' object has no attribute 'fetch_stock_data'
+INFO:app.radar.scheduler:Scanning BTCUSDT for SHORT horizon (1h)
+ERROR:app.radar.scheduler:Radar Error on BTCUSDT: 'NoneType' object has no attribute 'fetch_crypto_data'
+INFO:apscheduler.executors.default:Job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-07 13:59:40 IST)" executed successfully
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:54:50 IST)" executed successfully
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:55:00 IST)" (scheduled at 2026-03-07 13:54:50.859843+05:30)
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:55:00 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:55:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:55:20 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:55:30 IST)" (scheduled at 2026-03-07 13:55:20.859843+05:30)
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:55:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:55:40 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-07 13:55:50 IST)" executed successfully
+INFO:     127.0.0.1:62730 - "GET /radar/live HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62730 - "GET /radar/signals HTTP/1.1" 200 OK

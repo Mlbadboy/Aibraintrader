@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Fixed Income Analysis Hub | AlphaAI Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #136dec;
+            --accent-gold: #d4af37;
+            --background-dark: #0a0f16;
+            --card-dark: #121926;
+            --border-color: #1e293b;
+        }
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "accent-gold": "#d4af37",
+                        "background-dark": "#0a0f16",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </style>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #233348;
+            border-radius: 10px;
+        }
+        .gold-glow {
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-background-dark text-slate-100 antialiased font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-800 px-6 py-3 bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-6">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-tight">AlphaAI Terminal</h2>
+</div>
+<label class="flex flex-col min-w-64 h-10">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-800/50">
+<div class="text-slate-400 flex items-center justify-center pl-4">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:ring-0 text-white placeholder:text-slate-500 text-sm font-normal" placeholder="Search bonds, yields, or tickers..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden xl:flex items-center gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Dashboard</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Portfolio</a>
+<a class="text-primary text-sm font-semibold border-b-2 border-primary py-4" href="#">Fixed Income</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Scenarios</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Intelligence</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-800 text-slate-300 hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+<div class="bg-primary/20 rounded-full p-0.5 border border-primary/30">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD4ESv7XV1QLcbw59PihhO98mglKr8Pcn6-7lXL4ccehzePFS4Udj-mK1Vj2AtQdy4khWJXW-Ecyq8moGtdnmiqDjtIy8niIM4FvABZuPUGiKSx06rCLAvs4oe7y1ADvC0j4fc9XbDIGFf2vyQFspCO24vld7d5LSWWy9VsxWBJuRrrqvKbzPcvTAS4tRT65yYwqOqv1D6DbmjZadAEEom1HOY0A3Bvzh1kwDDGa_aI63XBtUPLYs8OVEDfUIU4mego8enizGgRLlU");'></div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<main class="flex-1 overflow-y-auto bg-slate-950/20 custom-scrollbar p-6">
+<div class="max-w-[1400px] mx-auto flex flex-col gap-6">
+<div class="flex flex-col md:flex-row justify-between items-end gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="text-accent-gold font-bold text-xs uppercase tracking-[0.2em]">Institutional Hub</span>
+<div class="h-px w-8 bg-accent-gold/50"></div>
+</div>
+<h1 class="text-3xl font-black tracking-tight text-white">Fixed Income Analysis Hub</h1>
+<p class="text-slate-500 text-sm mt-1">Real-time yield curve analysis and AI-driven bond stability scoring.</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex bg-slate-800 p-1 rounded-lg">
+<button class="px-4 py-1.5 text-xs font-bold rounded-md bg-slate-700 text-white">Global</button>
+<button class="px-4 py-1.5 text-xs font-bold rounded-md text-slate-400">US Treasury</button>
+<button class="px-4 py-1.5 text-xs font-bold rounded-md text-slate-400">Corporate</button>
+</div>
+<button class="flex items-center gap-2 px-5 py-2.5 bg-accent-gold text-slate-950 rounded-lg text-sm font-black hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-lg">data_exploration</span>
+                            Generate Yield Forecast
+                        </button>
+</div>
+</div>
+<div class="bg-slate-900/50 border border-slate-800 rounded-xl p-6">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-sm font-bold text-slate-400 uppercase tracking-widest">Benchmark Yield Curve</h3>
+<div class="flex items-center gap-4 mt-2">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-bold uppercase">10Y Yield</span>
+<span class="text-2xl font-bold text-white">4.24% <span class="text-rose-500 text-sm font-medium ml-1">(-0.02)</span></span>
+</div>
+<div class="w-px h-8 bg-slate-800 mx-2"></div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-bold uppercase">2Y Yield</span>
+<span class="text-2xl font-bold text-white">4.62% <span class="text-emerald-500 text-sm font-medium ml-1">(+0.01)</span></span>
+</div>
+<div class="w-px h-8 bg-slate-800 mx-2"></div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 font-bold uppercase">Spread (2-10Y)</span>
+<span class="text-2xl font-bold text-accent-gold">-38 bps</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2">
+<div class="flex items-center gap-2 text-[10px] font-bold text-slate-400">
+<span class="w-3 h-0.5 bg-primary"></span> CURRENT
+                            </div>
+<div class="flex items-center gap-2 text-[10px] font-bold text-slate-400">
+<span class="w-3 h-0.5 border-t border-dashed border-slate-500"></span> 1M AGO
+                            </div>
+<div class="flex items-center gap-2 text-[10px] font-bold text-accent-gold">
+<span class="w-3 h-0.5 bg-accent-gold"></span> AI FORECAST
+                            </div>
+</div>
+</div>
+<div class="relative w-full h-[240px] mt-4">
+<svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 240">
+<line stroke="#1e293b" stroke-width="1" x1="0" x2="1000" y1="40" y2="40"></line>
+<line stroke="#1e293b" stroke-width="1" x1="0" x2="1000" y1="90" y2="90"></line>
+<line stroke="#1e293b" stroke-width="1" x1="0" x2="1000" y1="140" y2="140"></line>
+<line stroke="#1e293b" stroke-width="1" x1="0" x2="1000" y1="190" y2="190"></line>
+<path d="M0 200 Q 250 140, 500 130 T 1000 100" fill="none" stroke="#475569" stroke-dasharray="8,4" stroke-width="2"></path>
+<path d="M0 220 Q 250 160, 500 145 T 1000 120" fill="none" stroke="#136dec" stroke-width="4"></path>
+<path d="M0 210 Q 250 150, 500 110 T 1000 60" fill="none" opacity="0.6" stroke="#d4af37" stroke-width="3"></path>
+<circle cx="200" cy="170" fill="#136dec" r="4"></circle>
+<circle cx="500" cy="145" fill="#136dec" r="4"></circle>
+<circle cx="800" cy="128" fill="#136dec" r="4"></circle>
+</svg>
+<div class="flex justify-between mt-4 px-2 text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+<span>1M</span>
+<span>2Y</span>
+<span>5Y</span>
+<span>10Y</span>
+<span>20Y</span>
+<span>30Y</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-4 gap-6">
+<div class="xl:col-span-3">
+<div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-800 flex justify-between items-center">
+<h3 class="text-sm font-bold text-white uppercase tracking-wider">Bond Screener &amp; Stability Scoring</h3>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-slate-800 rounded text-slate-400"><span class="material-symbols-outlined text-sm">filter_list</span></button>
+<button class="p-2 hover:bg-slate-800 rounded text-slate-400"><span class="material-symbols-outlined text-sm">download</span></button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-800/40">
+<tr>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Asset / Issuer</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest text-right">Yield</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest text-right">Duration</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest text-center">Rating</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">AI Stability Score</th>
+<th class="px-6 py-4 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-800">
+<tr class="hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center">
+<span class="text-[10px] font-black text-primary">UST</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-white">US Treasury 10Y</span>
+<span class="text-[10px] text-slate-500">Government · Fixed</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-bold text-white text-right">4.24%</td>
+<td class="px-6 py-4 text-sm text-slate-400 text-right">8.42 yrs</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-500 text-[10px] font-black border border-emerald-500/20">AAA</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-accent-gold w-[92%]"></div>
+</div>
+<span class="text-[10px] font-black text-accent-gold gold-glow">9.2</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-1.5 text-[10px] font-bold text-emerald-500">
+<span class="size-1.5 rounded-full bg-emerald-500"></span> STABLE
+                                                </span>
+</td>
+</tr>
+<tr class="hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center">
+<span class="text-[10px] font-black text-primary">MSFT</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-white">Microsoft Corp 2033</span>
+<span class="text-[10px] text-slate-500">Corporate · Technology</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-bold text-white text-right">5.15%</td>
+<td class="px-6 py-4 text-sm text-slate-400 text-right">7.10 yrs</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-500 text-[10px] font-black border border-emerald-500/20">AAA</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-accent-gold w-[88%]"></div>
+</div>
+<span class="text-[10px] font-black text-accent-gold gold-glow">8.8</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-1.5 text-[10px] font-bold text-emerald-500">
+<span class="size-1.5 rounded-full bg-emerald-500"></span> STABLE
+                                                </span>
+</td>
+</tr>
+<tr class="hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center">
+<span class="text-[10px] font-black text-primary">F</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-white">Ford Motor Co 2028</span>
+<span class="text-[10px] text-slate-500">Corporate · Automotive</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-bold text-white text-right">6.85%</td>
+<td class="px-6 py-4 text-sm text-slate-400 text-right">3.80 yrs</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-500 text-[10px] font-black border border-amber-500/20">BB+</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-amber-500 w-[54%]"></div>
+</div>
+<span class="text-[10px] font-black text-amber-500">5.4</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-1.5 text-[10px] font-bold text-amber-500">
+<span class="size-1.5 rounded-full bg-amber-500"></span> VOLATILE
+                                                </span>
+</td>
+</tr>
+<tr class="hover:bg-slate-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-9 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center">
+<span class="text-[10px] font-black text-primary">UKG</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-white">UK Gilt 2040</span>
+<span class="text-[10px] text-slate-500">Government · GBP</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-bold text-white text-right">4.58%</td>
+<td class="px-6 py-4 text-sm text-slate-400 text-right">14.2 yrs</td>
+<td class="px-6 py-4 text-center">
+<span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-500 text-[10px] font-black border border-emerald-500/20">AA+</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-24 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-accent-gold w-[79%]"></div>
+</div>
+<span class="text-[10px] font-black text-accent-gold gold-glow">7.9</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="flex items-center gap-1.5 text-[10px] font-bold text-emerald-500">
+<span class="size-1.5 rounded-full bg-emerald-500"></span> STABLE
+                                                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+<h3 class="text-sm font-bold text-white uppercase tracking-wider mb-5 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">public</span>
+                                Macro Indicators
+                            </h3>
+<div class="space-y-6">
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<span class="text-[10px] font-bold text-slate-500 uppercase">US CPI (YoY)</span>
+<span class="text-sm font-black text-white">3.1%</span>
+</div>
+<div class="w-full h-1 bg-slate-800 rounded-full">
+<div class="h-full bg-rose-500 w-[65%]"></div>
+</div>
+<p class="text-[9px] text-slate-500 italic">Target: 2.0% | Trend: Cooling</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<span class="text-[10px] font-bold text-slate-500 uppercase">Fed Funds Rate</span>
+<span class="text-sm font-black text-white">5.25 - 5.50%</span>
+</div>
+<div class="w-full h-1 bg-slate-800 rounded-full">
+<div class="h-full bg-primary w-[80%]"></div>
+</div>
+<p class="text-[9px] text-emerald-500 font-bold uppercase tracking-tighter">AI Prediction: Hold next meeting</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-end">
+<span class="text-[10px] font-bold text-slate-500 uppercase">GDP Growth</span>
+<span class="text-sm font-black text-white">2.6%</span>
+</div>
+<div class="w-full h-1 bg-slate-800 rounded-full">
+<div class="h-full bg-emerald-500 w-[40%]"></div>
+</div>
+<p class="text-[9px] text-slate-500 italic">Resilient consumer spending.</p>
+</div>
+</div>
+<div class="mt-8 pt-5 border-t border-slate-800">
+<h4 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Recent Alerts</h4>
+<div class="flex gap-3 mb-4">
+<div class="size-8 shrink-0 bg-primary/10 rounded flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm">info</span>
+</div>
+<p class="text-[11px] leading-tight text-slate-400">Yield curve inversion deepest in 40 years. Watch for liquidity stress.</p>
+</div>
+<button class="w-full py-2 bg-slate-800 text-[10px] font-bold text-slate-300 hover:text-white rounded transition-colors uppercase tracking-widest">
+                                    Full Macro Report
+                                </button>
+</div>
+</div>
+<div class="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-xl p-5">
+<h3 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Credit Outlook</h3>
+<div class="flex items-center justify-between mb-4">
+<div class="flex flex-col">
+<span class="text-2xl font-black text-accent-gold">High</span>
+<span class="text-[10px] text-slate-500 uppercase font-bold">Conviction Signal</span>
+</div>
+<span class="material-symbols-outlined text-accent-gold text-4xl">verified_user</span>
+</div>
+<p class="text-xs text-slate-400 mb-4 leading-relaxed">
+                                AI detects improving solvency metrics in the industrial sector. Recommend rotation into A-rated corporates.
+                            </p>
+<div class="grid grid-cols-2 gap-2">
+<div class="bg-slate-800/50 p-2 rounded text-center">
+<div class="text-[10px] text-slate-500 font-bold uppercase">Upgrades</div>
+<div class="text-sm font-bold text-emerald-500">12</div>
+</div>
+<div class="bg-slate-800/50 p-2 rounded text-center">
+<div class="text-[10px] text-slate-500 font-bold uppercase">Downgrades</div>
+<div class="text-sm font-bold text-rose-500">4</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>

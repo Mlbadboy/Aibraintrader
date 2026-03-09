@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-service
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ml-service
+    spec:
+      containers:
+        - name: ml-service
+          image: quant-ml-service:latest
+          ports:
+            - containerPort: 8003
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-ops-service
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ml-ops-service
+    spec:
+      containers:
+        - name: ml-ops-service
+          image: quant-ml-ops:latest
+          ports:
+            - containerPort: 8006
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trading-service
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: trading-service
+    spec:
+      containers:
+        - name: trading-service
+          image: quant-trading:latest
+          ports:
+            - containerPort: 8005

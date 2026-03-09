@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Institutional Risk Management | AlphaAI Terminal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#0a0f16",
+                        "warning": "#f59e0b",
+                        "danger": "#ef4444",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body { @apply font-display bg-background-dark text-slate-100 antialiased; }
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        .gauge-container {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="custom-scrollbar">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-slate-800 px-6 py-3 bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-6">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
+</svg>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-tight">AlphaAI Terminal</h2>
+</div>
+<label class="flex flex-col min-w-64 h-10">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-900 border border-slate-800">
+<div class="text-slate-500 flex items-center justify-center pl-4 rounded-l-lg">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full border-none bg-transparent focus:ring-0 text-white placeholder:text-slate-500 text-sm font-normal" placeholder="Search risk factors, assets, scenarios..."/>
+</div>
+</label>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden xl:flex items-center gap-6">
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Dashboard</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Portfolio</a>
+<a class="text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Scenarios</a>
+<a class="text-primary text-sm font-semibold border-b-2 border-primary py-4" href="#">Risk Management</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="bg-primary/20 rounded-full p-0.5 border border-primary/30">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD4ESv7XV1QLcbw59PihhO98mglKr8Pcn6-7lXL4ccehzePFS4Udj-mK1Vj2AtQdy4khWJXW-Ecyq8moGtdnmiqDjtIy8niIM4FvABZuPUGiKSx06rCLAvs4oe7y1ADvC0j4fc9XbDIGFf2vyQFspCO24vld7d5LSWWy9VsxWBJuRrrqvKbzPcvTAS4tRT65yYwqOqv1D6DbmjZadAEEom1HOY0A3Bvzh1kwDDGa_aI63XBtUPLYs8OVEDfUIU4mego8enizGgRLlU");'></div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<aside class="w-64 border-r border-slate-800 bg-background-dark hidden lg:flex flex-col py-6 px-4 gap-8">
+<div class="flex flex-col gap-1">
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest px-3">Risk Controls</p>
+<div class="flex flex-col gap-1 mt-3">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-slate-900 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">gavel</span>
+<span class="text-sm font-medium">Compliance</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-slate-900 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">speed</span>
+<span class="text-sm font-medium">Liquidity Analysis</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary border border-primary/20" href="#">
+<span class="material-symbols-outlined">shield_with_heart</span>
+<span class="text-sm font-medium">Risk Command</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:bg-slate-900 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">hub</span>
+<span class="text-sm font-medium">Correlation Hub</span>
+</a>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest px-3">Live Alerts</p>
+<div class="mt-3 flex flex-col gap-2 px-3">
+<div class="p-2 border-l-2 border-danger bg-danger/5 rounded text-[11px]">
+<p class="font-bold text-danger">High Volatility Detected</p>
+<p class="text-slate-500">Nasdaq Tech Sector</p>
+</div>
+<div class="p-2 border-l-2 border-warning bg-warning/5 rounded text-[11px]">
+<p class="font-bold text-warning">Concentration Warning</p>
+<p class="text-slate-500">MSFT position &gt; 15%</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto bg-slate-950/40 custom-scrollbar p-6">
+<div class="max-w-[1440px] mx-auto flex flex-col gap-6">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-xl">verified_user</span>
+<h1 class="text-2xl font-bold tracking-tight text-white uppercase italic">Institutional Risk Management</h1>
+</div>
+<p class="text-slate-500 text-sm">System Status: <span class="text-emerald-500 font-medium">Active Monitoring</span> · Last Refresh: 14:02:11 GMT</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 border border-slate-700 bg-slate-900 rounded-lg text-xs font-bold hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-sm">download</span>
+                                Download Risk Report
+                            </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-danger text-white rounded-lg text-xs font-bold shadow-lg shadow-danger/20 hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-sm">emergency_home</span>
+                                Hedge All Positions
+                            </button>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+<div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                                    Portfolio VaR (95% / 1-Day)
+                                    <span class="material-symbols-outlined text-xs">info</span>
+</h3>
+<span class="text-[10px] font-bold px-2 py-0.5 bg-warning/10 text-warning rounded">LEVEL: MODERATE</span>
+</div>
+<div class="gauge-container">
+<svg class="w-full h-full" viewBox="0 0 200 100">
+<path d="M 20 90 A 80 80 0 0 1 180 90" fill="none" stroke="#1e293b" stroke-linecap="round" stroke-width="12"></path>
+<path d="M 20 90 A 80 80 0 0 1 120 20" fill="none" stroke="url(#gaugeGradient)" stroke-dasharray="251.2" stroke-dashoffset="62.8" stroke-linecap="round" stroke-width="12"></path>
+<defs>
+<linearGradient id="gaugeGradient" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#10b981"></stop>
+<stop offset="50%" stop-color="#f59e0b"></stop>
+<stop offset="100%" stop-color="#ef4444"></stop>
+</linearGradient>
+</defs>
+<line stroke="white" stroke-linecap="round" stroke-width="3" x1="100" x2="140" y1="90" y2="40"></line>
+<circle cx="100" cy="90" fill="#1e293b" r="6" stroke="white" stroke-width="2"></circle>
+</svg>
+<div class="absolute bottom-6 flex flex-col items-center">
+<span class="text-3xl font-black text-white">$42.8M</span>
+<span class="text-[10px] text-slate-500 font-bold uppercase">Estimated Loss Potential</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-4">
+<div class="bg-slate-950/50 p-3 rounded border border-slate-800">
+<p class="text-[10px] text-slate-500 uppercase font-bold">Sharpe Ratio</p>
+<p class="text-lg font-bold text-emerald-500">2.42</p>
+</div>
+<div class="bg-slate-950/50 p-3 rounded border border-slate-800">
+<p class="text-[10px] text-slate-500 uppercase font-bold">Beta (S&amp;P 500)</p>
+<p class="text-lg font-bold text-white">1.15</p>
+</div>
+</div>
+</div>
+<div class="xl:col-span-2 bg-slate-900 border border-slate-800 rounded-xl p-6 overflow-hidden">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
+                                    Asset Correlation Matrix
+                                </h3>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 text-[10px] font-bold text-slate-500">
+<div class="size-2 bg-slate-800"></div> Low
+                                        <div class="size-2 bg-primary/40"></div>
+<div class="size-2 bg-primary/80"></div> High
+                                    </div>
+</div>
+</div>
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-xs">
+<thead>
+<tr>
+<th class="p-2 border border-slate-800 bg-slate-950/50 w-20"></th>
+<th class="p-2 border border-slate-800 bg-slate-950/50 font-bold text-slate-400">EQUITIES</th>
+<th class="p-2 border border-slate-800 bg-slate-950/50 font-bold text-slate-400">FIXED</th>
+<th class="p-2 border border-slate-800 bg-slate-950/50 font-bold text-slate-400">COMMODS</th>
+<th class="p-2 border border-slate-800 bg-slate-950/50 font-bold text-slate-400">CRYPTO</th>
+<th class="p-2 border border-slate-800 bg-slate-950/50 font-bold text-slate-400">CASH</th>
+</tr>
+</thead>
+<tbody class="text-center font-mono">
+<tr>
+<td class="p-2 border border-slate-800 bg-slate-950/50 font-bold text-slate-400 text-left">EQUITIES</td>
+<td class="p-2 border border-slate-800 bg-primary/90 text-white">1.00</td>
+<td class="p-2 border border-slate-800 bg-primary/30 text-slate-300">0.45</td>
+<td class="p-2 border border-slate-800 bg-primary/10 text-slate-500">0.12</td>
+<td class="p-2 border border-slate-800 bg-primary/60 text-white">0.68</td>
+<td class="p-2 border border-slate-800 bg-slate-900 text-slate-600">-0.05</td>
+</tr>
+<tr>
+<td class="p-2 border border-slate-800 bg-slate-950/50 font-bold text-slate-400 text-left">FIXED</td>
+<td class="p-2 border border-slate-800 bg-primary/30 text-slate-300">0.45</td>
+<td class="p-2 border border-slate-800 bg-primary/90 text-white">1.00</td>
+<td class="p-2 border border-slate-800 bg-primary/20 text-slate-400">0.25</td>
+<td class="p-2 border border-slate-800 bg-slate-900 text-slate-600">-0.12</td>
+<td class="p-2 border border-slate-800 bg-primary/10 text-slate-500">0.08</td>
+</tr>
+<tr>
+<td class="p-2 border border-slate-800 bg-slate-950/50 font-bold text-slate-400 text-left">COMMODS</td>
+<td class="p-2 border border-slate-800 bg-primary/10 text-slate-500">0.12</td>
+<td class="p-2 border border-slate-800 bg-primary/20 text-slate-400">0.25</td>
+<td class="p-2 border border-slate-800 bg-primary/90 text-white">1.00</td>
+<td class="p-2 border border-slate-800 bg-primary/30 text-slate-300">0.38</td>
+<td class="p-2 border border-slate-800 bg-primary/5 text-slate-600">0.02</td>
+</tr>
+<tr>
+<td class="p-2 border border-slate-800 bg-slate-950/50 font-bold text-slate-400 text-left">CRYPTO</td>
+<td class="p-2 border border-slate-800 bg-primary/60 text-white">0.68</td>
+<td class="p-2 border border-slate-800 bg-slate-900 text-slate-600">-0.12</td>
+<td class="p-2 border border-slate-800 bg-primary/30 text-slate-300">0.38</td>
+<td class="p-2 border border-slate-800 bg-primary/90 text-white">1.00</td>
+<td class="p-2 border border-slate-800 bg-slate-900 text-slate-600">-0.22</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="text-[10px] text-slate-500 mt-4 italic">* Calculations based on rolling 90-day returns covariance.</p>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest">Active Stress Test Simulations</h3>
+<button class="text-xs font-bold text-primary hover:underline">Customize Scenarios</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-slate-900 border border-slate-800 p-4 rounded-xl hover:border-warning/50 transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-3">
+<span class="material-symbols-outlined text-warning">show_chart</span>
+<span class="text-[10px] font-bold text-warning uppercase">Simulation</span>
+</div>
+<h4 class="text-sm font-bold text-white mb-1">Interest Rates +1%</h4>
+<p class="text-xs text-slate-500 mb-4 leading-tight">Projected impact on fixed income and leverage costs.</p>
+<div class="flex justify-between items-end">
+<div class="text-danger font-mono font-bold text-sm">-$14.2M</div>
+<div class="size-8 rounded-full border border-slate-800 flex items-center justify-center group-hover:bg-warning/10 group-hover:text-warning transition-colors">
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="bg-slate-900 border border-slate-800 p-4 rounded-xl hover:border-danger/50 transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-3">
+<span class="material-symbols-outlined text-danger">thunderstorm</span>
+<span class="text-[10px] font-bold text-danger uppercase">Extreme</span>
+</div>
+<h4 class="text-sm font-bold text-white mb-1">2008 Repeat</h4>
+<p class="text-xs text-slate-500 mb-4 leading-tight">Systemic financial sector meltdown simulation.</p>
+<div class="flex justify-between items-end">
+<div class="text-danger font-mono font-bold text-sm">-$124.8M</div>
+<div class="size-8 rounded-full border border-slate-800 flex items-center justify-center group-hover:bg-danger/10 group-hover:text-danger transition-colors">
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="bg-slate-900 border border-slate-800 p-4 rounded-xl hover:border-emerald-500/50 transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-3">
+<span class="material-symbols-outlined text-emerald-500">oil_barrel</span>
+<span class="text-[10px] font-bold text-emerald-500 uppercase">Commodity</span>
+</div>
+<h4 class="text-sm font-bold text-white mb-1">Crude Oil $120+</h4>
+<p class="text-xs text-slate-500 mb-4 leading-tight">Energy supply shock and inflationary pressures.</p>
+<div class="flex justify-between items-end">
+<div class="text-emerald-500 font-mono font-bold text-sm">+$8.4M</div>
+<div class="size-8 rounded-full border border-slate-800 flex items-center justify-center group-hover:bg-emerald-500/10 group-hover:text-emerald-500 transition-colors">
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="bg-slate-900 border border-slate-800 p-4 rounded-xl hover:border-primary/50 transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-3">
+<span class="material-symbols-outlined text-primary">public</span>
+<span class="text-[10px] font-bold text-primary uppercase">Geopolitical</span>
+</div>
+<h4 class="text-sm font-bold text-white mb-1">Trade War 2.0</h4>
+<p class="text-xs text-slate-500 mb-4 leading-tight">Impact of 25% tariffs on tech hardware.</p>
+<div class="flex justify-between items-end">
+<div class="text-warning font-mono font-bold text-sm">-$5.2M</div>
+<div class="size-8 rounded-full border border-slate-800 flex items-center justify-center group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-4 gap-6 mb-6">
+<div class="xl:col-span-1 flex flex-col gap-4">
+<h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest px-1">Risk Alerts Feed</h3>
+<div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden flex flex-col h-[400px]">
+<div class="flex-1 overflow-y-auto custom-scrollbar">
+<div class="p-4 border-b border-slate-800 bg-danger/5">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-danger text-lg">priority_high</span>
+<div>
+<p class="text-xs font-bold text-white uppercase">Margin Call Risk: High</p>
+<p class="text-[10px] text-slate-400 mt-1">Maintenance margin utilization at 88.4% on HKD positions.</p>
+<p class="text-[9px] text-slate-500 mt-2 font-mono">14:05:02</p>
+</div>
+</div>
+</div>
+<div class="p-4 border-b border-slate-800 bg-warning/5">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-warning text-lg">warning</span>
+<div>
+<p class="text-xs font-bold text-white uppercase">Concentration Alert</p>
+<p class="text-[10px] text-slate-400 mt-1">Sector exposure to 'Mag-7' equities exceeds policy limits (40%).</p>
+<p class="text-[9px] text-slate-500 mt-2 font-mono">13:42:15</p>
+</div>
+</div>
+</div>
+<div class="p-4 border-b border-slate-800">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-slate-500 text-lg">report</span>
+<div>
+<p class="text-xs font-bold text-white uppercase">Rebalance Suggested</p>
+<p class="text-[10px] text-slate-400 mt-1">Drift detected in Fixed Income duration targets (+0.4 yr).</p>
+<p class="text-[9px] text-slate-500 mt-2 font-mono">12:15:33</p>
+</div>
+</div>
+</div>
+<div class="p-4 border-b border-slate-800">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-emerald-500 text-lg">check_circle</span>
+<div>
+<p class="text-xs font-bold text-white uppercase">Hedge Executed</p>
+<p class="text-[10px] text-slate-400 mt-1">SPX 4500 Put options purchased (Qty: 250).</p>
+<p class="text-[9px] text-slate-500 mt-2 font-mono">11:00:00</p>
+</div>
+</div>
+</div>
+</div>
+<button class="p-3 text-center text-[10px] font-bold text-primary hover:bg-slate-800 uppercase border-t border-slate-800 transition-colors">
+                                    View Full History
+                                </button>
+</div>
+</div>
+<div class="xl:col-span-3 bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-800 flex justify-between items-center">
+<h3 class="text-xs font-bold text-white uppercase tracking-widest">High Risk Asset Breakdown</h3>
+<div class="flex gap-4">
+<div class="flex items-center gap-2 text-[10px] text-slate-500 font-bold">
+<div class="size-2 rounded-full bg-danger"></div> Critical Exposure
+                                    </div>
+<div class="flex items-center gap-2 text-[10px] text-slate-500 font-bold">
+<div class="size-2 rounded-full bg-warning"></div> At Limit
+                                    </div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-950/50">
+<tr>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Asset Name</th>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Concentration</th>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Marginal VaR</th>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Liquidity Score</th>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Risk Mitigation</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-800">
+<tr>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-slate-800 flex items-center justify-center font-bold text-[10px] text-primary border border-slate-700">MSFT</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-white">Microsoft Corp</span>
+<span class="text-[10px] text-slate-500">Equity · Large Cap Tech</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between text-[10px] font-bold text-slate-400">
+<span>16.2%</span>
+<span class="text-danger">Limit: 15%</span>
+</div>
+<div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-danger w-[100%]"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-white">$4.21M</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="flex gap-0.5">
+<div class="w-1 h-3 bg-emerald-500"></div>
+<div class="w-1 h-3 bg-emerald-500"></div>
+<div class="w-1 h-3 bg-emerald-500"></div>
+<div class="w-1 h-3 bg-emerald-500"></div>
+<div class="w-1 h-3 bg-slate-700"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400">T+2 Ready</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<button class="px-2 py-1 rounded bg-primary/10 text-primary text-[10px] font-bold border border-primary/20 hover:bg-primary hover:text-white transition-colors">TRIM POSITION</button>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-slate-800 flex items-center justify-center font-bold text-[10px] text-primary border border-slate-700">BTC</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-white">Bitcoin Trust</span>
+<span class="text-[10px] text-slate-500">Alt Asset · High Vol</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between text-[10px] font-bold text-slate-400">
+<span>4.8%</span>
+<span class="text-warning">Limit: 5%</span>
+</div>
+<div class="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-warning w-[96%]"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm font-mono text-white">$6.88M</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="flex gap-0.5">
+<div class="w-1 h-3 bg-emerald-500"></div>
+<div class="w-1 h-3 bg-slate-700"></div>
+<div class="w-1 h-3 bg-slate-700"></div>
+<div class="w-1 h-3 bg-slate-700"></div>
+<div class="w-1 h-3 bg-slate-700"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-400">Low Liquidity</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<button class="px-2 py-1 rounded bg-slate-800 text-slate-400 text-[10px] font-bold border border-slate-700 hover:text-white transition-colors">ADD HEDGE</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+
+</body></html>

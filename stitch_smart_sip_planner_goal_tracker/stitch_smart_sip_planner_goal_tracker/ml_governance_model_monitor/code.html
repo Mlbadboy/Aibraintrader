@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ML Governance &amp; Model Monitor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .status-pulse {
+            position: relative;
+        }
+        .status-pulse::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 50%;
+            background: currentColor;
+            opacity: 0.4;
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 flex flex-col shrink-0 bg-white dark:bg-background-dark">
+<div class="p-6 flex items-center gap-3">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<h1 class="font-bold text-lg tracking-tight">QuantOS AI</h1>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="text-sm font-medium">Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary cursor-pointer">
+<span class="material-symbols-outlined text-xl">security</span>
+<span class="text-sm font-medium">Governance</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-xl">database</span>
+<span class="text-sm font-medium">Model Registry</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-xl">monitoring</span>
+<span class="text-sm font-medium">Drift Analysis</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-xl">history</span>
+<span class="text-sm font-medium">Deployment Logs</span>
+</div>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 p-2">
+<div class="size-10 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="Admin user avatar with technical glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz7Hxdab4nkPVBetUO22pOkcJJyW_fkvcebwLRQCImNFEVcmCEDvOLLqj7nWtUOwEIsCozAdb4QPmRB4DcKkRXCQ2dHQl1nkIHS0o5_SwvZ12ZE9Y1nnOwT4sc9kBTHh6Usxr_xw3-fwzxUA6voDd0It3UfWXDApfCUoxPbDKr8GfrSfiapQQII9ERidKWtsVdbpat5n3-7iMXXzIDJllr7ertQ2T2e041TJ82TTBQL_agwSIId9q8TxgJPJRoShmVx-Mn1meVmAU"/>
+</div>
+<div>
+<p class="text-xs font-semibold">Admin.Sys</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest">Level 4 Access</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- Header -->
+<header class="h-16 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 bg-white dark:bg-background-dark/50 backdrop-blur-md">
+<div class="flex items-center gap-4">
+<h2 class="text-xl font-bold tracking-tight">ML Governance &amp; Model Monitor</h2>
+<div class="flex items-center gap-2 px-2 py-1 rounded bg-emerald-500/10 text-emerald-500 text-[10px] font-bold uppercase tracking-wider">
+<span class="size-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Systems Nominal
+                </div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-1.5 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm focus:ring-1 focus:ring-primary transition-all" placeholder="Search model nodes..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-red-500 rounded-full border-2 border-white dark:border-background-dark"></span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Dashboard Grid -->
+<div class="flex-1 overflow-y-auto p-8 space-y-6">
+<!-- Key Metrics Row -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
+<p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">Model Accuracy</p>
+<div class="flex items-end justify-between">
+<h3 class="text-3xl font-bold">98.42<span class="text-lg text-slate-400 font-normal">%</span></h3>
+<span class="text-emerald-500 text-xs font-bold mb-1">+0.12%</span>
+</div>
+<div class="mt-3 h-1 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500" style="width: 98%;"></div>
+</div>
+</div>
+<div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
+<p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">Drift Score</p>
+<div class="flex items-end justify-between">
+<h3 class="text-3xl font-bold">0.042</h3>
+<span class="text-emerald-500 text-xs font-bold mb-1">Stable</span>
+</div>
+<div class="mt-3 h-1 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 15%;"></div>
+</div>
+</div>
+<div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
+<p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">Inference Latency</p>
+<div class="flex items-end justify-between">
+<h3 class="text-3xl font-bold">24<span class="text-lg text-slate-400 font-normal">ms</span></h3>
+<span class="text-amber-500 text-xs font-bold mb-1">+4ms</span>
+</div>
+<div class="mt-3 h-1 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-amber-500" style="width: 45%;"></div>
+</div>
+</div>
+<div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
+<p class="text-slate-500 text-xs font-semibold uppercase tracking-wider mb-2">Active Deployments</p>
+<div class="flex items-end justify-between">
+<h3 class="text-3xl font-bold">12</h3>
+<span class="text-slate-400 text-xs mb-1">2 Staging</span>
+</div>
+<div class="mt-3 flex gap-1">
+<div class="h-1 flex-1 bg-emerald-500 rounded-full"></div>
+<div class="h-1 flex-1 bg-emerald-500 rounded-full"></div>
+<div class="h-1 flex-1 bg-primary rounded-full"></div>
+<div class="h-1 flex-1 bg-slate-200 dark:bg-slate-800 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Main Charts Row -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Accuracy Over Time -->
+<div class="lg:col-span-2 p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<h4 class="font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">show_chart</span>
+                            Model Performance (Historical)
+                        </h4>
+<div class="flex gap-2">
+<button class="px-3 py-1 text-[10px] font-bold rounded bg-slate-100 dark:bg-slate-800 hover:bg-primary/10 hover:text-primary transition-all">1H</button>
+<button class="px-3 py-1 text-[10px] font-bold rounded bg-primary text-white">24H</button>
+<button class="px-3 py-1 text-[10px] font-bold rounded bg-slate-100 dark:bg-slate-800 hover:bg-primary/10 hover:text-primary transition-all">7D</button>
+</div>
+</div>
+<div class="flex-1 min-h-[300px] relative flex flex-col justify-between">
+<!-- Simulated Chart Grid -->
+<div class="absolute inset-0 grid grid-cols-6 grid-rows-4 pointer-events-none">
+<div class="border-l border-b border-slate-100 dark:border-slate-800/50"></div>
+<div class="border-l border-b border-slate-100 dark:border-slate-800/50"></div>
+<div class="border-l border-b border-slate-100 dark:border-slate-800/50"></div>
+<div class="border-l border-b border-slate-100 dark:border-slate-800/50"></div>
+<div class="border-l border-b border-slate-100 dark:border-slate-800/50"></div>
+<div class="border-l border-b border-r border-slate-100 dark:border-slate-800/50"></div>
+</div>
+<!-- SVG Line Graph -->
+<svg class="relative z-10 w-full h-full" viewbox="0 0 800 300">
+<defs>
+<lineargradient id="gradient-accuracy" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#136dec" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#136dec" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,250 Q100,240 200,100 T400,120 T600,80 T800,95 L800,300 L0,300 Z" fill="url(#gradient-accuracy)"></path>
+<path d="M0,250 Q100,240 200,100 T400,120 T600,80 T800,95" fill="none" stroke="#136dec" stroke-width="3"></path>
+<!-- Hover Point -->
+<circle cx="600" cy="80" fill="#136dec" r="6"></circle>
+<circle cx="600" cy="80" fill="none" r="10" stroke="#136dec" stroke-opacity="0.3"></circle>
+</svg>
+<div class="flex justify-between text-[10px] text-slate-500 font-mono mt-2">
+<span>00:00</span>
+<span>04:00</span>
+<span>08:00</span>
+<span>12:00</span>
+<span>16:00</span>
+<span>20:00</span>
+<span>23:59</span>
+</div>
+</div>
+</div>
+<!-- Drift Detection Status -->
+<div class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
+<h4 class="font-bold flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-amber-500">warning</span>
+                        Drift Detection Monitoring
+                    </h4>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-3 rounded-full bg-emerald-500 status-pulse text-emerald-500"></div>
+<span class="text-sm font-medium">Concept Drift</span>
+</div>
+<span class="text-xs font-mono text-slate-500">P &lt; 0.001</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-3 rounded-full bg-amber-500 text-amber-500"></div>
+<span class="text-sm font-medium">Prior Probability</span>
+</div>
+<span class="text-xs font-mono text-amber-500">P = 0.045</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-3 rounded-full bg-emerald-500 text-emerald-500"></div>
+<span class="text-sm font-medium">Covariate Shift</span>
+</div>
+<span class="text-xs font-mono text-slate-500">P &lt; 0.001</span>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-slate-100 dark:border-slate-800">
+<p class="text-xs font-semibold text-slate-500 uppercase mb-4">Feature Importance Delta</p>
+<div class="space-y-3">
+<div>
+<div class="flex justify-between text-[10px] mb-1">
+<span>Market_Volatility_Idx</span>
+<span class="text-amber-500 font-bold">+18%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full">
+<div class="h-full bg-amber-500 rounded-full" style="width: 75%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[10px] mb-1">
+<span>Treasury_Yield_10Y</span>
+<span class="text-slate-400">Stable</span>
+</div>
+<div class="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full">
+<div class="h-full bg-emerald-500 rounded-full" style="width: 40%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Lifecycle Panel & Logs -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Lifecycle Control -->
+<div class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
+<h4 class="font-bold flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary">published_with_changes</span>
+                        Model Lifecycle Panel
+                    </h4>
+<div class="space-y-4">
+<div class="p-4 rounded-lg bg-primary/5 border border-primary/20">
+<div class="flex justify-between items-start mb-2">
+<div>
+<p class="text-xs font-bold text-primary">v2.4.1-alpha (Active)</p>
+<p class="text-[10px] text-slate-500">Deployed: 14h 22m ago</p>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-emerald-500 text-white text-[9px] font-bold">HEALTHY</span>
+</div>
+<div class="flex gap-2 mt-4">
+<button class="flex-1 bg-primary text-white text-xs font-bold py-2 rounded-lg hover:bg-primary/90 transition-colors">Retrain</button>
+<button class="flex-1 border border-slate-300 dark:border-slate-700 text-xs font-bold py-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">Rollback</button>
+</div>
+</div>
+<div class="p-4 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 opacity-60">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-xs font-bold">v2.4.0 (Stable)</p>
+<p class="text-[10px] text-slate-500">Previous production version</p>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-slate-400 text-white text-[9px] font-bold">ARCHIVED</span>
+</div>
+</div>
+<button class="w-full py-3 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl text-xs font-bold text-slate-400 hover:border-primary hover:text-primary transition-all">
+                            + Deploy New Model to Staging
+                        </button>
+</div>
+</div>
+<!-- Prediction vs Actual Scatter -->
+<div class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
+<h4 class="font-bold flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary">scatter_plot</span>
+                        Prediction vs Actual Residuals
+                    </h4>
+<div class="h-48 relative overflow-hidden bg-slate-50 dark:bg-slate-800/30 rounded-lg flex items-center justify-center">
+<!-- Simulated Scatter Plot -->
+<div class="absolute inset-0 p-4">
+<div class="size-1 bg-primary rounded-full absolute" style="top: 45%; left: 30%;"></div>
+<div class="size-1 bg-primary rounded-full absolute" style="top: 48%; left: 35%;"></div>
+<div class="size-1.5 bg-primary rounded-full absolute" style="top: 52%; left: 40%;"></div>
+<div class="size-1 bg-amber-500 rounded-full absolute" style="top: 65%; left: 42%;"></div>
+<div class="size-1 bg-primary rounded-full absolute" style="top: 50%; left: 50%;"></div>
+<div class="size-1 bg-primary rounded-full absolute" style="top: 49%; left: 55%;"></div>
+<div class="size-1 bg-primary rounded-full absolute" style="top: 51%; left: 60%;"></div>
+<div class="size-1.5 bg-primary rounded-full absolute" style="top: 50%; left: 70%;"></div>
+<div class="size-1 bg-red-500 rounded-full absolute" style="top: 30%; left: 80%;"></div>
+<div class="w-full h-[1px] bg-slate-300 dark:bg-slate-600 absolute top-1/2 left-0"></div>
+</div>
+<p class="text-[10px] font-mono text-slate-500/50 rotate-90 absolute right-1">RESIDUAL ERROR</p>
+<p class="text-[10px] font-mono text-slate-500/50 absolute bottom-1">ACTUAL VALUE</p>
+</div>
+<div class="mt-4 flex items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-primary"></span>
+<span class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Normal</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-amber-500"></span>
+<span class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Outlier</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="size-2 rounded-full bg-red-500"></span>
+<span class="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Critical Fail</span>
+</div>
+</div>
+</div>
+<!-- Governance Logs -->
+<div class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 flex flex-col">
+<h4 class="font-bold flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-slate-500">terminal</span>
+                        Governance &amp; Health Logs
+                    </h4>
+<div class="flex-1 space-y-3 font-mono text-[10px] overflow-hidden">
+<div class="flex gap-2 text-slate-400">
+<span class="shrink-0">[10:42:01]</span>
+<span class="text-emerald-500 uppercase font-bold">OK</span>
+<span>Data pipeline sync complete. Records: 1.4M</span>
+</div>
+<div class="flex gap-2 text-slate-400">
+<span class="shrink-0">[10:42:05]</span>
+<span class="text-primary uppercase font-bold">INFO</span>
+<span>Model v2.4.1 accuracy checkpoint: 0.9842</span>
+</div>
+<div class="flex gap-2 text-slate-400">
+<span class="shrink-0">[10:45:12]</span>
+<span class="text-amber-500 uppercase font-bold">WARN</span>
+<span>High variance detected in 'Market_Volatility_Idx'</span>
+</div>
+<div class="flex gap-2 text-slate-400">
+<span class="shrink-0">[10:48:30]</span>
+<span class="text-slate-400 uppercase font-bold">INFO</span>
+<span>Auto-retraining scheduled for 00:00 UTC</span>
+</div>
+<div class="flex gap-2 text-slate-400">
+<span class="shrink-0">[11:02:14]</span>
+<span class="text-emerald-500 uppercase font-bold">OK</span>
+<span>Hardware acceleration health check: PASS (H100 x8)</span>
+</div>
+<div class="flex gap-2 text-slate-400 bg-red-500/10 p-1 rounded">
+<span class="shrink-0">[11:05:01]</span>
+<span class="text-red-500 uppercase font-bold">FAIL</span>
+<span>API endpoint 'prod-infer-04' timed out (504)</span>
+</div>
+</div>
+<button class="mt-4 text-center w-full py-2 text-[10px] font-bold text-primary hover:underline uppercase tracking-widest">
+                        View Full System Logs
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

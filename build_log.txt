@@ -1,0 +1,109 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.01kB 0.0s done
+#1 WARN: FromAsCasing: 'as' and 'FROM' keywords' casing do not match (line 2)
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.11-slim
+#2 DONE 1.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [builder 1/5] FROM docker.io/library/python:3.11-slim@sha256:c8271b1f627d0068857dce5b53e14a9558603b527e46f1f901722f935b786a39
+#4 resolve docker.io/library/python:3.11-slim@sha256:c8271b1f627d0068857dce5b53e14a9558603b527e46f1f901722f935b786a39 0.0s done
+#4 DONE 0.0s
+
+#5 [builder 2/5] WORKDIR /app
+#5 CACHED
+
+#6 [stage-1 3/6] RUN apt-get update && apt-get install -y libpq5 && rm -rf /var/lib/apt/lists/*
+#6 CACHED
+
+#7 [internal] load build context
+#7 transferring context: 7.44MB 2.4s done
+#7 DONE 2.5s
+
+#8 [builder 3/5] RUN apt-get update && apt-get install -y     build-essential     libpq-dev     gcc     g++     python3-dev     && rm -rf /var/lib/apt/lists/*
+#8 CACHED
+
+#9 [builder 4/5] COPY requirements.txt .
+#9 CACHED
+
+#10 [builder 5/5] RUN pip install --no-cache-dir -r requirements.txt
+#10 1.555 Collecting fastapi (from -r requirements.txt (line 1))
+#10 1.806   Downloading fastapi-0.135.1-py3-none-any.whl.metadata (30 kB)
+#10 1.899 Collecting uvicorn (from -r requirements.txt (line 2))
+#10 1.967   Downloading uvicorn-0.41.0-py3-none-any.whl.metadata (6.7 kB)
+#10 2.339 Collecting sqlalchemy (from -r requirements.txt (line 3))
+#10 2.406   Downloading sqlalchemy-2.0.48-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (9.5 kB)
+#10 2.516 Collecting psycopg2-binary (from -r requirements.txt (line 4))
+#10 2.587   Downloading psycopg2_binary-2.9.11-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (4.9 kB)
+#10 2.679 Collecting alembic (from -r requirements.txt (line 5))
+#10 2.749   Downloading alembic-1.18.4-py3-none-any.whl.metadata (7.2 kB)
+#10 2.911 Collecting pydantic (from -r requirements.txt (line 6))
+#10 2.995   Downloading pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+#10 3.052      ΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöü 90.6/90.6 kB 1.5 MB/s eta 0:00:00
+#10 3.111 Collecting httpx (from -r requirements.txt (line 7))
+#10 3.178   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+#10 3.229 Collecting python-multipart (from -r requirements.txt (line 8))
+#10 3.297   Downloading python_multipart-0.0.22-py3-none-any.whl.metadata (1.8 kB)
+#10 3.446 Collecting pandas (from -r requirements.txt (line 9))
+#10 3.517   Downloading pandas-3.0.1-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
+#10 3.531      ΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöüΓöü 79.5/79.5 kB 6.0 MB/s eta 0:00:00
+#10 3.768 Collecting numpy (from -r requirements.txt (line 10))
+#10 3.836   Downloading numpy-2.4.2-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+#10 3.916 Collecting yfinance (from -r requirements.txt (line 11))
+#10 3.984   Downloading yfinance-1.2.0-py2.py3-none-any.whl.metadata (6.1 kB)
+#10 4.005 Collecting xgboost (from -r requirements.txt (line 12))
+#10 4.076   Downloading xgboost-3.2.0-py3-none-manylinux_2_28_x86_64.whl.metadata (2.1 kB)
+#10 4.216 Collecting tensorflow (from -r requirements.txt (line 13))
+#10 4.285   Downloading tensorflow-2.20.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.5 kB)
+#10 4.348 Collecting prophet (from -r requirements.txt (line 14))
+#10 4.419   Downloading prophet-1.3.0-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.5 kB)
+#10 4.508 Collecting statsmodels (from -r requirements.txt (line 15))
+#10 4.576   Downloading statsmodels-0.14.6-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (9.5 kB)
+#10 4.653 Collecting apscheduler (from -r requirements.txt (line 16))
+#10 4.720   Downloading apscheduler-3.11.2-py3-none-any.whl.metadata (6.4 kB)
+#10 4.832 Collecting scikit-learn (from -r requirements.txt (line 17))
+#10 4.901   Downloading scikit_learn-1.8.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (11 kB)
+#10 5.004 Collecting pytz (from -r requirements.txt (line 18))
+#10 5.070   Downloading pytz-2026.1.post1-py2.py3-none-any.whl.metadata (22 kB)
+#10 5.131 ERROR: Ignored the following versions that require a different python version: 1.21.2 Requires-Python >=3.7,<3.11; 1.21.3 Requires-Python >=3.7,<3.11; 1.21.4 Requires-Python >=3.7,<3.11; 1.21.5 Requires-Python >=3.7,<3.11; 1.21.6 Requires-Python >=3.7,<3.11
+#10 5.131 ERROR: Could not find a version that satisfies the requirement lucide-react (from versions: none)
+#10 5.131 ERROR: No matching distribution found for lucide-react
+#10 5.380 
+#10 5.380 [notice] A new release of pip is available: 24.0 -> 26.0.1
+#10 5.380 [notice] To update, run: pip install --upgrade pip
+#10 ERROR: process "/bin/sh -c pip install --no-cache-dir -r requirements.txt" did not complete successfully: exit code: 1
+------
+ > [builder 5/5] RUN pip install --no-cache-dir -r requirements.txt:
+4.832 Collecting scikit-learn (from -r requirements.txt (line 17))
+4.901   Downloading scikit_learn-1.8.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (11 kB)
+5.004 Collecting pytz (from -r requirements.txt (line 18))
+5.070   Downloading pytz-2026.1.post1-py2.py3-none-any.whl.metadata (22 kB)
+5.131 ERROR: Ignored the following versions that require a different python version: 1.21.2 Requires-Python >=3.7,<3.11; 1.21.3 Requires-Python >=3.7,<3.11; 1.21.4 Requires-Python >=3.7,<3.11; 1.21.5 Requires-Python >=3.7,<3.11; 1.21.6 Requires-Python >=3.7,<3.11
+5.131 ERROR: Could not find a version that satisfies the requirement lucide-react (from versions: none)
+5.131 ERROR: No matching distribution found for lucide-react
+5.380 
+5.380 [notice] A new release of pip is available: 24.0 -> 26.0.1
+5.380 [notice] To update, run: pip install --upgrade pip
+------
+
+ 3 warnings found (use docker --debug to expand):
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 14)
+ - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 15)
+ - FromAsCasing: 'as' and 'FROM' keywords' casing do not match (line 2)
+Dockerfile:19
+--------------------
+  17 |     # Install project dependencies
+  18 |     COPY requirements.txt .
+  19 | >>> RUN pip install --no-cache-dir -r requirements.txt
+  20 |     
+  21 |     # Final stage
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c pip install --no-cache-dir -r requirements.txt" did not complete successfully: exit code: 1
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/t4bx5wj6a9rvjgmqs4pvp66tn

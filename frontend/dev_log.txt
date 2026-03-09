@@ -1,0 +1,151 @@
+
+> frontend@0.0.0 dev
+> vite
+
+
+  [32m[1mVITE[22m v7.3.1[39m  [2mready in [0m[1m897[22m[2m[0m ms[22m
+
+  [32mΓ₧£[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+[2m  [32mΓ₧£[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[2m[32m  Γ₧£[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m2:29:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/RadarView.jsx[22m
+[2m2:29:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/RadarView.jsx[22m
+[2m2:29:40 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/RadarView.jsx[22m
+2:29:40 pm [vite] Internal server error: E:\Stock Analysier and pedction machine\frontend\src\components\RadarView.jsx: Expected corresponding JSX closing tag for <div>. (379:56)
+
+  377 |                                                                     </div>
+  378 |                                                                 </div>
+> 379 |                                                         </td>
+      |                                                         ^
+  380 |                                                     </tr>
+  381 |                                                 )}
+  382 |                                             </React.Fragment>
+  Plugin: vite:react-babel
+  File: E:/Stock Analysier and pedction machine/frontend/src/components/RadarView.jsx:379:56
+  385 |                                  </tbody>
+  386 |                              </table>
+  387 |                              {filteredData.length === 0 && (
+      |                                          ^
+  388 |                                  <div className="py-20 text-center">
+  389 |                                      <div className="text-slate-600 font-black text-xl mb-2 opacity-50 uppercase track...
+      at constructor (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:365:19)
+      at JSXParserMixin.raise (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:6599:19)
+      at JSXParserMixin.jsxParseElementAt (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4727:16)
+      at JSXParserMixin.jsxParseElementAt (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4698:32)
+      at JSXParserMixin.jsxParseElementAt (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4698:32)
+      at JSXParserMixin.jsxParseElement (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4759:19)
+      at JSXParserMixin.parseExprSubscripts (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10800:39
+      at JSXParserMixin.allowInAnd (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:12426:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10800:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:12493:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11675:28)
+      at JSXParserMixin.parseExprAtom (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4764:20)
+      at JSXParserMixin.parseExprSubscripts (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOpBaseRightExpr (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10986:34)
+      at JSXParserMixin.parseExprOpRightExpr (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10981:21)
+      at JSXParserMixin.parseExprOp (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10947:27)
+      at JSXParserMixin.parseExprOps (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10908:17)
+      at JSXParserMixin.parseMaybeConditional (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10784:23)
+      at E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10780:39
+      at JSXParserMixin.allowInAnd (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:12426:12)
+      at JSXParserMixin.parseExpression (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10780:17)
+      at JSXParserMixin.jsxParseExpressionContainer (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4632:31)
+      at JSXParserMixin.jsxParseElementAt (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4711:36)
+      at JSXParserMixin.jsxParseElement (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4759:19)
+      at JSXParserMixin.parseExprSubscripts (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10800:39
+      at JSXParserMixin.allowInAnd (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:12426:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10800:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:12493:17)
+[2m2:30:08 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/RadarView.jsx[22m
+2:30:08 pm [vite] Internal server error: E:\Stock Analysier and pedction machine\frontend\src\components\RadarView.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (376:68)
+
+  374 |                                                                         ) : (
+  375 |                                                                             <div className="text-xs text-slate-500 font-bold">No recent news drivers.</div>
+> 376 |                                                                     </div>
+      |                                                                     ^
+  377 |                                                                 </div>
+  378 |                                                             </div>
+  379 |                                                         </td>
+  Plugin: vite:react-babel
+  File: E:/Stock Analysier and pedction machine/frontend/src/components/RadarView.jsx:376:68
+  380 |                                                      </tr>
+  381 |                                                  )}
+  382 |                                              </React.Fragment>
+      |                                                             ^
+  383 |                                          );
+  384 |                                      })}
+      at constructor (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:365:19)
+      at JSXParserMixin.raise (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:6599:19)
+      at JSXParserMixin.jsxParseElementAt (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4742:18)
+      at JSXParserMixin.jsxParseElement (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4759:19)
+      at JSXParserMixin.parseExprSubscripts (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10800:39
+      at JSXParserMixin.allowInAnd (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:12426:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10800:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:12493:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11675:28)
+      at JSXParserMixin.parseExprAtom (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4764:20)
+      at JSXParserMixin.parseExprSubscripts (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at JSXParserMixin.parseConditional (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10893:29)
+      at JSXParserMixin.parseMaybeConditional (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10885:17)
+      at JSXParserMixin.parseMaybeAssign (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10784:23)
+      at E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10780:39
+      at JSXParserMixin.allowInAnd (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:12426:12)
+      at JSXParserMixin.parseExpression (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10780:17)
+      at JSXParserMixin.jsxParseExpressionContainer (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4632:31)
+      at JSXParserMixin.jsxParseElementAt (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4711:36)
+      at JSXParserMixin.jsxParseElementAt (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4698:32)
+      at JSXParserMixin.jsxParseElementAt (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4698:32)
+      at JSXParserMixin.jsxParseElementAt (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4698:32)
+      at JSXParserMixin.jsxParseElementAt (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4698:32)
+      at JSXParserMixin.jsxParseElement (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:4759:19)
+      at JSXParserMixin.parseExprSubscripts (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:10800:39
+      at JSXParserMixin.allowInAnd (E:\Stock Analysier and pedction machine\frontend\node_modules\@babel\parser\lib\index.js:12426:12)
+[2m2:30:25 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/RadarView.jsx[22m
+[2m7:04:21 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/RadarView.jsx[22m
+[2m7:05:27 pm[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mhmr update [39m[2m/src/components/RadarView.jsx[22m

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Intelligence Alerts Center - AI Invest Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#0a0f16",
+                        "card-dark": "#111822",
+                        "emerald-accent": "#10b981",
+                        "amber-accent": "#f59e0b",
+                        "rose-accent": "#f43f5e",
+                        "blue-accent": "#3b82f6"
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Inter', sans-serif; }
+        .alert-card {
+            @apply border-l-4 transition-all duration-200;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            @apply bg-slate-700 rounded-full;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-64 flex-shrink-0 bg-slate-50 dark:bg-[#0f1721] border-r border-slate-200 dark:border-slate-800 flex flex-col h-full">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="size-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">auto_graph</span>
+</div>
+<div>
+<h1 class="text-slate-900 dark:text-white text-base font-bold leading-tight">AI Invest Pro</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Institutional</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px]">explore</span>
+<span class="text-sm font-semibold">Discover</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px]">pie_chart</span>
+<span class="text-sm font-semibold">Portfolio</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px]">memory</span>
+<span class="text-sm font-semibold">AI Forecast</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px]">calendar_month</span>
+<span class="text-sm font-semibold">SIP Planner</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 bg-primary/10 text-primary rounded-lg transition-colors border-r-2 border-primary" href="#">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="text-sm font-semibold">Alerts</span>
+</a>
+</nav>
+</div>
+<div class="mt-4 px-6 space-y-6">
+<div>
+<h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Risk Type</h3>
+<div class="space-y-2">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-slate-700 bg-slate-800 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-400 group-hover:text-white transition-colors">Critical</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-slate-700 bg-slate-800 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-400 group-hover:text-white transition-colors">Warning</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-slate-700 bg-slate-800 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-400 group-hover:text-white transition-colors">Info</span>
+</label>
+</div>
+</div>
+<div>
+<h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Asset Class</h3>
+<div class="space-y-2">
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-slate-700 bg-slate-800 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-400 group-hover:text-white transition-colors">Equities</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-slate-700 bg-slate-800 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-400 group-hover:text-white transition-colors">Mutual Funds</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer group">
+<input checked="" class="rounded border-slate-700 bg-slate-800 text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-sm text-slate-400 group-hover:text-white transition-colors">Forex</span>
+</label>
+</div>
+</div>
+</div>
+<div class="mt-auto p-6">
+<div class="bg-slate-100 dark:bg-slate-800/50 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
+<p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Market Status</p>
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-emerald-accent animate-pulse"></div>
+<span class="text-sm font-semibold dark:text-emerald-accent">NYSE Open</span>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark custom-scrollbar">
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-8 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<div>
+<h2 class="text-xl font-bold text-slate-900 dark:text-white">Intelligence Alerts Center</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400">Real-time AI monitoring and institutional risk management</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+<span class="text-xs font-bold text-slate-500 dark:text-slate-400">Total Alerts: 24</span>
+</div>
+<div class="size-10 rounded-full border-2 border-primary/20 overflow-hidden">
+<img alt="User" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArgX_sJnMIixamO89AnIY50TY7f40pvOJfaC-C93c-QUq-k3mlMiFhs-UNYjcknnnc-OE9zeYCjvVUsk5RZeSwVRfodotwPs2LX72tAI6QWKTUO-DLUlzGCdRNdnYXPOTjZxGwH0EIt8yLzn2BfgIKMonVTGB4Gur18-HZGuqL5vd30oqYOQ13BX3KmyWJlHRBbXiz_DC4F-YzSu3dJkDRKaCOwqkZtbJkkftmDcz63t_RoFYRk-ZhkkCJJtSI_cacr63d_nHCpXk"/>
+</div>
+</div>
+</header>
+<div class="p-8 max-w-5xl mx-auto space-y-6">
+<div class="flex flex-wrap items-center gap-4 pb-2">
+<button class="px-4 py-2 rounded-full bg-primary text-white text-xs font-bold shadow-lg shadow-primary/20">All Notifications</button>
+<button class="px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-bold hover:bg-slate-200 dark:hover:bg-slate-700">Today</button>
+<button class="px-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-bold hover:bg-slate-200 dark:hover:bg-slate-700">Unread</button>
+<div class="ml-auto flex items-center gap-2">
+<span class="text-xs font-bold text-slate-500 uppercase">Sort by:</span>
+<select class="bg-transparent border-none text-xs font-bold text-slate-900 dark:text-white focus:ring-0 cursor-pointer">
+<option>Newest First</option>
+<option>Severity</option>
+</select>
+</div>
+</div>
+<div class="space-y-4">
+<div class="text-xs font-black text-slate-500 dark:text-slate-500 uppercase tracking-[0.2em] mb-2">Today</div>
+<div class="alert-card bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-800 border-l-rose-accent p-5 flex gap-5 shadow-sm hover:shadow-md transition-all">
+<div class="size-12 rounded-xl bg-rose-accent/10 flex items-center justify-center text-rose-accent shrink-0 self-start">
+<span class="material-symbols-outlined text-[28px] font-bold">priority_high</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Margin Risk: High Volatility Spike</h3>
+<span class="text-[11px] font-bold text-slate-400 uppercase tracking-tighter">10:24 AM</span>
+</div>
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-accent/20 text-rose-accent uppercase">Critical</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">• Tech Equities</span>
+</div>
+<div class="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-3 border border-slate-100 dark:border-slate-800/80 mb-4">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-[16px]">psychology</span>
+<span class="text-[11px] font-bold text-primary uppercase">AI Reasoning</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                Our models detected a 3.4σ deviation in sector volatility. Current margin requirements are within 5% of threshold. Recommending immediate liquidation of non-core positions to bolster liquidity.
+                            </p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-5 py-2 rounded-lg bg-primary text-white text-xs font-bold hover:bg-blue-600 transition-colors">Take Action</button>
+<button class="px-5 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Dismiss</button>
+</div>
+</div>
+</div>
+<div class="alert-card bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-800 border-l-amber-accent p-5 flex gap-5 shadow-sm hover:shadow-md transition-all">
+<div class="size-12 rounded-xl bg-amber-accent/10 flex items-center justify-center text-amber-accent shrink-0 self-start">
+<span class="material-symbols-outlined text-[28px] font-bold">warning</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Portfolio Rebalance Suggested</h3>
+<span class="text-[11px] font-bold text-slate-400 uppercase tracking-tighter">08:15 AM</span>
+</div>
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-accent/20 text-amber-accent uppercase">Warning</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">• Multi-Asset Portfolio</span>
+</div>
+<div class="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-3 border border-slate-100 dark:border-slate-800/80 mb-4">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-[16px]">psychology</span>
+<span class="text-[11px] font-bold text-primary uppercase">AI Reasoning</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                Asset drift has reached +7.2% in Emerging Markets. To maintain your Institutional Risk Profile (Level 4), we suggest reallocating capital to Fixed Income.
+                            </p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-5 py-2 rounded-lg bg-primary/10 text-primary text-xs font-bold hover:bg-primary hover:text-white transition-all">Review Changes</button>
+<button class="px-5 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Dismiss</button>
+</div>
+</div>
+</div>
+<div class="text-xs font-black text-slate-500 dark:text-slate-500 uppercase tracking-[0.2em] mb-2 mt-8">Yesterday</div>
+<div class="alert-card bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-800 border-l-blue-accent p-5 flex gap-5 shadow-sm hover:shadow-md transition-all">
+<div class="size-12 rounded-xl bg-blue-accent/10 flex items-center justify-center text-blue-accent shrink-0 self-start">
+<span class="material-symbols-outlined text-[28px] font-bold">info</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-base font-bold text-slate-900 dark:text-white">New Alpha Insight: Consumer Staples</h3>
+<span class="text-[11px] font-bold text-slate-400 uppercase tracking-tighter">Yesterday, 4:50 PM</span>
+</div>
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-accent/20 text-blue-accent uppercase">Info</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">• Market Prediction</span>
+</div>
+<div class="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-3 border border-slate-100 dark:border-slate-800/80 mb-4">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-[16px]">psychology</span>
+<span class="text-[11px] font-bold text-primary uppercase">AI Reasoning</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                AI signals indicate a "Bullish Divergence" in global staples. High institutional accumulation detected in leading beverage and retail stocks.
+                            </p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-5 py-2 rounded-lg bg-slate-900 dark:bg-slate-700 text-white text-xs font-bold hover:bg-slate-800 transition-colors">View Deep Analysis</button>
+<button class="px-5 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Dismiss</button>
+</div>
+</div>
+</div>
+<div class="alert-card bg-white dark:bg-card-dark rounded-xl border border-slate-200 dark:border-slate-800 border-l-blue-accent p-5 flex gap-5 shadow-sm hover:shadow-md transition-all opacity-80">
+<div class="size-12 rounded-xl bg-blue-accent/10 flex items-center justify-center text-blue-accent shrink-0 self-start">
+<span class="material-symbols-outlined text-[28px] font-bold">receipt_long</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h3 class="text-base font-bold text-slate-900 dark:text-white">Quarterly Performance Report Ready</h3>
+<span class="text-[11px] font-bold text-slate-400 uppercase tracking-tighter">Yesterday, 9:00 AM</span>
+</div>
+<div class="flex items-center gap-2 mb-3">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-accent/20 text-blue-accent uppercase">Info</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">• Institutional Reporting</span>
+</div>
+<div class="bg-slate-50 dark:bg-slate-900/50 rounded-lg p-3 border border-slate-100 dark:border-slate-800/80 mb-4">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-[16px]">psychology</span>
+<span class="text-[11px] font-bold text-primary uppercase">AI Reasoning</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                Automated summary indicates a 14.2% Alpha over S&amp;P 500 benchmark for Q3. Risk-adjusted returns (Sharpe Ratio) improved to 2.1.
+                            </p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-5 py-2 rounded-lg bg-slate-900 dark:bg-slate-700 text-white text-xs font-bold hover:bg-slate-800 transition-colors">Download PDF</button>
+<button class="px-5 py-2 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">Archive</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center pt-8 pb-12">
+<button class="flex items-center gap-2 px-6 py-2 rounded-lg bg-slate-200/50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span>Load Older Alerts</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>

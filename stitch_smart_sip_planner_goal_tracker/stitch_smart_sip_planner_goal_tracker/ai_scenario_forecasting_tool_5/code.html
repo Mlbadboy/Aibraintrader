@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Scenario Forecasting Tool</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #233348;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-6 py-3 bg-background-light dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<div class="size-6">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">AlphaAI Terminal</h2>
+</div>
+<label class="flex flex-col min-w-64 h-10">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full bg-slate-100 dark:bg-slate-800">
+<div class="text-slate-500 dark:text-slate-400 flex items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-transparent focus:ring-0 text-slate-900 dark:text-white placeholder:text-slate-400 text-sm font-normal" placeholder="Search instruments, portfolios, or assets..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden xl:flex items-center gap-6">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Dashboard</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Portfolio</a>
+<a class="text-primary text-sm font-semibold border-b-2 border-primary py-4" href="#">Scenarios</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Market Analysis</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Reports</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="bg-primary/20 rounded-full p-0.5 border border-primary/30">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9" data-alt="User profile avatar circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD4ESv7XV1QLcbw59PihhO98mglKr8Pcn6-7lXL4ccehzePFS4Udj-mK1Vj2AtQdy4khWJXW-Ecyq8moGtdnmiqDjtIy8niIM4FvABZuPUGiKSx06rCLAvs4oe7y1ADvC0j4fc9XbDIGFf2vyQFspCO24vld7d5LSWWy9VsxWBJuRrrqvKbzPcvTAS4tRT65yYwqOqv1D6DbmjZadAEEom1HOY0A3Bvzh1kwDDGa_aI63XBtUPLYs8OVEDfUIU4mego8enizGgRLlU");'></div>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-slate-200 dark:border-slate-800 bg-background-light dark:bg-background-dark hidden lg:flex flex-col py-6 px-4 gap-8">
+<div class="flex flex-col gap-1">
+<p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest px-3">Main Terminal</p>
+<div class="flex flex-col gap-1 mt-3">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">dashboard</span>
+<span class="text-sm font-medium">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">monitoring</span>
+<span class="text-sm font-medium">Equities</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">trending_up</span>
+<span class="text-sm font-medium">Fixed Income</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary text-white" href="#">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="text-sm font-medium">AI Forecasting</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">security</span>
+<span class="text-sm font-medium">Risk Management</span>
+</a>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest px-3">Portfolios</p>
+<div class="flex flex-col gap-1 mt-3">
+<div class="flex items-center justify-between px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800/50">
+<span class="text-sm font-medium text-slate-900 dark:text-slate-100">Global Growth</span>
+<span class="text-[10px] bg-emerald-500/20 text-emerald-500 px-1.5 py-0.5 rounded font-bold uppercase tracking-tighter">Live</span>
+</div>
+<div class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-500 dark:text-slate-500">
+<span class="text-sm font-medium">Tech Momentum</span>
+</div>
+<div class="flex items-center justify-between px-3 py-2 rounded-lg text-slate-500 dark:text-slate-500">
+<span class="text-sm font-medium">Treasury 2024</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-slate-50 dark:bg-slate-950/30 custom-scrollbar p-6">
+<div class="max-w-[1400px] mx-auto flex flex-col gap-6">
+<!-- Header Actions -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h1 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">AI Scenario Forecasting</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Predictive modeling for Global Growth Portfolio (AUM: $1.2B)</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex bg-slate-200 dark:bg-slate-800 p-1 rounded-lg">
+<button class="px-3 py-1.5 text-xs font-bold rounded-md bg-white dark:bg-slate-700 shadow-sm text-slate-900 dark:text-white">6M</button>
+<button class="px-3 py-1.5 text-xs font-bold rounded-md text-slate-500 dark:text-slate-400">12M</button>
+<button class="px-3 py-1.5 text-xs font-bold rounded-md text-slate-500 dark:text-slate-400">24M</button>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-bold shadow-lg shadow-primary/20 hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-lg">bolt</span>
+                            Run New Simulation
+                        </button>
+</div>
+</div>
+<!-- Portfolio Selector Bar -->
+<div class="flex border-b border-slate-200 dark:border-slate-800 gap-8 overflow-x-auto pb-0">
+<button class="flex items-center gap-2 border-b-2 border-primary text-primary pb-3 font-semibold text-sm whitespace-nowrap">
+                        Current Portfolio
+                    </button>
+<button class="flex items-center gap-2 border-b-2 border-transparent text-slate-500 pb-3 hover:text-slate-700 dark:hover:text-slate-300 font-medium text-sm whitespace-nowrap">
+                        Individual Assets
+                    </button>
+<button class="flex items-center gap-2 border-b-2 border-transparent text-slate-500 pb-3 hover:text-slate-700 dark:hover:text-slate-300 font-medium text-sm whitespace-nowrap">
+                        Mutual Fund Benchmarks
+                    </button>
+<button class="flex items-center gap-2 border-b-2 border-transparent text-slate-500 pb-3 hover:text-slate-700 dark:hover:text-slate-300 font-medium text-sm whitespace-nowrap">
+                        Commodities
+                    </button>
+</div>
+<!-- Simulation Main View -->
+<div class="grid grid-cols-1 xl:grid-cols-4 gap-6">
+<!-- Projection Chart Column -->
+<div class="xl:col-span-3 flex flex-col gap-6">
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+<div class="p-6 flex justify-between items-center border-b border-slate-200 dark:border-slate-800">
+<div class="flex flex-col">
+<h3 class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Asset Growth Projection</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-2xl font-black text-slate-900 dark:text-white">$1,452.82M</span>
+<span class="text-emerald-500 text-sm font-bold flex items-center">
+<span class="material-symbols-outlined text-base">arrow_drop_up</span>
+                                            +21.4%
+                                        </span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 text-xs font-bold">
+<span class="material-symbols-outlined text-sm">download</span>
+                                        Export Data
+                                    </button>
+</div>
+</div>
+<!-- Visualization Placeholder -->
+<div class="p-6">
+<div class="relative w-full aspect-[21/9] bg-slate-50 dark:bg-slate-950/50 rounded-lg overflow-hidden flex items-end">
+<div class="absolute inset-0 flex flex-col justify-between p-4 pointer-events-none opacity-20">
+<div class="border-t border-slate-500 w-full"></div>
+<div class="border-t border-slate-500 w-full"></div>
+<div class="border-t border-slate-500 w-full"></div>
+<div class="border-t border-slate-500 w-full"></div>
+<div class="border-t border-slate-500 w-full"></div>
+</div>
+<!-- Simplified Chart Paths Represented by Divs -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 800 300">
+<!-- Bull Scenario Path -->
+<path class="opacity-100" d="M0 220 Q 200 180, 400 120 T 800 40" fill="none" stroke="#10b981" stroke-dasharray="5,5" stroke-width="3"></path>
+<!-- Base Scenario Path -->
+<path d="M0 220 Q 200 200, 400 180 T 800 140" fill="none" stroke="#136dec" stroke-width="4"></path>
+<!-- Bear Scenario Path -->
+<path d="M0 220 Q 200 230, 400 250 T 800 280" fill="none" stroke="#f43f5e" stroke-dasharray="5,5" stroke-width="3"></path>
+<!-- Area under curve -->
+<path d="M0 220 Q 200 200, 400 180 T 800 140 V 300 H 0 Z" fill="url(#blueGradient)" opacity="0.1"></path>
+<defs>
+<lineargradient id="blueGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#136dec;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#136dec;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+</svg>
+<!-- Data Tooltip Placeholder -->
+<div class="absolute top-[40%] left-[60%] bg-white dark:bg-slate-800 shadow-xl border border-slate-200 dark:border-slate-700 rounded p-3 pointer-events-none">
+<p class="text-[10px] uppercase font-bold text-slate-500 mb-1">Dec 2024 (E)</p>
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-primary"></div>
+<span class="text-sm font-bold text-slate-900 dark:text-white">$1.34B</span>
+</div>
+</div>
+</div>
+<div class="flex justify-between mt-4 px-2">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">JUN 2024</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">SEP 2024</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">DEC 2024</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">MAR 2025</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">JUN 2025</span>
+</div>
+</div>
+</div>
+<!-- Scenarios Row -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<button class="bg-white dark:bg-slate-900 border-2 border-emerald-500/50 dark:border-emerald-500/30 p-5 rounded-xl text-left hover:bg-emerald-50 dark:hover:bg-emerald-500/5 transition-all group">
+<div class="flex justify-between items-start mb-3">
+<div class="size-10 rounded-lg bg-emerald-500/20 text-emerald-500 flex items-center justify-center">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<span class="text-[10px] font-bold text-emerald-500 uppercase">15% Prob.</span>
+</div>
+<h4 class="text-lg font-bold text-slate-900 dark:text-white">Bull Scenario</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Aggressive growth with 12% Fed rate cuts.</p>
+<div class="mt-4 text-emerald-500 font-bold text-sm">+$210.4M Yield</div>
+</button>
+<button class="bg-white dark:bg-slate-900 border-2 border-primary p-5 rounded-xl text-left shadow-lg shadow-primary/10 transition-all">
+<div class="flex justify-between items-start mb-3">
+<div class="size-10 rounded-lg bg-primary/20 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<span class="text-[10px] font-bold text-primary uppercase">65% Prob.</span>
+</div>
+<h4 class="text-lg font-bold text-slate-900 dark:text-white">Base Scenario</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Moderate recovery aligning with analyst targets.</p>
+<div class="mt-4 text-primary font-bold text-sm">+$84.2M Yield</div>
+</button>
+<button class="bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-800 p-5 rounded-xl text-left hover:border-rose-500/50 transition-all group">
+<div class="flex justify-between items-start mb-3">
+<div class="size-10 rounded-lg bg-rose-500/20 text-rose-500 flex items-center justify-center">
+<span class="material-symbols-outlined">trending_down</span>
+</div>
+<span class="text-[10px] font-bold text-rose-500 uppercase">20% Prob.</span>
+</div>
+<h4 class="text-lg font-bold text-slate-900 dark:text-white">Bear Scenario</h4>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Sustained inflation leading to tight liquidity.</p>
+<div class="mt-4 text-rose-500 font-bold text-sm">-$12.5M Deficit</div>
+</button>
+</div>
+</div>
+<!-- Side Widgets Column -->
+<div class="flex flex-col gap-6">
+<!-- Goal Achievement Widget -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6">
+<h3 class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-6">Goal Achievement</h3>
+<div class="flex flex-col items-center gap-4 relative">
+<!-- Circular Progress -->
+<div class="relative size-40">
+<svg class="size-full" viewbox="0 0 100 100">
+<circle class="text-slate-100 dark:text-slate-800 stroke-current" cx="50" cy="50" fill="transparent" r="42" stroke-width="8"></circle>
+<circle class="text-primary stroke-current" cx="50" cy="50" fill="transparent" r="42" stroke-dasharray="263.89" stroke-dashoffset="65.97" stroke-linecap="round" stroke-width="8" transform="rotate(-90 50 50)"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-3xl font-black text-slate-900 dark:text-white">75%</span>
+<span class="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase">Probability</span>
+</div>
+</div>
+<div class="text-center">
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400">Target: <span class="text-slate-900 dark:text-white font-bold">$1.5B by FY25</span></p>
+<p class="text-[10px] text-emerald-500 font-bold mt-1 uppercase tracking-tighter flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-xs">verified</span>
+                                        High Confidence Interval
+                                    </p>
+</div>
+</div>
+<div class="mt-8 space-y-4">
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-500 dark:text-slate-400">Capital Buffer</span>
+<span class="text-slate-900 dark:text-white font-bold">$140M</span>
+</div>
+<div class="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-emerald-500 w-[85%]"></div>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-slate-500 dark:text-slate-400">Drawdown Risk</span>
+<span class="text-rose-500 font-bold">4.2%</span>
+</div>
+<div class="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-rose-500 w-[22%]"></div>
+</div>
+</div>
+</div>
+<!-- Market Sentiment Widget -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6">
+<h3 class="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4">AI Sentiment Analysis</h3>
+<div class="flex flex-col gap-4">
+<div class="flex gap-4 p-3 rounded-lg bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800">
+<div class="bg-emerald-500/10 text-emerald-500 rounded p-1 h-fit">
+<span class="material-symbols-outlined text-xl">news</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-900 dark:text-white">Positive Institutional Flow</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Bullish momentum in Large-Cap Tech sector.</span>
+</div>
+</div>
+<div class="flex gap-4 p-3 rounded-lg bg-slate-50 dark:bg-slate-950/50 border border-slate-100 dark:border-slate-800">
+<div class="bg-amber-500/10 text-amber-500 rounded p-1 h-fit">
+<span class="material-symbols-outlined text-xl">warning</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-900 dark:text-white">Yield Curve Pressure</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Short-term volatility expected in bond markets.</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-4 py-2 text-xs font-bold text-primary hover:bg-primary/5 rounded-lg transition-colors border border-primary/20">
+                                View Full Intelligence Report
+                            </button>
+</div>
+</div>
+</div>
+<!-- Asset Breakdown Table -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden mb-6">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">Simulated Asset Performance</h3>
+<div class="flex gap-4">
+<div class="flex items-center gap-2 text-xs text-slate-500">
+<div class="size-2 rounded-full bg-emerald-500"></div> Outperforming
+                             </div>
+<div class="flex items-center gap-2 text-xs text-slate-500">
+<div class="size-2 rounded-full bg-primary"></div> On Track
+                             </div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-950/50">
+<tr>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Asset Name</th>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Allocation</th>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Current Value</th>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Projected (12M)</th>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Scenario Delta</th>
+<th class="px-6 py-3 text-[10px] font-bold text-slate-500 uppercase tracking-widest">Risk Score</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center font-bold text-[10px] text-primary">MSFT</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Microsoft Corp</span>
+<span class="text-[10px] text-slate-500">Equity · Technology</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">12.4%</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">$148.2M</td>
+<td class="px-6 py-4 text-sm font-bold text-emerald-500">$182.5M</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-500 text-[10px] font-bold">+23.1%</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-12 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full">
+<div class="h-full bg-emerald-500 w-[20%]"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-500">Low</span>
+</div>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center font-bold text-[10px] text-primary">VTSAX</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">Vanguard Total Stock</span>
+<span class="text-[10px] text-slate-500">Mutual Fund · Index</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">25.0%</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">$300.0M</td>
+<td class="px-6 py-4 text-sm font-bold text-primary">$324.6M</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary text-[10px] font-bold">+8.2%</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-12 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full">
+<div class="h-full bg-amber-500 w-[45%]"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-500">Med</span>
+</div>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center font-bold text-[10px] text-primary">GLD</div>
+<div class="flex flex-col">
+<span class="text-sm font-bold text-slate-900 dark:text-white">SPDR Gold Trust</span>
+<span class="text-[10px] text-slate-500">ETF · Commodities</span>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">8.2%</td>
+<td class="px-6 py-4 text-sm font-medium text-slate-900 dark:text-white">$98.4M</td>
+<td class="px-6 py-4 text-sm font-bold text-slate-400">$95.2M</td>
+<td class="px-6 py-4">
+<span class="px-2 py-0.5 rounded bg-slate-500/10 text-slate-500 text-[10px] font-bold">-3.2%</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-12 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full">
+<div class="h-full bg-emerald-500 w-[15%]"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-500">Low</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

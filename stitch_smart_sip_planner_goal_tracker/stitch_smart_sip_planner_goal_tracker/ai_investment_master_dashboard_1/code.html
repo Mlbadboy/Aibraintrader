@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Investment Master Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                        "emerald-accent": "#10b981",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .chart-gradient {
+            fill: url(#chart-poly-grad);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex h-screen overflow-hidden">
+<!-- Side Navigation Bar -->
+<aside class="w-64 flex-shrink-0 bg-slate-50 dark:bg-[#111822] border-r border-slate-200 dark:border-slate-800 flex flex-col h-full">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="size-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">auto_graph</span>
+</div>
+<div>
+<h1 class="text-slate-900 dark:text-white text-base font-bold leading-tight">AI Invest Pro</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Institutional</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px]">explore</span>
+<span class="text-sm font-semibold">Discover</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 bg-primary/10 text-primary rounded-lg transition-colors border-r-2 border-primary" href="#">
+<span class="material-symbols-outlined text-[22px]">pie_chart</span>
+<span class="text-sm font-semibold">Portfolio</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px]">memory</span>
+<span class="text-sm font-semibold">AI Forecast</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px]">calendar_month</span>
+<span class="text-sm font-semibold">SIP Planner</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="text-sm font-semibold">Alerts</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6">
+<div class="bg-slate-100 dark:bg-slate-800/50 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
+<p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Market Status</p>
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-emerald-accent animate-pulse"></div>
+<span class="text-sm font-semibold dark:text-emerald-accent">NYSE Open</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark">
+<!-- Top Header & Search -->
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-8 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-4 flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg pl-10 pr-4 py-2 text-sm focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100" placeholder="Search markets, assets, or AI insights..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-sm font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+<span>$1.24M</span>
+</button>
+<div class="size-10 rounded-full border-2 border-primary/20 overflow-hidden">
+<img alt="User" data-alt="Corporate investor profile portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArgX_sJnMIixamO89AnIY50TY7f40pvOJfaC-C93c-QUq-k3mlMiFhs-UNYjcknnnc-OE9zeYCjvVUsk5RZeSwVRfodotwPs2LX72tAI6QWKTUO-DLUlzGCdRNdnYXPOTjZxGwH0EIt8yLzn2BfgIKMonVTGB4Gur18-HZGuqL5vd30oqYOQ13BX3KmyWJlHRBbXiz_DC4F-YzSu3dJkDRKaCOwqkZtbJkkftmDcz63t_RoFYRk-ZhkkCJJtSI_cacr63d_nHCpXk"/>
+</div>
+</div>
+</header>
+<div class="p-8 space-y-8">
+<!-- Smart Alert Banner -->
+<div class="flex flex-col @container">
+<div class="flex flex-col md:flex-row items-center justify-between gap-4 p-5 rounded-xl border border-primary/30 bg-primary/5 dark:bg-primary/10 relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent"></div>
+<div class="relative flex items-center gap-4">
+<div class="bg-primary/20 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">Smart Alert: High Volatility Detected</p>
+<p class="text-slate-600 dark:text-slate-400 text-sm font-normal">Global markets showing 15% increased volatility in Tech sector. AI recommends hedging long positions.</p>
+</div>
+</div>
+<button class="relative min-w-[120px] cursor-pointer items-center justify-center rounded-lg h-10 px-6 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform">
+                            Review Risk
+                        </button>
+</div>
+</div>
+<!-- Portfolio High-Level Summary -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white dark:bg-[#161f2c] p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Portfolio Value</p>
+<h3 class="text-2xl font-black text-slate-900 dark:text-white">$1,240,500.00</h3>
+<div class="flex items-center gap-1 mt-2 text-emerald-accent">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span class="text-sm font-bold">+1.2% ($14,886)</span>
+</div>
+</div>
+<div class="bg-white dark:bg-[#161f2c] p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">AI Alpha Score</p>
+<h3 class="text-2xl font-black text-slate-900 dark:text-white">94/100</h3>
+<div class="flex items-center gap-1 mt-2 text-emerald-accent">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span class="text-sm font-bold">Top 5% Institutional</span>
+</div>
+</div>
+<div class="bg-white dark:bg-[#161f2c] p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Daily Gain/Loss</p>
+<h3 class="text-2xl font-black text-slate-900 dark:text-white">+$12,450.20</h3>
+<div class="flex items-center gap-1 mt-2 text-emerald-accent">
+<span class="material-symbols-outlined text-[18px]">expand_less</span>
+<span class="text-sm font-bold">+0.8% today</span>
+</div>
+</div>
+<div class="bg-white dark:bg-[#161f2c] p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Projected Annual Return</p>
+<h3 class="text-2xl font-black text-slate-900 dark:text-white">18.4%</h3>
+<div class="flex items-center gap-1 mt-2 text-primary">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+<span class="text-sm font-bold">Optimized by AI</span>
+</div>
+</div>
+</div>
+<!-- Center Section: Chart & Insights -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<!-- Performance Chart -->
+<div class="xl:col-span-2 bg-white dark:bg-[#161f2c] p-8 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h2 class="text-xl font-bold text-slate-900 dark:text-white">Portfolio Performance</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400">Institutional tracking against S&amp;P 500</p>
+</div>
+<div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
+<button class="px-4 py-1.5 text-xs font-bold rounded-md bg-white dark:bg-slate-700 shadow-sm">1W</button>
+<button class="px-4 py-1.5 text-xs font-bold text-slate-500 hover:text-slate-900 dark:hover:text-white">1M</button>
+<button class="px-4 py-1.5 text-xs font-bold text-slate-500 hover:text-slate-900 dark:hover:text-white">3M</button>
+<button class="px-4 py-1.5 text-xs font-bold text-slate-500 hover:text-slate-900 dark:hover:text-white">YTD</button>
+</div>
+</div>
+<div class="flex-1 min-h-[300px] relative">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 500 200">
+<defs>
+<lineargradient id="chart-poly-grad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#136dec" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="#136dec" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path class="chart-gradient" d="M0 160 Q 50 150, 100 130 T 200 100 T 300 80 T 400 40 T 500 20 V 200 H 0 Z"></path>
+<path d="M0 160 Q 50 150, 100 130 T 200 100 T 300 80 T 400 40 T 500 20" fill="none" stroke="#136dec" stroke-width="3"></path>
+<path d="M0 180 Q 50 175, 100 165 T 200 150 T 300 145 T 400 135 T 500 130" fill="none" stroke="#475569" stroke-dasharray="4" stroke-width="2"></path>
+</svg>
+<div class="flex justify-between mt-4 text-xs font-bold text-slate-400 uppercase tracking-tighter">
+<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</div>
+</div>
+<!-- AI Insights Carousel (Static for UI) -->
+<div class="flex flex-col gap-6">
+<div class="bg-gradient-to-br from-slate-900 to-primary/40 p-1 rounded-xl shadow-xl">
+<div class="bg-slate-900 dark:bg-[#111822] p-6 rounded-lg h-full border border-white/5">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">psychology</span>
+<h3 class="text-white font-bold uppercase tracking-wider text-xs">AI Market Predictions</h3>
+</div>
+<div class="space-y-4">
+<div class="p-4 bg-white/5 rounded-lg border border-white/10">
+<div class="flex justify-between items-start mb-2">
+<span class="text-emerald-accent font-bold text-sm">Bullish Prediction</span>
+<span class="text-xs text-slate-400">92% Confidence</span>
+</div>
+<p class="text-white text-sm font-medium">NVIDIA showing strong accumulation signals before Q3 earnings.</p>
+</div>
+<div class="p-4 bg-white/5 rounded-lg border border-white/10">
+<div class="flex justify-between items-start mb-2">
+<span class="text-primary font-bold text-sm">Portfolio Pivot</span>
+<span class="text-xs text-slate-400">84% Confidence</span>
+</div>
+<p class="text-white text-sm font-medium">Rotate 5% of Tech assets into Consumer Staples for volatility hedging.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Risk Level Gauge -->
+<div class="bg-white dark:bg-[#161f2c] p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<h3 class="text-slate-900 dark:text-white font-bold mb-4">Portfolio Risk Level</h3>
+<div class="relative flex flex-col items-center">
+<div class="w-full h-4 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden flex">
+<div class="h-full bg-emerald-accent w-1/3"></div>
+<div class="h-full bg-yellow-400 w-1/3"></div>
+<div class="h-full bg-rose-500 w-1/3"></div>
+</div>
+<div class="absolute -top-1 left-1/2 w-1.5 h-6 bg-slate-900 dark:bg-white rounded-full shadow-lg border-2 border-white dark:border-slate-900"></div>
+<div class="flex justify-between w-full mt-4">
+<span class="text-xs font-bold text-slate-500 uppercase">Conservative</span>
+<span class="text-xs font-bold text-slate-900 dark:text-white">Moderate</span>
+<span class="text-xs font-bold text-slate-500 uppercase">Aggressive</span>
+</div>
+</div>
+<p class="mt-4 text-sm text-slate-500 dark:text-slate-400 text-center">Your risk is currently <span class="text-yellow-500 font-bold">Medium</span>. Volatility is within institutional limits.</p>
+</div>
+</div>
+</div>
+<!-- Asset Breakdown Table -->
+<div class="bg-white dark:bg-[#161f2c] rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="px-8 py-5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<h3 class="text-lg font-bold text-slate-900 dark:text-white">Top Asset Performance</h3>
+<button class="text-sm font-bold text-primary hover:underline">View All Assets</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50">
+<tr>
+<th class="px-8 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest">Asset Name</th>
+<th class="px-8 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest">Sector</th>
+<th class="px-8 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest">Allocation</th>
+<th class="px-8 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest">Price</th>
+<th class="px-8 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest">24h Change</th>
+<th class="px-8 py-4 text-xs font-bold text-slate-500 uppercase tracking-widest">AI Signal</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center font-bold text-primary">AAPL</div>
+<span class="font-semibold">Apple Inc.</span>
+</div>
+</td>
+<td class="px-8 py-4 text-sm text-slate-500 dark:text-slate-400">Technology</td>
+<td class="px-8 py-4">
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full">
+<div class="bg-primary h-full rounded-full" style="width: 15%"></div>
+</div>
+</td>
+<td class="px-8 py-4 font-bold">$189.43</td>
+<td class="px-8 py-4 text-emerald-accent font-bold">+2.4%</td>
+<td class="px-8 py-4">
+<span class="px-3 py-1 rounded-full bg-emerald-accent/10 text-emerald-accent text-xs font-bold border border-emerald-accent/20">Strong Buy</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center font-bold text-primary">MSFT</div>
+<span class="font-semibold">Microsoft Corp.</span>
+</div>
+</td>
+<td class="px-8 py-4 text-sm text-slate-500 dark:text-slate-400">Technology</td>
+<td class="px-8 py-4">
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full">
+<div class="bg-primary h-full rounded-full" style="width: 12%"></div>
+</div>
+</td>
+<td class="px-8 py-4 font-bold">$412.30</td>
+<td class="px-8 py-4 text-emerald-accent font-bold">+1.8%</td>
+<td class="px-8 py-4">
+<span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold border border-primary/20">Hold</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<td class="px-8 py-4">
+<div class="flex items-center gap-3">
+<div class="size-8 rounded bg-slate-100 dark:bg-slate-800 flex items-center justify-center font-bold text-primary">TSLA</div>
+<span class="font-semibold">Tesla, Inc.</span>
+</div>
+</td>
+<td class="px-8 py-4 text-sm text-slate-500 dark:text-slate-400">Automotive</td>
+<td class="px-8 py-4">
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full">
+<div class="bg-primary h-full rounded-full" style="width: 8%"></div>
+</div>
+</td>
+<td class="px-8 py-4 font-bold">$175.22</td>
+<td class="px-8 py-4 text-rose-500 font-bold">-0.9%</td>
+<td class="px-8 py-4">
+<span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 text-xs font-bold border border-slate-200 dark:border-slate-700">Watch</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

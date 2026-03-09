@@ -1,0 +1,923 @@
+{
+  "status": "success",
+  "data": [
+    {
+      "symbol": "GOLDBEES",
+      "horizon": "SHORT",
+      "asset_type": "stock",
+      "last_scanned": "2026-03-08T05:14:18.778556",
+      "classification": "Investment",
+      "current_price": 130.82,
+      "regime": "trending",
+      "decision": "BUY",
+      "confidence": 0.8,
+      "expected_return": 5.998075246810915,
+      "raw_payload": {
+        "symbol": "GOLDBEES",
+        "tv_symbol": "NSE:GOLDBEES",
+        "regime": "trending",
+        "selected_strategy": "trend_following_model",
+        "sentiment": {
+          "score": 0.535,
+          "status": "success",
+          "headlines_analyzed": 6
+        },
+        "ml_predictions": {
+          "bull_prob": 0.7999037623405457,
+          "bear_prob": 0.20009623765945436,
+          "xgb_prob": 0.9649532437324524,
+          "lstm_prob": 0.5523295402526855
+        },
+        "trading_decision": {
+          "symbol": "GOLDBEES",
+          "decision": "BUY",
+          "entry": 130.66,
+          "sl": 129.67,
+          "targets": [
+            131.32,
+            131.99
+          ],
+          "confidence": 0.8,
+          "reason_tags": [
+            "ML: Bullish (0.80)",
+            "Sentiment: Neutral"
+          ]
+        },
+        "risk_assessment": {
+          "approved_action": "BUY",
+          "entry_price": 130.66000366210938,
+          "stop_loss": 129.33,
+          "take_profit": 133.31,
+          "position_size_usd": 10000.0,
+          "position_size_units": 76.5345,
+          "risk_amount_usd": 101.47
+        },
+        "latest_indicators": {
+          "timestamp": "2026-03-06 15:15:00+05:30",
+          "open": 130.89999389648438,
+          "high": 130.89999389648438,
+          "low": 130.6300048828125,
+          "close": 130.66000366210938,
+          "volume": 4347039,
+          "Dividends": 0.0,
+          "Stock Splits": 0.0,
+          "rsi": 32.951952245235574,
+          "stoch_k": 0.9771614602748577,
+          "stoch_d": 4.218428349703292,
+          "williams_r": -99.02283853972514,
+          "macd": -0.6570188607914247,
+          "macd_signal": -0.39169075806039355,
+          "ema_9": 131.41204263015885,
+          "ema_21": 132.2070010007321,
+          "ema_50": 132.08005348819356,
+          "ema_200": 0.0,
+          "adx": 27.680475489481918,
+          "cci": -125.38636223247954,
+          "atr": 0.6628752513168906,
+          "bb_high": 134.41295026188988,
+          "bb_low": 130.2520521795164,
+          "vwap": 131.77254547518288,
+          "obv": 143676198,
+          "dist_to_ema50": -0.010751432851373864,
+          "rolling_high_20": 134.13999938964844,
+          "rolling_low_20": 130.6300048828125,
+          "is_hh": false,
+          "is_ll": true,
+          "body": 0.239990234375,
+          "upper_shadow": 0.0,
+          "lower_shadow": 0.029998779296875,
+          "is_bullish": false,
+          "is_bearish": true,
+          "bullish_engulfing": false,
+          "bearish_engulfing": false,
+          "doji": false,
+          "hammer": false,
+          "double_top": false
+        },
+        "classification": "Investment",
+        "execution_status": {
+          "status": "skipped",
+          "reason": "No entry signal"
+        },
+        "expected_return": 0.0
+      },
+      "entry_price": 130.82,
+      "stop_loss": 129.33,
+      "take_profit": 133.31,
+      "risk_reward": 1.67,
+      "bull_prob": 0.8,
+      "bear_prob": 0.2,
+      "signal_strength": "STRONG",
+      "reason_tags": [
+        "ML: Bullish (0.80)",
+        "Sentiment: Neutral"
+      ]
+    },
+    {
+      "symbol": "GOLDBEES.NS",
+      "horizon": "SHORT",
+      "asset_type": "etf",
+      "last_scanned": "2026-03-08T05:14:19.685215",
+      "classification": "Investment",
+      "current_price": 130.82,
+      "regime": "trending",
+      "decision": "BUY",
+      "confidence": 0.8,
+      "expected_return": 5.998075246810915,
+      "raw_payload": {
+        "symbol": "GOLDBEES.NS",
+        "tv_symbol": "BSE:GOLDBEES",
+        "regime": "trending",
+        "selected_strategy": "trend_following_model",
+        "sentiment": {
+          "score": 0.543,
+          "status": "success",
+          "headlines_analyzed": 10
+        },
+        "ml_predictions": {
+          "bull_prob": 0.7999037623405457,
+          "bear_prob": 0.20009623765945436,
+          "xgb_prob": 0.9649532437324524,
+          "lstm_prob": 0.5523295402526855
+        },
+        "trading_decision": {
+          "symbol": "GOLDBEES.NS",
+          "decision": "BUY",
+          "entry": 130.66,
+          "sl": 129.67,
+          "targets": [
+            131.32,
+            131.99
+          ],
+          "confidence": 0.8,
+          "reason_tags": [
+            "ML: Bullish (0.80)",
+            "Sentiment: Neutral"
+          ]
+        },
+        "risk_assessment": {
+          "approved_action": "BUY",
+          "entry_price": 130.66000366210938,
+          "stop_loss": 129.33,
+          "take_profit": 133.31,
+          "position_size_usd": 10000.0,
+          "position_size_units": 76.5345,
+          "risk_amount_usd": 101.47
+        },
+        "latest_indicators": {
+          "timestamp": "2026-03-06 15:15:00+05:30",
+          "open": 130.89999389648438,
+          "high": 130.89999389648438,
+          "low": 130.6300048828125,
+          "close": 130.66000366210938,
+          "volume": 4347039,
+          "Dividends": 0.0,
+          "Stock Splits": 0.0,
+          "rsi": 32.951952245235574,
+          "stoch_k": 0.9771614602748577,
+          "stoch_d": 4.218428349703292,
+          "williams_r": -99.02283853972514,
+          "macd": -0.6570188607914247,
+          "macd_signal": -0.39169075806039355,
+          "ema_9": 131.41204263015885,
+          "ema_21": 132.2070010007321,
+          "ema_50": 132.08005348819356,
+          "ema_200": 0.0,
+          "adx": 27.680475489481918,
+          "cci": -125.38636223247954,
+          "atr": 0.6628752513168906,
+          "bb_high": 134.41295026188988,
+          "bb_low": 130.2520521795164,
+          "vwap": 131.77254547518288,
+          "obv": 143676198,
+          "dist_to_ema50": -0.010751432851373864,
+          "rolling_high_20": 134.13999938964844,
+          "rolling_low_20": 130.6300048828125,
+          "is_hh": false,
+          "is_ll": true,
+          "body": 0.239990234375,
+          "upper_shadow": 0.0,
+          "lower_shadow": 0.029998779296875,
+          "is_bullish": false,
+          "is_bearish": true,
+          "bullish_engulfing": false,
+          "bearish_engulfing": false,
+          "doji": false,
+          "hammer": false,
+          "double_top": false
+        },
+        "classification": "Investment",
+        "execution_status": {
+          "status": "skipped",
+          "reason": "No entry signal"
+        },
+        "expected_return": 0.0
+      },
+      "entry_price": 130.82,
+      "stop_loss": 129.33,
+      "take_profit": 133.31,
+      "risk_reward": 1.67,
+      "bull_prob": 0.8,
+      "bear_prob": 0.2,
+      "signal_strength": "STRONG",
+      "reason_tags": [
+        "ML: Bullish (0.80)",
+        "Sentiment: Neutral"
+      ]
+    },
+    {
+      "symbol": "SILVER",
+      "horizon": "SHORT",
+      "asset_type": "stock",
+      "last_scanned": "2026-03-08T05:14:21.095144",
+      "classification": "Swing",
+      "current_price": 84.311,
+      "regime": "ranging",
+      "decision": "BUY",
+      "confidence": 0.71,
+      "expected_return": 4.297496318817138,
+      "raw_payload": {
+        "symbol": "SILVER",
+        "tv_symbol": "OANDA:XAGUSD",
+        "regime": "ranging",
+        "selected_strategy": "mean_reversion_model",
+        "sentiment": {
+          "score": 0.535,
+          "status": "success",
+          "headlines_analyzed": 6
+        },
+        "ml_predictions": {
+          "bull_prob": 0.7148748159408569,
+          "bear_prob": 0.28512518405914306,
+          "xgb_prob": 0.9422202110290527,
+          "lstm_prob": 0.5633112192153931
+        },
+        "trading_decision": {
+          "symbol": "SILVER",
+          "decision": "BUY",
+          "entry": 84.31,
+          "sl": 82.59,
+          "targets": [
+            85.46,
+            86.6
+          ],
+          "confidence": 0.71,
+          "reason_tags": [
+            "ML: Bullish (0.71)",
+            "Sentiment: Neutral"
+          ]
+        },
+        "risk_assessment": {
+          "approved_action": "BUY",
+          "entry_price": 84.31099700927734,
+          "stop_loss": 82.02,
+          "take_profit": 88.9,
+          "position_size_usd": 7355.3,
+          "position_size_units": 87.2401,
+          "risk_amount_usd": 200.0
+        },
+        "latest_indicators": {
+          "timestamp": "2026-03-06 16:00:00-05:00",
+          "open": 84.15499877929688,
+          "high": 84.74500274658203,
+          "low": 84.08999633789062,
+          "close": 84.31099700927734,
+          "volume": 603,
+          "Dividends": 0.0,
+          "Stock Splits": 0.0,
+          "rsi": 53.921464736483486,
+          "stoch_k": 71.15483392613447,
+          "stoch_d": 73.29572359348526,
+          "williams_r": -28.845166073865528,
+          "macd": 0.22161951320417472,
+          "macd_signal": 0.12525115582243637,
+          "ema_9": 84.16919453716056,
+          "ema_21": 83.90062262703235,
+          "ema_50": 84.02341437502521,
+          "ema_200": 85.41880351307937,
+          "adx": 16.951150915242454,
+          "cci": 44.23671600217144,
+          "atr": 1.1462622663029205,
+          "bb_high": 85.4895616555696,
+          "bb_low": 82.47653636689132,
+          "vwap": 83.7660691437734,
+          "obv": 35721,
+          "dist_to_ema50": 0.0034226487508416713,
+          "rolling_high_20": 85.33499908447266,
+          "rolling_low_20": 81.78500366210938,
+          "is_hh": false,
+          "is_ll": false,
+          "body": 0.15599822998046875,
+          "upper_shadow": 0.4340057373046875,
+          "lower_shadow": 0.06500244140625,
+          "is_bullish": true,
+          "is_bearish": false,
+          "bullish_engulfing": false,
+          "bearish_engulfing": false,
+          "doji": false,
+          "hammer": false,
+          "double_top": false
+        },
+        "classification": "Swing",
+        "execution_status": {
+          "status": "skipped",
+          "reason": "No entry signal"
+        },
+        "expected_return": 0.0
+      },
+      "entry_price": 84.311,
+      "stop_loss": 82.02,
+      "take_profit": 88.9,
+      "risk_reward": 2.0,
+      "bull_prob": 0.715,
+      "bear_prob": 0.285,
+      "signal_strength": "MODERATE",
+      "reason_tags": [
+        "ML: Bullish (0.71)",
+        "Sentiment: Neutral"
+      ]
+    },
+    {
+      "symbol": "NIFTY",
+      "horizon": "SHORT",
+      "asset_type": "stock",
+      "last_scanned": "2026-03-08T05:14:22.649507",
+      "classification": "Investment",
+      "current_price": 24450.45,
+      "regime": "trending",
+      "decision": "BUY",
+      "confidence": 0.68,
+      "expected_return": 3.5203526020050036,
+      "raw_payload": {
+        "symbol": "NIFTY",
+        "tv_symbol": "NSE:NIFTY",
+        "regime": "trending",
+        "selected_strategy": "trend_following_model",
+        "sentiment": {
+          "score": 0.535,
+          "status": "success",
+          "headlines_analyzed": 6
+        },
+        "ml_predictions": {
+          "bull_prob": 0.6760176301002502,
+          "bear_prob": 0.32398236989974977,
+          "xgb_prob": 0.7637737393379211,
+          "lstm_prob": 0.5443834662437439
+        },
+        "trading_decision": {
+          "symbol": "NIFTY",
+          "decision": "BUY",
+          "entry": 24469.4,
+          "sl": 24291.66,
+          "targets": [
+            24587.9,
+            24706.39
+          ],
+          "confidence": 0.68,
+          "reason_tags": [
+            "ML: Bullish (0.68)",
+            "Sentiment: Neutral"
+          ]
+        },
+        "risk_assessment": {
+          "approved_action": "BUY",
+          "entry_price": 24469.400390625,
+          "stop_loss": 24232.41,
+          "take_profit": 24943.38,
+          "position_size_usd": 10000.0,
+          "position_size_units": 0.4087,
+          "risk_amount_usd": 96.85
+        },
+        "latest_indicators": {
+          "timestamp": "2026-03-06 15:15:00+05:30",
+          "open": 24441.099609375,
+          "high": 24474.400390625,
+          "low": 24416.650390625,
+          "close": 24469.400390625,
+          "volume": 0,
+          "Dividends": 0.0,
+          "Stock Splits": 0.0,
+          "rsi": 36.66635609930094,
+          "stoch_k": 12.064036592338478,
+          "stoch_d": 15.967888002668834,
+          "williams_r": -87.93596340766152,
+          "macd": -109.66114041795663,
+          "macd_signal": -123.79025156093053,
+          "ema_9": 24560.050889098984,
+          "ema_21": 24642.120046787826,
+          "ema_50": 24894.069610048522,
+          "ema_200": 0.0,
+          "adx": 30.408046239208108,
+          "cci": -88.49689241190376,
+          "atr": 118.49522356128384,
+          "bb_high": 24755.516221659225,
+          "bb_low": 24369.583387715775,
+          "vwap": 0.0,
+          "obv": 0,
+          "dist_to_ema50": -0.017059051656708783,
+          "rolling_high_20": 24853.900390625,
+          "rolling_low_20": 24354.150390625,
+          "is_hh": false,
+          "is_ll": false,
+          "body": 28.30078125,
+          "upper_shadow": 5.0,
+          "lower_shadow": 24.44921875,
+          "is_bullish": true,
+          "is_bearish": false,
+          "bullish_engulfing": false,
+          "bearish_engulfing": false,
+          "doji": false,
+          "hammer": false,
+          "double_top": false
+        },
+        "classification": "Investment",
+        "options_strategy": {
+          "status": "success",
+          "underlying": "NIFTY",
+          "expiry": "2024-07-25",
+          "type": "CE",
+          "strike": 24450,
+          "lastPrice": 125.5,
+          "impliedVolatility": 0.14,
+          "openInterest": 2500000,
+          "contractSymbol": "NIFTY24JUL24450CE",
+          "rationale": "Selected ATM CE aiming for underlying structural target 24714.09439453125"
+        },
+        "execution_status": {
+          "status": "skipped",
+          "reason": "No entry signal"
+        },
+        "expected_return": 0.0
+      },
+      "entry_price": 24450.45,
+      "stop_loss": 24232.41,
+      "take_profit": 24943.38,
+      "risk_reward": 2.26,
+      "bull_prob": 0.676,
+      "bear_prob": 0.324,
+      "signal_strength": "MODERATE",
+      "reason_tags": [
+        "ML: Bullish (0.68)",
+        "Sentiment: Neutral"
+      ]
+    },
+    {
+      "symbol": "RELIANCE.NS",
+      "horizon": "SHORT",
+      "asset_type": "stock",
+      "last_scanned": "2026-03-08T05:14:19.707118",
+      "classification": "Swing",
+      "current_price": 1404.8,
+      "regime": "trending",
+      "decision": "SELL",
+      "confidence": 0.66,
+      "expected_return": 3.1199324131011963,
+      "raw_payload": {
+        "symbol": "RELIANCE.NS",
+        "tv_symbol": "BSE:RELIANCE",
+        "regime": "trending",
+        "selected_strategy": "trend_following_model",
+        "sentiment": {
+          "score": 0.578,
+          "status": "success",
+          "headlines_analyzed": 10
+        },
+        "ml_predictions": {
+          "bull_prob": 0.3440033793449402,
+          "bear_prob": 0.6559966206550598,
+          "xgb_prob": 0.1941266655921936,
+          "lstm_prob": 0.5688184499740601
+        },
+        "trading_decision": {
+          "symbol": "RELIANCE.NS",
+          "decision": "SELL",
+          "entry": 1408.0,
+          "sl": 1427.68,
+          "targets": [
+            1394.88,
+            1381.76
+          ],
+          "confidence": 0.66,
+          "reason_tags": [
+            "ML: Bearish (0.66)",
+            "Sentiment: Neutral"
+          ]
+        },
+        "risk_assessment": {
+          "approved_action": "SELL",
+          "entry_price": 1408.0,
+          "stop_loss": 1434.24,
+          "take_profit": 1355.52,
+          "position_size_usd": 10000.0,
+          "position_size_units": 7.1023,
+          "risk_amount_usd": 186.37
+        },
+        "latest_indicators": {
+          "timestamp": "2026-03-06 15:15:00+05:30",
+          "open": 1404.800048828125,
+          "high": 1409.699951171875,
+          "low": 1401.0,
+          "close": 1408.0,
+          "volume": 968391,
+          "Dividends": 0.0,
+          "Stock Splits": 0.0,
+          "rsi": 60.055621258601654,
+          "stoch_k": 76.62342237605799,
+          "stoch_d": 79.25433843343365,
+          "williams_r": -23.376577623942012,
+          "macd": 9.390208838793797,
+          "macd_signal": 5.073827618233161,
+          "ema_9": 1404.0768936147365,
+          "ema_21": 1392.397401802552,
+          "ema_50": 1392.6811023051298,
+          "ema_200": 0.0,
+          "adx": 27.040849492208533,
+          "cci": 70.42918000182469,
+          "atr": 13.120351950386764,
+          "bb_high": 1438.1155628010417,
+          "bb_low": 1326.1144298747397,
+          "vwap": 1396.7788413264227,
+          "obv": 2290466,
+          "dist_to_ema50": 0.010999573175448965,
+          "rolling_high_20": 1424.199951171875,
+          "rolling_low_20": 1329.699951171875,
+          "is_hh": false,
+          "is_ll": false,
+          "body": 3.199951171875,
+          "upper_shadow": 1.699951171875,
+          "lower_shadow": 3.800048828125,
+          "is_bullish": true,
+          "is_bearish": false,
+          "bullish_engulfing": false,
+          "bearish_engulfing": false,
+          "doji": false,
+          "hammer": false,
+          "double_top": false
+        },
+        "classification": "Swing",
+        "execution_status": {
+          "status": "skipped",
+          "reason": "No entry signal"
+        },
+        "expected_return": 0.0
+      },
+      "entry_price": 1404.8,
+      "stop_loss": 1434.24,
+      "take_profit": 1355.52,
+      "risk_reward": 1.67,
+      "bull_prob": 0.344,
+      "bear_prob": 0.656,
+      "signal_strength": "MODERATE",
+      "reason_tags": [
+        "ML: Bearish (0.66)",
+        "Sentiment: Neutral"
+      ]
+    },
+    {
+      "symbol": "BTC-USD",
+      "horizon": "SHORT",
+      "asset_type": "stock",
+      "last_scanned": "2026-03-08T05:14:12.802151",
+      "classification": "Swing",
+      "current_price": 66944.61,
+      "regime": "trending",
+      "decision": "SELL",
+      "confidence": 0.65,
+      "expected_return": 3.039449575190698,
+      "raw_payload": {
+        "symbol": "BTC-USD",
+        "tv_symbol": "BTC-USD",
+        "regime": "trending",
+        "selected_strategy": "trend_following_model",
+        "sentiment": {
+          "score": 0.447,
+          "status": "success",
+          "headlines_analyzed": 10
+        },
+        "ml_predictions": {
+          "bull_prob": 0.3480275212404652,
+          "bear_prob": 0.6519724787595349,
+          "xgb_prob": 0.225341334939003,
+          "lstm_prob": 0.5320568084716797
+        },
+        "trading_decision": {
+          "symbol": "BTC-USD",
+          "decision": "SELL",
+          "entry": 66923.56,
+          "sl": 67398.12,
+          "targets": [
+            66607.19,
+            66290.81
+          ],
+          "confidence": 0.65,
+          "reason_tags": [
+            "ML: Bearish (0.65)",
+            "Sentiment: Neutral"
+          ]
+        },
+        "risk_assessment": {
+          "approved_action": "SELL",
+          "entry_price": 66923.5625,
+          "stop_loss": 67556.31,
+          "take_profit": 65658.07,
+          "position_size_usd": 10000.0,
+          "position_size_units": 0.1494,
+          "risk_amount_usd": 94.55
+        },
+        "latest_indicators": {
+          "timestamp": "2026-03-08 05:00:00+00:00",
+          "open": 66635.25,
+          "high": 66924.515625,
+          "low": 66635.25,
+          "close": 66923.5625,
+          "volume": 180969472,
+          "Dividends": 0.0,
+          "Stock Splits": 0.0,
+          "rsi": 35.06977319175854,
+          "stoch_k": 23.798377682660362,
+          "stoch_d": 13.268267844340656,
+          "williams_r": -76.20162231733964,
+          "macd": -418.4200987403892,
+          "macd_signal": -412.7802842883289,
+          "ema_9": 67094.40566398946,
+          "ema_21": 67451.3649422673,
+          "ema_50": 68280.03827959686,
+          "ema_200": 68582.38514858062,
+          "adx": 55.53308024336747,
+          "cci": -121.67258996871578,
+          "atr": 316.3741104021174,
+          "bb_high": 68306.05066231196,
+          "bb_low": 66646.03293143804,
+          "vwap": 67070.32283720218,
+          "obv": 17824846848,
+          "dist_to_ema50": -0.01986635938958162,
+          "rolling_high_20": 68207.53125,
+          "rolling_low_20": 66612.984375,
+          "is_hh": false,
+          "is_ll": false,
+          "body": 288.3125,
+          "upper_shadow": 0.953125,
+          "lower_shadow": 0.0,
+          "is_bullish": true,
+          "is_bearish": false,
+          "bullish_engulfing": false,
+          "bearish_engulfing": false,
+          "doji": false,
+          "hammer": false,
+          "double_top": false
+        },
+        "classification": "Swing",
+        "execution_status": {
+          "status": "skipped",
+          "reason": "No entry signal"
+        },
+        "expected_return": 0.0
+      },
+      "entry_price": 66944.61,
+      "stop_loss": 67556.31,
+      "take_profit": 65658.07,
+      "risk_reward": 2.1,
+      "bull_prob": 0.348,
+      "bear_prob": 0.652,
+      "signal_strength": "MODERATE",
+      "reason_tags": [
+        "ML: Bearish (0.65)",
+        "Sentiment: Neutral"
+      ]
+    },
+    {
+      "symbol": "ETHUSDT",
+      "horizon": "INTRADAY",
+      "asset_type": "crypto",
+      "last_scanned": "2026-03-08T05:14:14.985256",
+      "classification": "Swing",
+      "current_price": 1944.5,
+      "regime": "trending",
+      "decision": "SELL",
+      "confidence": 0.61,
+      "expected_return": 2.244337339800524,
+      "raw_payload": {
+        "symbol": "ETH/USDT",
+        "tv_symbol": "BINANCE:ETHUSDT",
+        "regime": "trending",
+        "selected_strategy": "trend_following_model",
+        "sentiment": {
+          "score": 0.521,
+          "status": "success",
+          "headlines_analyzed": 10
+        },
+        "ml_predictions": {
+          "bull_prob": 0.38778313300997375,
+          "bear_prob": 0.6122168669900262,
+          "xgb_prob": 0.27974191308021545,
+          "lstm_prob": 0.5498449802398682
+        },
+        "trading_decision": {
+          "symbol": "ETH/USDT",
+          "decision": "SELL",
+          "entry": 1944.88,
+          "sl": 1951.13,
+          "targets": [
+            1940.71,
+            1936.55
+          ],
+          "confidence": 0.61,
+          "reason_tags": [
+            "ML: Bearish (0.61)",
+            "Sentiment: Neutral"
+          ]
+        },
+        "risk_assessment": {
+          "approved_action": "SELL",
+          "entry_price": 1944.88,
+          "stop_loss": 1953.21,
+          "take_profit": 1928.21,
+          "position_size_usd": 10000.0,
+          "position_size_units": 5.1417,
+          "risk_amount_usd": 42.85
+        },
+        "latest_indicators": {
+          "timestamp": "2026-03-08 05:10:00",
+          "open": 1943.69,
+          "high": 1944.88,
+          "low": 1942.65,
+          "close": 1944.88,
+          "volume": 341.5822,
+          "rsi": 44.19294265358235,
+          "stoch_k": 63.67137355584158,
+          "stoch_d": 55.641135358722586,
+          "williams_r": -36.32862644415842,
+          "macd": -3.571052105462286,
+          "macd_signal": -3.4967750520191325,
+          "ema_9": 1943.863918323476,
+          "ema_21": 1946.978535450605,
+          "ema_50": 1953.2744833413494,
+          "ema_200": 1966.6245107938685,
+          "adx": 43.141747598228235,
+          "cci": -54.408054298091045,
+          "atr": 4.166898554015668,
+          "bb_high": 1956.5644392486497,
+          "bb_low": 1937.76656075135,
+          "vwap": 1941.2462786410426,
+          "obv": -42873.81559999999,
+          "dist_to_ema50": -0.004297646548369062,
+          "rolling_high_20": 1953.37,
+          "rolling_low_20": 1930.0,
+          "is_hh": false,
+          "is_ll": false,
+          "body": 1.1900000000000546,
+          "upper_shadow": 0.0,
+          "lower_shadow": 1.0399999999999636,
+          "is_bullish": true,
+          "is_bearish": false,
+          "bullish_engulfing": false,
+          "bearish_engulfing": false,
+          "doji": false,
+          "hammer": false,
+          "double_top": true
+        },
+        "classification": "Swing",
+        "execution_status": {
+          "status": "skipped",
+          "reason": "No entry signal"
+        },
+        "expected_return": 0.0
+      },
+      "entry_price": 1944.5,
+      "stop_loss": 1953.21,
+      "take_profit": 1928.21,
+      "risk_reward": 1.87,
+      "bull_prob": 0.388,
+      "bear_prob": 0.612,
+      "signal_strength": "MODERATE",
+      "reason_tags": [
+        "ML: Bearish (0.61)",
+        "Sentiment: Neutral"
+      ]
+    },
+    {
+      "symbol": "BANKNIFTY",
+      "horizon": "SHORT",
+      "asset_type": "stock",
+      "last_scanned": "2026-03-08T05:14:21.690956",
+      "classification": "Investment",
+      "current_price": 57783.25,
+      "regime": "trending",
+      "decision": "BUY",
+      "confidence": 0.6,
+      "expected_return": 2.018479347229003,
+      "raw_payload": {
+        "symbol": "BANKNIFTY",
+        "tv_symbol": "NSE:BANKNIFTY",
+        "regime": "trending",
+        "selected_strategy": "trend_following_model",
+        "sentiment": {
+          "score": 0.535,
+          "status": "success",
+          "headlines_analyzed": 6
+        },
+        "ml_predictions": {
+          "bull_prob": 0.6009239673614502,
+          "bear_prob": 0.39907603263854985,
+          "xgb_prob": 0.6493115425109863,
+          "lstm_prob": 0.528342604637146
+        },
+        "trading_decision": {
+          "symbol": "BANKNIFTY",
+          "decision": "BUY",
+          "entry": 57782.4,
+          "sl": 57325.37,
+          "targets": [
+            58087.08,
+            58391.77
+          ],
+          "confidence": 0.6,
+          "reason_tags": [
+            "ML: Bullish (0.60)",
+            "Sentiment: Neutral"
+          ]
+        },
+        "risk_assessment": {
+          "approved_action": "BUY",
+          "entry_price": 57782.3984375,
+          "stop_loss": 57173.03,
+          "take_profit": 59001.14,
+          "position_size_usd": 10000.0,
+          "position_size_units": 0.1731,
+          "risk_amount_usd": 105.46
+        },
+        "latest_indicators": {
+          "timestamp": "2026-03-06 15:15:00+05:30",
+          "open": 57747.55078125,
+          "high": 57798.80078125,
+          "low": 57700.1015625,
+          "close": 57782.3984375,
+          "volume": 0,
+          "Dividends": 0.0,
+          "Stock Splits": 0.0,
+          "rsi": 27.023484290079722,
+          "stoch_k": 5.242843598121654,
+          "stoch_d": 4.629810598108101,
+          "williams_r": -94.75715640187835,
+          "macd": -495.7605596759022,
+          "macd_signal": -461.57160093596394,
+          "ema_9": 58237.39149770939,
+          "ema_21": 58688.24926114068,
+          "ema_50": 59452.463714843194,
+          "ema_200": 0.0,
+          "adx": 38.340856433851336,
+          "cci": -203.1042291081589,
+          "atr": 304.6850640537711,
+          "bb_high": 59315.40473491803,
+          "bb_low": 57847.26948383197,
+          "vwap": 0.0,
+          "obv": 0,
+          "dist_to_ema50": -0.02809076652152663,
+          "rolling_high_20": 59269.80078125,
+          "rolling_low_20": 57700.1015625,
+          "is_hh": false,
+          "is_ll": true,
+          "body": 34.84765625,
+          "upper_shadow": 16.40234375,
+          "lower_shadow": 47.44921875,
+          "is_bullish": true,
+          "is_bearish": false,
+          "bullish_engulfing": false,
+          "bearish_engulfing": false,
+          "doji": false,
+          "hammer": false,
+          "double_top": true
+        },
+        "classification": "Investment",
+        "options_strategy": {
+          "status": "success",
+          "underlying": "BANKNIFTY",
+          "expiry": "2024-07-25",
+          "type": "CE",
+          "strike": 57800,
+          "lastPrice": 125.5,
+          "impliedVolatility": 0.14,
+          "openInterest": 2500000,
+          "contractSymbol": "BANKNIFTY24JUL57800CE",
+          "rationale": "Selected ATM CE aiming for underlying structural target 58360.222421875"
+        },
+        "execution_status": {
+          "status": "skipped",
+          "reason": "No entry signal"
+        },
+        "expected_return": 0.0
+      },
+      "entry_price": 57783.25,
+      "stop_loss": 57173.03,
+      "take_profit": 59001.14,
+      "risk_reward": 2.0,
+      "bull_prob": 0.601,
+      "bear_prob": 0.399,
+      "signal_strength": "MODERATE",
+      "reason_tags": [
+        "ML: Bullish (0.60)",
+        "Sentiment: Neutral"
+      ]
+    }
+  ]
+}

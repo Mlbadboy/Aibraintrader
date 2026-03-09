@@ -1,0 +1,421 @@
+================================================================================
+  AI TRADING BRAIN — AGENTS ROLE GUIDE
+  Project: Stock Analyser & Prediction Machine
+  Generated: 2026-03-08
+================================================================================
+
+This document describes all AI agents inside the system, what each one does,
+what it takes as input, what it outputs, and how it fits into the pipeline.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ AGENT 1 — DataAgent
+ File: app/agents/data_agent.py
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ROLE:
+  Universal market data ingestion layer. Fetches OHLCV price history from
+  Yahoo Finance (for stocks, indices, ETFs, commodities, forex) and from
+  Binance via CCXT (for crypto). Maps common alias symbols to the correct
+  provider-specific ticker so the rest of the pipeline always gets correct data.
+
+INPUTS:
+  - symbol    : string — common name (e.g. "NIFTY", "BTC", "AAPL", "GOLD")
+  - interval  : candle timeframe (1m, 5m, 15m, 1h, 1d)
+  - period    : lookback window (1d, 5d, 1mo, 6mo, 1y)
+  - limit     : number of candles (crypto only)
+
+OUTPUTS:
+  - Pandas DataFrame with columns: timestamp, open, high, low, close, volume
+  - TradingView symbol string (for the frontend chart widget)
+
+KEY SYMBOL MAPPINGS:
+  NIFTY       → ^NSEI (Yahoo) / NSE:NIFTY (TradingView)
+  SENSEX      → ^BSESN         / BSE:SENSEX
+  BANKNIFTY   → ^NSEBANK        / NSE:BANKNIFTY
+  BTC         → BTC-USD         / BINANCE:BTCUSDT
+  GOLD        → GC=F            / OANDA:XAUUSD
+  SILVER      → SI=F            / OANDA:XAGUSD
+  CRUDEOIL    → CL=F            / TVC:USOIL
+
+POSITION IN PIPELINE:
+  Step 1 — Called first for every symbol analysis request.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ AGENT 2 — FailsafeAgent
+ File: app/agents/failsafe_agent.py
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ROLE:
+  Fallback/redundancy layer. When the primary DataAgent fails (API down, rate
+  limit, missing ticker), the FailsafeAgent scrapes Yahoo Finance directly via
+  HTTP and BeautifulSoup to recover the last known price. Also provides a
+  lightweight news trend search as a secondary fallback for sentiment.
+
+INPUTS:
+  - symbol : string ticker
+
+OUTPUTS:
+  - dict { symbol, price, timestamp, source: "Scraper (Yahoo Finance)" }
+  - list of news trend headlines for sentiment fallback
+
+POSITION IN PIPELINE:
+  Activated only when DataAgent returns an empty DataFrame.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ AGENT 3 — RegimeAgent
+ File: app/agents/regime_agent.py
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ROLE:
+  Market microstructure classifier. Reads the OHLCV DataFrame (after technical
+  indicators are added) and decides which type of market environment we are
+  currently in. This decision controls which model/strategy runs next.
+
+INPUTS:
+  - df : Pandas DataFrame (with ADX and ATR indicators already added)
+
+OUTPUTS:
+  - Regime string — one of:
+      "trending"               → Strong directional move (ADX > 25, low vol)
+      "trending_volatile"      → Strong trend but with wide swings
+      "ranging"                → Market going sideways (ADX < 25)
+      "low_volatility_ranging" → Dead calm, accumulation zone
+      "high_volatility_ranging"→ Choppy/unstable sideways market
+      "unknown"                → Not enough data or calculation error
+
+LOGIC:
+  - Uses ADX (14-period) to detect trend strength
+  - Uses ATR-to-price ratio to detect volatility level
+  - ADX > 25 = trending; else ranging
+
+POSITION IN PIPELINE:
+  Step 2 — Immediately after feature engineering (indicators).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ AGENT 4 — StrategyAgent
+ File: app/agents/strategy_agent.py
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ROLE:
+  Strategy router. Takes the regime from the RegimeAgent and maps it to the
+  correct model/strategy name. Tells the EnsembleModel which sub-model to
+  prioritise for predictions.
+
+INPUTS:
+  - regime : string (output of RegimeAgent)
+
+OUTPUTS:
+  - strategy_name : string — one of:
+      "trend_following_model"      → for "trending"
+      "breakout_model"             → for "trending_volatile"
+      "mean_reversion_model"       → for "ranging"
+      "accumulation_model"         → for "low_volatility_ranging"
+      "volatility_expansion_model" → for "high_volatility_ranging"
+      "default_model"              → fallback
+
+POSITION IN PIPELINE:
+  Step 3 — Between RegimeAgent and EnsembleModel.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ AGENT 5 — EnsembleModel  (ML Core)
+ File: app/models/ensemble.py
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ROLE:
+  The core machine learning brain. Combines an XGBoost classifier, a Random
+  Forest, and a Neural Network (TensorFlow/Keras) into a weighted ensemble to
+  predict whether price will go UP (bull) or DOWN (bear) over the target
+  horizon. The ensemble weights are adjusted per strategy selected.
+
+INPUTS:
+  - feature_df        : Pandas DataFrame (all technical indicators as features)
+  - strategy_name     : string (from StrategyAgent, controls weights)
+
+OUTPUTS:
+  - ml_predictions dict:
+      bull_prob   : float 0–1 (probability of bullish move)
+      bear_prob   : float 0–1 (probability of bearish move)
+      direction   : "BUY" / "SELL" / "HOLD"
+
+TRAINING:
+  - Trained on historical OHLCV + technical features
+  - Labels: 1 = price rose >1% in next N candles, 0 = fell/flat
+  - Retraining triggered by /journal/retrain endpoint or manually via
+    python train_xgboost.py
+
+POSITION IN PIPELINE:
+  Step 4 — Core prediction step.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ AGENT 6 — DebateAgent
+ File: app/agents/debate_agent.py
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ROLE:
+  Meta-arbitration agent. Takes the ML probability output AND live sentiment
+  score and runs an internal "debate" between them to generate the final
+  actionable trading signal with entry/stop-loss/target pricing. Also applies
+  veto rules to prevent bad trades (e.g. bullish ML signal + bearish news = HOLD).
+
+INPUTS:
+  - symbol         : ticker string
+  - current_price  : float
+  - atr            : Average True Range (used for SL/TP calculation)
+  - ml_bull_prob   : float 0–1 (from EnsembleModel)
+  - sentiment_score: float 0–1 (0=bearish, 0.5=neutral, 1=bullish)
+
+OUTPUTS:
+  - Signal dict:
+      decision     : "BUY" / "SELL" / "HOLD"
+      entry        : float (current price)
+      sl           : float (stop loss — ATR × 1.5 from entry)
+      targets      : [float, float] (1×ATR and 2×ATR profit targets)
+      confidence   : float (0–1)
+      reason_tags  : list of strings explaining the decision
+
+VETO RULES:
+  - BUY signal + sentiment ≤ 0.35  → override to HOLD
+  - SELL signal + sentiment ≥ 0.65 → override to HOLD
+  - Confidence threshold            : 0.60 minimum
+
+POSITION IN PIPELINE:
+  Step 5 — After EnsembleModel + SentimentEngine. Produces the final signal.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ AGENT 7 — RiskGuardian
+ File: app/agents/risk_agent.py
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ROLE:
+  Capital protection and position sizing agent. Takes the DebateAgent's signal
+  and the user's total capital, then calculates how many units to buy/sell and
+  the exact stop-loss / take-profit levels — ensuring we never risk more than
+  the configured percentage per trade (default: 2% of capital).
+
+INPUTS:
+  - decision (from DebateAgent) : dict with direction + confidence
+  - current_price               : float
+  - atr                         : float
+  - capital                     : float (total account value in ₹ or $)
+
+OUTPUTS:
+  - Risk assessment dict:
+      approved_action     : "BUY" / "SELL" / "HOLD"
+      entry_price         : float
+      stop_loss           : float
+      take_profit         : float (1:2 risk-reward ratio)
+      position_size_usd   : float (how much capital to deploy)
+      position_size_units : float (number of shares/contracts)
+      risk_amount_usd     : float (max loss if SL is hit)
+
+VETO CONDITIONS:
+  - ATR is 0 or invalid          → force HOLD
+  - Confidence below 0.60        → force HOLD
+
+POSITION SIZING FORMULA:
+  Risk Amount  = Capital × 2%
+  SL Distance  = ATR × 2.0
+  Units        = Risk Amount / SL Distance
+
+POSITION IN PIPELINE:
+  Step 6 — Final gate before a signal is sent to the frontend.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ AGENT 8 — ClassificationAgent
+ File: app/agents/classification_agent.py
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ROLE:
+  Trade type recommender. After the signal is generated, this agent reads the
+  regime, volatility level, and volume to recommend the most suitable trading
+  style for this asset at this moment.
+
+INPUTS:
+  - analysis_result : full pipeline output dict (regime, decision, indicators)
+  - raw_df          : Pandas DataFrame (for volume checks)
+
+OUTPUTS:
+  - Classification string — one of:
+      "F&O"        → Futures & Options trade (high vol + high volume)
+      "Investment"  → Long-term hold (solid uptrend, low volatility, BUY)
+      "Swing"       → Short-term directional trade (any BUY/SELL signal)
+      "Avoid"       → Do not trade (HOLD or no clear setup)
+      "Unknown"     → Error during classification
+
+LOGIC RULES:
+  - ATR > 2.5% price AND volume > 1M AND volatile/trending → F&O
+  - regime = trending AND BUY AND ATR < 2%                 → Investment
+  - Any BUY or SELL signal                                  → Swing
+  - Otherwise                                               → Avoid
+
+POSITION IN PIPELINE:
+  Step 7 — Adds the classification label to the final signal output.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ AGENT 9 — OptionsAgent
+ File: app/agents/options_agent.py
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ROLE:
+  Options contract selector. For F&O-classified assets, this agent fetches the
+  nearest-expiry options chain and selects the most logical ATM (at-the-money)
+  Call (CE) or Put (PE) contract based on the AI's directional bias.
+  For Indian indices (NIFTY, BANKNIFTY), it simulates a realistic ATM chain
+  since Yahoo Finance's NSE options hang indefinitely.
+
+INPUTS:
+  - symbol          : underlying (e.g. "NIFTY", "BANKNIFTY", "AAPL")
+  - current_price   : float
+  - ai_decision     : "BUY" → Call / "SELL" → Put
+  - target          : float (price target to check moneyness)
+
+OUTPUTS:
+  - Contract recommendation dict:
+      status          : "success" / "neutral" / "error"
+      underlying      : symbol string
+      expiry          : date string
+      type            : "CE" or "PE"
+      strike          : float (selected strike price)
+      lastPrice       : float (option premium)
+      impliedVolatility, openInterest (if available)
+
+POSITION IN PIPELINE:
+  Step 8 — Optional add-on for F&O classified signals.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ AGENT 10 — RealtimeIntelligenceAgent
+ File: app/agents/realtime_agent.py
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ROLE:
+  Live tick-stream processor. Maintains a rolling 60-tick buffer and generates
+  a "market pulse" on demand — combining the latest candle pattern detected in
+  the tick stream with real-time news sentiment to produce an instant
+  confidence indicator without waiting for a full scan cycle.
+
+INPUTS:
+  - tick_data : dict { price, … } (streamed from websocket or polling)
+  - symbol    : string
+
+OUTPUTS:
+  - Market pulse dict:
+      symbol          : string
+      candle_summary  : string (e.g. "Bullish Engulfing", "No clear pattern")
+      sentiment       : string ("Bullish" / "Bearish" / "Neutral")
+      sentiment_score : float 0–1
+      pulse_score     : float (composite of pattern + sentiment)
+      timestamp       : ISO string
+
+POSITION IN PIPELINE:
+  Background / on-demand — used by live radar card and realtime overlay.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ AGENT 11 — SentimentEngine  (Supporting Component)
+ File: app/sentiment/news_scraper.py
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ROLE:
+  News scraper and NLP sentiment scorer. Scrapes Google News / RSS for the
+  latest headlines about a symbol, runs a keyword-based sentiment analysis, and
+  returns a sentiment score used by the DebateAgent to validate or veto ML
+  decisions.
+
+INPUTS:
+  - symbol : string
+
+OUTPUTS:
+  - dict:
+      sentiment : "Bullish" / "Bearish" / "Neutral"
+      score     : float 0–1
+      headlines : list of recent news strings
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ AGENT 12 — FeedbackLoop  (Journal Integration)
+ File: app/feedback/loop.py
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ROLE:
+  Post-trade evaluation engine. After a prediction is stored, this agent
+  periodically checks actual price vs. predicted direction and records whether
+  the trade was a WIN (hit take-profit) or LOSS (hit stop-loss). It then
+  triggers the JournalDB to resolve active profit targets and accumulates data
+  for model retraining.
+
+INPUTS:
+  - Reads from feedback.db (predicted trades table)
+  - Fetches live prices via DataAgent
+
+OUTPUTS:
+  - Updates trade records with actual outcome (WIN/LOSS/PENDING)
+  - Calls JournalDB.resolve_targets_from_feedback() to COMPLETE or FAIL
+    any active profit targets for that symbol
+  - Stores training examples for model improvement
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ COMPLETE PIPELINE EXECUTION ORDER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  User/Scheduler requests analysis for symbol
+           │
+           ▼
+  [1] DataAgent           ← Fetch OHLCV price history
+           │  (FailsafeAgent activates if DataAgent fails)
+           ▼
+  [2] FeatureEngineer     ← Add RSI, MACD, Bollinger, ATR, ADX, 50+ indicators
+           │
+           ▼
+  [3] CandlePatternEngine ← Detect hammer, doji, engulfing, etc.
+  [4] ChartPatternEngine  ← Detect head & shoulders, wedge, etc.
+           │
+           ▼
+  [5] RegimeAgent         ← Classify market as: trending / ranging / volatile
+           │
+           ▼
+  [6] StrategyAgent       ← Select: trend / breakout / mean-reversion model
+           │
+           ▼
+  [7] EnsembleModel       ← Predict: bull_prob / bear_prob (XGBoost+RF+NN)
+           │
+           ▼
+  [8] SentimentEngine     ← Get news sentiment score for this symbol
+           │
+           ▼
+  [9] DebateAgent         ← Arbitrate ML vs Sentiment → final BUY/SELL/HOLD
+                            Apply veto rules, compute Entry/SL/Targets
+           │
+           ▼
+  [10] RiskGuardian       ← Size position, confirm SL/TP, enforce 2% risk cap
+           │
+           ▼
+  [11] ClassificationAgent← Label trade type: F&O / Investment / Swing / Avoid
+           │
+           ▼
+  [12] OptionsAgent       ← (F&O only) Select CE/PE strike near expiry
+           │
+           ▼
+  Final Signal sent to:
+    • Live Radar (frontend card with BUY/SELL badge + confidence)
+    • Trade Journal (target tracking + EOD report)
+    • Notification Bell (if confidence ≥ 65%)
+    • FeedbackLoop (stored for WIN/LOSS tracking)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ MARKET AWARENESS LAYER (added Phase 29B)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  get_market_status() — called by /market/status and /journal/active-targets
+
+  NSE (India)   : Mon–Fri 09:15–15:30 IST  | Closed weekends + holidays
+  NYSE (US)     : Mon–Fri 09:30–16:00 EST  | Closed weekends + holidays
+  Crypto        : ALWAYS OPEN (24/7/365)
+
+  Signal Freshness Rules:
+    - Indian equity  : fresh if < 4h old AND NSE is currently open
+    - US equity      : fresh if < 4h old AND NYSE is currently open
+    - Crypto         : fresh if < 24h old (always market-open)
+    - If not fresh   : target_status = "STALE", ✅ badge is hidden,
+                       UI shows 🔒 "Market Closed — Last Session Data"
+
+================================================================================
+  END OF AGENTS ROLE GUIDE
+================================================================================

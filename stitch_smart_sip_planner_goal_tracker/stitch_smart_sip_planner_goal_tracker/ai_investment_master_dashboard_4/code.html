@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Market Discover Explorer - AI Invest Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#0a0f16",
+                        "emerald-accent": "#10b981",
+                        "neon-blue": "#00f2ff",
+                        "card-dark": "#161f2c"
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body { font-family: 'Inter', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .neon-glow-blue { box-shadow: 0 0 15px rgba(0, 242, 255, 0.15); }
+        .neon-border-blue { border: 1px solid rgba(0, 242, 255, 0.3); }
+        .sparkline-path { stroke-dasharray: 1000; stroke-dashoffset: 0; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-64 flex-shrink-0 bg-slate-50 dark:bg-[#111822] border-r border-slate-200 dark:border-slate-800 flex flex-col h-full">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="size-10 rounded-lg bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">auto_graph</span>
+</div>
+<div>
+<h1 class="text-slate-900 dark:text-white text-base font-bold leading-tight">AI Invest Pro</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Institutional</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 bg-primary/10 text-primary rounded-lg transition-colors border-r-2 border-primary" href="#">
+<span class="material-symbols-outlined text-[22px]">explore</span>
+<span class="text-sm font-semibold">Discover</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px]">pie_chart</span>
+<span class="text-sm font-semibold">Portfolio</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px]">memory</span>
+<span class="text-sm font-semibold">AI Forecast</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px]">calendar_month</span>
+<span class="text-sm font-semibold">SIP Planner</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="text-sm font-semibold">Alerts</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6">
+<div class="bg-slate-100 dark:bg-slate-800/50 rounded-xl p-4 border border-slate-200 dark:border-slate-700">
+<p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-2">Market Status</p>
+<div class="flex items-center gap-2">
+<div class="size-2 rounded-full bg-emerald-accent animate-pulse"></div>
+<span class="text-sm font-semibold dark:text-emerald-accent">NYSE Open</span>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark">
+<header class="sticky top-0 z-20 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-8 py-6 border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center justify-between gap-8">
+<div class="flex-1 max-w-3xl">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-neon-blue transition-colors">search</span>
+<input class="w-full bg-slate-100 dark:bg-slate-800/50 border-2 border-transparent dark:border-slate-800 rounded-xl pl-12 pr-4 py-3 text-base focus:ring-0 focus:border-neon-blue/50 dark:focus:border-neon-blue/50 text-slate-900 dark:text-slate-100 transition-all outline-none" placeholder="Search 50,000+ assets, mutual funds, and AI market insights..." type="text"/>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-2">
+<kbd class="px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-[10px] font-bold text-slate-500">⌘K</kbd>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">tune</span>
+</button>
+<div class="h-10 w-[1px] bg-slate-200 dark:bg-slate-800 mx-2"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden md:block">
+<p class="text-sm font-bold text-slate-900 dark:text-white leading-none">Institutional Account</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Tier 1 Elite</p>
+</div>
+<div class="size-10 rounded-full border-2 border-primary/20 overflow-hidden">
+<img alt="User" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArgX_sJnMIixamO89AnIY50TY7f40pvOJfaC-C93c-QUq-k3mlMiFhs-UNYjcknnnc-OE9zeYCjvVUsk5RZeSwVRfodotwPs2LX72tAI6QWKTUO-DLUlzGCdRNdnYXPOTjZxGwH0EIt8yLzn2BfgIKMonVTGB4Gur18-HZGuqL5vd30oqYOQ13BX3KmyWJlHRBbXiz_DC4F-YzSu3dJkDRKaCOwqkZtbJkkftmDcz63t_RoFYRk-ZhkkCJJtSI_cacr63d_nHCpXk"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class="p-8 space-y-10">
+<section>
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-neon-blue">workspace_premium</span>
+                            Market Explorers
+                        </h2>
+<div class="flex gap-2">
+<button class="size-8 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="size-8 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-4">
+<div class="flex-shrink-0 w-72 p-5 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent border border-primary/30 relative overflow-hidden group cursor-pointer">
+<div class="absolute -right-4 -top-4 size-24 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-all"></div>
+<div class="relative z-10">
+<div class="size-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary mb-4">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<h3 class="text-lg font-bold text-white mb-1">Trending Now</h3>
+<p class="text-xs text-slate-400 mb-4 font-medium uppercase tracking-tight">Top global momentum</p>
+<div class="flex -space-x-2">
+<div class="size-6 rounded-full bg-slate-800 border-2 border-[#161f2c] flex items-center justify-center text-[10px] font-bold">NV</div>
+<div class="size-6 rounded-full bg-slate-800 border-2 border-[#161f2c] flex items-center justify-center text-[10px] font-bold">AP</div>
+<div class="size-6 rounded-full bg-slate-800 border-2 border-[#161f2c] flex items-center justify-center text-[10px] font-bold">MS</div>
+<div class="size-6 rounded-full bg-slate-700 border-2 border-[#161f2c] flex items-center justify-center text-[10px] font-bold">+12</div>
+</div>
+</div>
+</div>
+<div class="flex-shrink-0 w-72 p-5 rounded-2xl bg-gradient-to-br from-emerald-500/10 to-transparent border border-emerald-500/20 relative overflow-hidden group cursor-pointer">
+<div class="absolute -right-4 -top-4 size-24 bg-emerald-500/10 rounded-full blur-2xl"></div>
+<div class="relative z-10">
+<div class="size-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-accent mb-4">
+<span class="material-symbols-outlined">psychology_alt</span>
+</div>
+<h3 class="text-lg font-bold text-white mb-1">High AI Score</h3>
+<p class="text-xs text-slate-400 mb-4 font-medium uppercase tracking-tight">Signals &gt; 90 strength</p>
+<div class="text-emerald-accent text-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+                                    AI Alpha Pick: $GOOGL
+                                </div>
+</div>
+</div>
+<div class="flex-shrink-0 w-72 p-5 rounded-2xl bg-gradient-to-br from-neon-blue/10 to-transparent border border-neon-blue/20 relative overflow-hidden group cursor-pointer">
+<div class="absolute -right-4 -top-4 size-24 bg-neon-blue/10 rounded-full blur-2xl"></div>
+<div class="relative z-10">
+<div class="size-10 rounded-lg bg-neon-blue/20 flex items-center justify-center text-neon-blue mb-4">
+<span class="material-symbols-outlined">leaderboard</span>
+</div>
+<h3 class="text-lg font-bold text-white mb-1">Sector Leaders</h3>
+<p class="text-xs text-slate-400 mb-4 font-medium uppercase tracking-tight">Category Dominators</p>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 rounded-full bg-slate-800 text-[10px] font-bold text-slate-300">TECH</span>
+<span class="px-2 py-0.5 rounded-full bg-slate-800 text-[10px] font-bold text-slate-300">ENERGY</span>
+</div>
+</div>
+</div>
+<div class="flex-shrink-0 w-72 p-5 rounded-2xl bg-slate-800/30 border border-slate-800 relative overflow-hidden group cursor-pointer">
+<div class="relative z-10">
+<div class="size-10 rounded-lg bg-slate-800 flex items-center justify-center text-slate-400 mb-4">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<h3 class="text-lg font-bold text-white mb-1">Mutual Funds</h3>
+<p class="text-xs text-slate-400 mb-4 font-medium uppercase tracking-tight">Institutional Vehicles</p>
+<p class="text-xs text-slate-500">Curated by risk-adjusted returns</p>
+</div>
+</div>
+</div>
+</section>
+<section class="space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-6">
+<h2 class="text-xl font-black text-slate-900 dark:text-white">Active Discoveries</h2>
+<div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
+<button class="px-4 py-1.5 text-xs font-bold rounded-md bg-white dark:bg-slate-700 shadow-sm text-primary">All Assets</button>
+<button class="px-4 py-1.5 text-xs font-bold text-slate-500 hover:text-white">Stocks</button>
+<button class="px-4 py-1.5 text-xs font-bold text-slate-500 hover:text-white">ETFs</button>
+<button class="px-4 py-1.5 text-xs font-bold text-slate-500 hover:text-white">Funds</button>
+</div>
+</div>
+<div class="flex items-center gap-4 text-xs font-bold text-slate-500">
+<span>Sort by:</span>
+<button class="flex items-center gap-1 text-slate-900 dark:text-white">
+                                AI Strength <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<div class="bg-card-dark rounded-2xl border border-slate-800 p-5 hover:border-primary/50 transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-xl bg-slate-800 flex items-center justify-center font-bold text-primary group-hover:scale-110 transition-transform">NVDA</div>
+<div>
+<h4 class="font-bold text-white text-sm">NVIDIA Corp.</h4>
+<span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Semiconductors</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-600 hover:text-yellow-500">bookmark</span>
+</div>
+<div class="flex items-end justify-between mb-6">
+<div>
+<p class="text-2xl font-black text-white">$124.52</p>
+<p class="text-xs font-bold text-emerald-accent flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                                        +3.2%
+                                    </p>
+</div>
+<div class="w-24 h-12">
+<svg class="w-full h-full overflow-visible" viewBox="0 0 100 40">
+<path class="sparkline-path" d="M0 35 L10 32 L25 38 L40 25 L55 28 L75 10 L100 5" fill="none" stroke="#10b981" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-500">
+<span>AI Strength</span>
+<span class="text-neon-blue">98/100</span>
+</div>
+<div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-neon-blue rounded-full" style="width: 98%"></div>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="text-[10px] font-bold text-slate-400">Institutional Sentiment</span>
+<span class="text-[10px] font-bold text-emerald-accent uppercase">Strong Accumulation</span>
+</div>
+</div>
+</div>
+<div class="bg-card-dark rounded-2xl border border-slate-800 p-5 hover:border-primary/50 transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-xl bg-slate-800 flex items-center justify-center font-bold text-primary group-hover:scale-110 transition-transform">VOO</div>
+<div>
+<h4 class="font-bold text-white text-sm">Vanguard S&amp;P 500</h4>
+<span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">ETF</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-600 hover:text-yellow-500">bookmark</span>
+</div>
+<div class="flex items-end justify-between mb-6">
+<div>
+<p class="text-2xl font-black text-white">$512.44</p>
+<p class="text-xs font-bold text-emerald-accent flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                                        +0.8%
+                                    </p>
+</div>
+<div class="w-24 h-12">
+<svg class="w-full h-full overflow-visible" viewBox="0 0 100 40">
+<path d="M0 30 L10 28 L25 29 L40 20 L55 22 L75 18 L100 15" fill="none" stroke="#10b981" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-500">
+<span>AI Strength</span>
+<span class="text-neon-blue">84/100</span>
+</div>
+<div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-neon-blue rounded-full" style="width: 84%"></div>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="text-[10px] font-bold text-slate-400">Institutional Sentiment</span>
+<span class="text-[10px] font-bold text-primary uppercase">Bullish</span>
+</div>
+</div>
+</div>
+<div class="bg-card-dark rounded-2xl border border-slate-800 p-5 hover:border-primary/50 transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-xl bg-slate-800 flex items-center justify-center font-bold text-primary group-hover:scale-110 transition-transform">AMZN</div>
+<div>
+<h4 class="font-bold text-white text-sm">Amazon.com</h4>
+<span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Consumer Discretionary</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-600 hover:text-yellow-500">bookmark</span>
+</div>
+<div class="flex items-end justify-between mb-6">
+<div>
+<p class="text-2xl font-black text-white">$186.21</p>
+<p class="text-xs font-bold text-rose-500 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">trending_down</span>
+                                        -0.4%
+                                    </p>
+</div>
+<div class="w-24 h-12">
+<svg class="w-full h-full overflow-visible" viewBox="0 0 100 40">
+<path d="M0 10 L20 15 L40 12 L60 25 L80 20 L100 35" fill="none" stroke="#f43f5e" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-500">
+<span>AI Strength</span>
+<span class="text-neon-blue">92/100</span>
+</div>
+<div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-neon-blue rounded-full" style="width: 92%"></div>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="text-[10px] font-bold text-slate-400">Institutional Sentiment</span>
+<span class="text-[10px] font-bold text-emerald-accent uppercase">Strong Buy</span>
+</div>
+</div>
+</div>
+<div class="bg-card-dark rounded-2xl border border-slate-800 p-5 hover:border-primary/50 transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-xl bg-slate-800 flex items-center justify-center font-bold text-primary group-hover:scale-110 transition-transform">BRK</div>
+<div>
+<h4 class="font-bold text-white text-sm">Berkshire Hathaway</h4>
+<span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Financials</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-600 hover:text-yellow-500">bookmark</span>
+</div>
+<div class="flex items-end justify-between mb-6">
+<div>
+<p class="text-2xl font-black text-white">$432.10</p>
+<p class="text-xs font-bold text-emerald-accent flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                                        +0.2%
+                                    </p>
+</div>
+<div class="w-24 h-12">
+<svg class="w-full h-full overflow-visible" viewBox="0 0 100 40">
+<path d="M0 25 L20 22 L40 20 L60 21 L80 19 L100 18" fill="none" stroke="#10b981" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-500">
+<span>AI Strength</span>
+<span class="text-neon-blue">76/100</span>
+</div>
+<div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-neon-blue rounded-full" style="width: 76%"></div>
+</div>
+<div class="pt-2 flex items-center justify-between">
+<span class="text-[10px] font-bold text-slate-400">Institutional Sentiment</span>
+<span class="text-[10px] font-bold text-slate-500 uppercase">Neutral</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-center py-12 border-t border-slate-800 mt-12">
+<p class="text-sm text-slate-500 mb-4 font-medium">Scanning institutional databases for more opportunities...</p>
+<button class="px-8 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-bold text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-all border border-slate-700">
+                            Load 50 More Assets
+                        </button>
+</div>
+</section>
+</div>
+</main>
+</div>
+
+</body></html>

@@ -1,0 +1,2094 @@
+E:\Stock Analysier and pedction machine\app\main.py:753: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("startup")
+E:\Stock Analysier and pedction machine\app\main.py:763: DeprecationWarning: 
+        on_event is deprecated, use lifespan event handlers instead.
+
+        Read more about it in the
+        [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+        
+  @app.on_event("shutdown")
+INFO:     Started server process [20368]
+INFO:     Waiting for application startup.
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Added job "radar_job" to job store "default"
+INFO:apscheduler.scheduler:Added job "fast_price_job" to job store "default"
+INFO:apscheduler.scheduler:Added job "refresh_watchlist_job" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+INFO:app.radar.scheduler:Radar Scheduler Started. Will dynamically poll the watchlist.
+INFO:     Application startup complete.
+INFO:apscheduler.executors.default:Running job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-08 12:27:10 IST)" (scheduled at 2026-03-08 12:27:10.009436+05:30)
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:app.radar.scheduler:Scanning DOGEUSDT for SHORT horizon...
+INFO:app.radar.scheduler:Scanning ETHUSDT for INTRADAY horizon...
+INFO:app.radar.scheduler:Scanning BTCUSDT for INTRADAY horizon...
+INFO:app.radar.scheduler:Scanning BTC-USD for SHORT horizon...
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:27:20 IST)" (scheduled at 2026-03-08 12:27:20.013486+05:30)
+2026-03-08 12:27:27.176888: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:27:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:64519 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64519 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64519 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64519 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64519 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58046 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:27:40 IST)" skipped: maximum number of running instances reached (1)
+2026-03-08 12:27:42.452346: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:27:50 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:28:00 IST)" (scheduled at 2026-03-08 12:27:50.013486+05:30)
+INFO:app.models.train_xgb:XGBoost model loaded successfully.
+INFO:app.models.train_xgb:XGBoost model loaded successfully.
+INFO:app.models.train_xgb:XGBoost model loaded successfully.
+INFO:app.models.train_xgb:XGBoost model loaded successfully.
+2026-03-08 12:27:51.059566: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
+INFO:app.models.train_lstm:LSTM model loaded successfully.
+INFO:app.models.train_lstm:LSTM model loaded successfully.
+INFO:app.models.train_lstm:LSTM model loaded successfully.
+INFO:app.models.train_lstm:LSTM model loaded successfully.
+INFO:app.agents.data_agent:Fetching stock data for BTC-USD with interval 1h
+INFO:app.agents.data_agent:Fetching crypto data for ETH/USDT with interval 5m
+INFO:app.agents.data_agent:Fetching crypto data for BTC/USDT with interval 5m
+INFO:app.agents.data_agent:Fetching stock data for DOGEUSDT with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BTC-USD
+ERROR:yfinance:HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: DOGEUSDT"}}}
+ERROR:yfinance:$DOGEUSDT: possibly delisted; no price data found  (period=1mo) (Yahoo error = "No data found, symbol may be delisted")
+WARNING:app.agents.data_agent:No data found for DOGEUSDT
+INFO:app.agents.failsafe_agent:Attempting fallback scraping for DOGEUSDT
+INFO:app.agents.strategy_agent:Regime evaluated as 'low_volatility_ranging'. Selected strategy: accumulation_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for ETH/USDT
+ERROR:app.radar.scheduler:Failed pipeline for DOGEUSDT: Insufficient data
+INFO:app.radar.scheduler:Scanning GOLDBEES.NS for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for GOLDBEES.NS with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'low_volatility_ranging'. Selected strategy: accumulation_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BTC/USDT
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:28:00 IST)" skipped: maximum number of running instances reached (1)
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.73), Bear (0.27) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BTC-USD -> BUY (Conf: 0.73)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 66477.30 | Size: $10000.00 | Risk: $96.75
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.39), Bear (0.61) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: BTC/USDT -> SELL (Conf: 0.61)
+INFO:app.agents.risk_agent:Risk Assessed: SELL | SL: 67334.61 | Size: $10000.00 | Risk: $23.05
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.35), Bear (0.65) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: ETH/USDT -> SELL (Conf: 0.65)
+INFO:app.agents.risk_agent:Risk Assessed: SELL | SL: 1953.53 | Size: $10000.00 | Risk: $28.99
+INFO:app.feedback.loop:Logged prediction for ETH/USDT to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: ETHUSDT [INTRADAY]
+INFO:app.radar.scheduler:Scanning BAJAJFINSV.NS for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for BAJAJFINSV.NS with interval 1h
+INFO:app.feedback.loop:Logged prediction for BTC-USD to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: BTC-USD [SHORT]
+INFO:app.radar.scheduler:Scanning RELIANCE.NS for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for RELIANCE.NS with interval 1h
+INFO:app.feedback.loop:Logged prediction for BTC/USDT to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: BTCUSDT [INTRADAY]
+INFO:app.radar.scheduler:Scanning GOLDBEES for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for GOLDBEES.NS with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for GOLDBEES.NS
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BAJAJFINSV.NS
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for RELIANCE.NS
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for GOLDBEES
+INFO:     127.0.0.1:49835 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49835 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49835 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49835 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.80), Bear (0.20) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: GOLDBEES -> BUY (Conf: 0.80)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 129.33 | Size: $10000.00 | Risk: $101.47
+INFO:app.feedback.loop:Logged prediction for GOLDBEES to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: GOLDBEES [SHORT]
+INFO:app.radar.scheduler:Scanning SILVER for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for SI=F with interval 1h
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:28:10 IST)" executed successfully
+INFO:app.agents.strategy_agent:Regime evaluated as 'ranging'. Selected strategy: mean_reversion_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for SILVER
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.80), Bear (0.20) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: GOLDBEES.NS -> BUY (Conf: 0.80)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 129.33 | Size: $10000.00 | Risk: $101.47
+INFO:app.feedback.loop:Logged prediction for GOLDBEES.NS to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: GOLDBEES.NS [SHORT]
+INFO:app.radar.scheduler:Scanning GOLD for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for GC=F with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'low_volatility_ranging'. Selected strategy: accumulation_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for GOLD
+INFO:     127.0.0.1:49835 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.50), Bear (0.50) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BAJAJFINSV.NS -> HOLD (Conf: 0.50)
+INFO:app.radar.scheduler:Autonomous Scan Success: BAJAJFINSV.NS [SHORT]
+INFO:app.radar.scheduler:Scanning BANKNIFTY for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for ^NSEBANK with interval 1h
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.34), Bear (0.66) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: RELIANCE.NS -> SELL (Conf: 0.66)
+INFO:app.agents.risk_agent:Risk Assessed: SELL | SL: 1434.24 | Size: $10000.00 | Risk: $186.37
+INFO:app.feedback.loop:Logged prediction for RELIANCE.NS to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: RELIANCE.NS [SHORT]
+INFO:app.radar.scheduler:Scanning SENSEX for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for ^BSESN with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for SENSEX
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BANKNIFTY
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.71), Bear (0.29) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: SILVER -> BUY (Conf: 0.71)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 82.02 | Size: $7355.30 | Risk: $200.00
+INFO:app.feedback.loop:Logged prediction for SILVER to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: SILVER [SHORT]
+INFO:app.radar.scheduler:Scanning NIFTY for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for ^NSEI with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for NIFTY
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.59), Bear (0.41) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: SENSEX -> HOLD (Conf: 0.59)
+INFO:app.agents.options_agent:Simulating options chain for Indian Index SENSEX to bypass yfinance hang.
+INFO:app.radar.scheduler:Autonomous Scan Success: SENSEX [SHORT]
+INFO:app.radar.scheduler:Scanning BTC for SHORT horizon...
+INFO:app.agents.data_agent:Fetching crypto data for BTC/USDT with interval 1h
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.60), Bear (0.40) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.53), Bear (0.47) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: BANKNIFTY -> BUY (Conf: 0.60)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 57173.03 | Size: $10000.00 | Risk: $105.46
+INFO:app.agents.options_agent:Simulating options chain for Indian Index BANKNIFTY to bypass yfinance hang.
+INFO:app.agents.debate_agent:Signal Generated: GOLD -> HOLD (Conf: 0.53)
+INFO:app.radar.scheduler:Autonomous Scan Success: GOLD [SHORT]
+INFO:app.radar.scheduler:Scanning TSLA for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for TSLA with interval 1h
+INFO:app.feedback.loop:Logged prediction for BANKNIFTY to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: BANKNIFTY [SHORT]
+INFO:app.radar.scheduler:Scanning AAPL for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for AAPL with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'ranging'. Selected strategy: mean_reversion_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for TSLA
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BTC/USDT
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for AAPL
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:28:20 IST)" (scheduled at 2026-03-08 12:28:10.013486+05:30)
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.68), Bear (0.32) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: NIFTY -> BUY (Conf: 0.68)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 24232.41 | Size: $10000.00 | Risk: $96.85
+INFO:app.agents.options_agent:Simulating options chain for Indian Index NIFTY to bypass yfinance hang.
+INFO:app.feedback.loop:Logged prediction for NIFTY to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: NIFTY [SHORT]
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.74), Bear (0.26) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BTC/USDT -> BUY (Conf: 0.74)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 66457.28 | Size: $10000.00 | Risk: $111.42
+INFO:app.feedback.loop:Logged prediction for BTC/USDT to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: BTC [SHORT]
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.53), Bear (0.47) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: AAPL -> HOLD (Conf: 0.53)
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.53), Bear (0.47) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: TSLA -> HOLD (Conf: 0.53)
+INFO:app.radar.scheduler:Autonomous Scan Success: AAPL [SHORT]
+INFO:app.radar.scheduler:Autonomous Scan Success: TSLA [SHORT]
+INFO:app.radar.scheduler:=== Autonomous Radar Scan Loop Complete ===
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+ERROR:yfinance:HTTP Error 500: <!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Yahoo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <style>
+      html {
+          height: 100%;
+      }
+      body {
+          background: #fafafc url(https://s.yimg.com/nn/img/sad-panda-201402200631.png) 50% 50%;
+          background-size: cover;
+          height: 100%;
+          text-align: center;
+          font: 300 18px "helvetica neue", helvetica, verdana, tahoma, arial, sans-serif;
+          margin: 0;
+      }
+      table {
+          height: 100%;
+          width: 100%;
+          table-layout: fixed;
+          border-collapse: collapse;
+          border-spacing: 0;
+          border: none;
+      }
+      h1 {
+          font-size: 42px;
+          font-weight: 400;
+          color: #400090;
+      }
+      p {
+          color: #1A1A1A;
+      }
+      #message-1 {
+          font-weight: bold;
+          margin: 0;
+      }
+      #message-2 {
+          display: inline-block;
+          *display: inline;
+          zoom: 1;
+          max-width: 17em;
+          _width: 17em;
+      }
+      </style>
+      <script>
+      
+      </script>
+  </head>
+  <body>
+  <!-- status code : 500 -->
+  <!-- Unknown Host -->
+  <!-- host machine: ats-ncache-api--production-sg3-6587557596-sdtg2 -->
+  <!-- timestamp: 1772953094.946 -->
+  <!-- url: https://default.finance-yql-production.finance-k8s.omega.yahoo.com/v10/finance/quoteSummary/BTC/USDT?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=BTC%2FUSDT&crumb=Bp7C9CLTm4K-->
+  <script type="text/javascript">
+    function buildUrl(url, parameters){
+      var qs = [];
+      for(var key in parameters) {
+        var value = parameters[key];
+        qs.push(encodeURIComponent(key) + "=" + encodeURIComponent(value));
+      }
+      url = url + "?" + qs.join('&');
+      return url;
+    }
+
+    function generateBRBMarkup(site) {
+      params.source = 'brb';
+      generateBeaconMarkup(params);
+      var englishHeader = 'Will be right back...';
+      var englishMessage1 = 'Thank you for your patience.';
+      var englishMessage2 = 'Our engineers are working quickly to resolve the issue.';
+      var defaultLogoStyle = '';
+      var siteDataMap = {
+        'default': {
+          logo: 'https://s.yimg.com/rz/p/yahoo_frontpage_en-US_s_f_p_205x58_frontpage.png',
+          logoAlt: 'Yahoo Logo',
+          logoStyle: defaultLogoStyle,
+          header: englishHeader,
+          message1: englishMessage1,
+          message2: englishMessage2
+        }
+      };
+
+      var siteDetails = siteDataMap['default'];
+
+      document.write('<table><tbody><tr><td>');
+      document.write('<div id="content">');
+      document.write('<img src="' + siteDetails['logo'] + '" alt="' + siteDetails['logoAlt'] + '" style="' + siteDetails['logoStyle'] + '">');
+      document.write('<h1 style="margin-top:20px;">' + siteDetails['header'] + '</h1>');
+      document.write('<p id="message-1">' + siteDetails['message1'] + '</p>');
+      document.write('<p id="message-2">' + siteDetails['message2'] + '</p>');
+      document.write('</div>');
+      document.write('</td></tr></tbody></table>');
+    }
+
+    function generateBeaconMarkup(params) {
+        document.write('<img src="' + buildUrl('//geo.yahoo.com/b', params) + '" style="display:none;" width="0px" height="0px"/>');
+        var beacon = new Image();
+        beacon.src = buildUrl('//bcn.fp.yahoo.com/p', params);
+    }
+
+    var hostname = window.location.hostname;
+    var device = 'desktop';
+    var ynet = ('-' === '1');
+    var time = new Date().getTime();
+    var params = {
+        s: '1197757129',
+        t: time,
+        err_url: document.URL,
+        err: '500',
+        test: '-',
+        ats_host: 'ats-ncache-api--production-sg3-6587557596-sdtg2',
+        rid: '-',
+        message: 'Unknown Host'
+    };
+
+    if(ynet) {
+        document.write('<div style="height: 5px; background-color: red;"></div>');
+    }
+    generateBRBMarkup(hostname, params);
+
+  </script>
+  <noscript>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <div id="englishContent">
+            <h1 style="margin-top:20px;">Will be right back...</h1>
+            <p id="message-1">Thank you for your patience.</p>
+            <p id="message-2">Our engineers are working quickly to resolve the issue.</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </noscript>
+  </body>
+</html>
+
+WARNING:app.feedback.loop:Could not evaluate trade 8 for BTC/USDT: Failed to parse json response from Yahoo Finance: {'code': 'Not Found', 'description': 'HTTP 404 Not Found'}
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 11 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 14 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 17 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 20 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 23 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:28:20 IST)" skipped: maximum number of running instances reached (1)
+WARNING:app.feedback.loop:Could not evaluate trade 32 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 35 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 41 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 44 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:28:30 IST)" executed successfully
+WARNING:app.feedback.loop:Could not evaluate trade 46 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 49 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 52 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 59 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 62 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 64 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 66 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 68 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 70 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 72 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 74 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 76 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 78 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:28:40 IST)" (scheduled at 2026-03-08 12:28:30.013486+05:30)
+WARNING:app.feedback.loop:Could not evaluate trade 80 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 82 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 84 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+INFO:     127.0.0.1:65084 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65084 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65084 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65084 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:app.feedback.loop:Could not evaluate trade 86 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 88 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 90 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 92 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 94 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 96 for BTC/USDT: 'Response' object is not subscriptable
+INFO:apscheduler.executors.default:Job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-08 12:32:10 IST)" executed successfully
+INFO:     127.0.0.1:65084 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65084 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54834 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65084 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65084 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54834 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65084 - "GET /journal/eod-history HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65084 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54834 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54834 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54834 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54834 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54834 - "GET /journal/eod-history HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:28:40 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:28:50 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:29:00 IST)" (scheduled at 2026-03-08 12:28:50.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:29:00 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:29:10 IST)" executed successfully
+INFO:     127.0.0.1:49674 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57274 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57274 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57274 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62922 - "GET /journal/eod-history HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:29:20 IST)" (scheduled at 2026-03-08 12:29:10.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:29:20 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:29:30 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:29:40 IST)" (scheduled at 2026-03-08 12:29:30.013486+05:30)
+INFO:     127.0.0.1:54062 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54062 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54062 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54062 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54062 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54062 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54062 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50243 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54062 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54062 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54062 - "GET /journal/eod-history HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:29:40 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:29:50 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:30:00 IST)" (scheduled at 2026-03-08 12:29:50.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:30:00 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:57540 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57540 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57540 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57540 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:30:10 IST)" executed successfully
+INFO:     127.0.0.1:57540 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57540 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57540 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57540 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57540 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57540 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57540 - "GET /journal/eod-history HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:30:20 IST)" (scheduled at 2026-03-08 12:30:10.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:30:20 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:30:30 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:30:40 IST)" (scheduled at 2026-03-08 12:30:30.013486+05:30)
+INFO:     127.0.0.1:63228 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63228 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63228 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63228 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63228 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63228 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54198 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51192 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63228 - "GET /journal/eod-history HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52443 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65442 - "GET /journal/eod-report HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:30:40 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:30:50 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:31:00 IST)" (scheduled at 2026-03-08 12:30:50.013486+05:30)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:31:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:31:10 IST)" (scheduled at 2026-03-08 12:31:00.013486+05:30)
+INFO:     127.0.0.1:61509 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61509 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61509 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61509 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61509 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61509 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61509 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61509 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61509 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61509 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61509 - "GET /journal/eod-history HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:31:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:31:20 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:31:30 IST)" (scheduled at 2026-03-08 12:31:20.013486+05:30)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:31:30 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:31:40 IST)" (scheduled at 2026-03-08 12:31:30.013486+05:30)
+INFO:     127.0.0.1:53781 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53781 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53781 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53781 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53781 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56218 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63455 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56218 - "GET /journal/eod-history HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53781 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61683 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58419 - "GET /journal/eod-report HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:31:40 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:31:50 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:32:00 IST)" (scheduled at 2026-03-08 12:31:50.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:32:00 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:56203 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56203 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56203 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56203 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:32:10 IST)" executed successfully
+INFO:     127.0.0.1:56203 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56203 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56203 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56203 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56203 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56203 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56203 - "GET /journal/eod-history HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:32:20 IST)" (scheduled at 2026-03-08 12:32:10.013486+05:30)
+INFO:apscheduler.executors.default:Running job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-08 12:37:10 IST)" (scheduled at 2026-03-08 12:32:10.009436+05:30)
+INFO:app.radar.scheduler:Scanning DOGEUSDT for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for DOGEUSDT with interval 1h
+INFO:app.radar.scheduler:Scanning ETHUSDT for INTRADAY horizon...
+INFO:app.agents.data_agent:Fetching crypto data for ETH/USDT with interval 5m
+INFO:app.radar.scheduler:Scanning BTCUSDT for INTRADAY horizon...
+INFO:app.agents.data_agent:Fetching crypto data for BTC/USDT with interval 5m
+INFO:app.radar.scheduler:Scanning BTC-USD for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for BTC-USD with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BTC-USD
+INFO:app.agents.strategy_agent:Regime evaluated as 'low_volatility_ranging'. Selected strategy: accumulation_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BTC/USDT
+INFO:app.agents.strategy_agent:Regime evaluated as 'low_volatility_ranging'. Selected strategy: accumulation_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for ETH/USDT
+ERROR:yfinance:$DOGEUSDT: possibly delisted; no price data found  (period=1mo) (Yahoo error = "No data found, symbol may be delisted")
+WARNING:app.agents.data_agent:No data found for DOGEUSDT
+INFO:app.agents.failsafe_agent:Attempting fallback scraping for DOGEUSDT
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.39), Bear (0.61) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: BTC/USDT -> SELL (Conf: 0.61)
+INFO:app.agents.risk_agent:Risk Assessed: SELL | SL: 67322.51 | Size: $10000.00 | Risk: $22.71
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.28), Bear (0.72) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: ETH/USDT -> SELL (Conf: 0.72)
+INFO:app.agents.risk_agent:Risk Assessed: SELL | SL: 1953.59 | Size: $10000.00 | Risk: $28.47
+INFO:app.feedback.loop:Logged prediction for BTC/USDT to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: BTCUSDT [INTRADAY]
+INFO:app.radar.scheduler:Scanning GOLDBEES.NS for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for GOLDBEES.NS with interval 1h
+INFO:app.feedback.loop:Logged prediction for ETH/USDT to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: ETHUSDT [INTRADAY]
+INFO:app.radar.scheduler:Scanning BAJAJFINSV.NS for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for BAJAJFINSV.NS with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BAJAJFINSV.NS
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for GOLDBEES.NS
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:32:20 IST)" skipped: maximum number of running instances reached (1)
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.74), Bear (0.26) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BTC-USD -> BUY (Conf: 0.74)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 66541.40 | Size: $10000.00 | Risk: $96.65
+INFO:app.feedback.loop:Logged prediction for BTC-USD to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: BTC-USD [SHORT]
+INFO:app.radar.scheduler:Scanning RELIANCE.NS for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for RELIANCE.NS with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for RELIANCE.NS
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.50), Bear (0.50) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BAJAJFINSV.NS -> HOLD (Conf: 0.50)
+INFO:app.radar.scheduler:Autonomous Scan Success: BAJAJFINSV.NS [SHORT]
+INFO:app.radar.scheduler:Scanning GOLDBEES for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for GOLDBEES.NS with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for GOLDBEES
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.80), Bear (0.20) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: GOLDBEES.NS -> BUY (Conf: 0.80)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 129.33 | Size: $10000.00 | Risk: $101.47
+INFO:app.feedback.loop:Logged prediction for GOLDBEES.NS to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: GOLDBEES.NS [SHORT]
+INFO:app.radar.scheduler:Scanning SILVER for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for SI=F with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'ranging'. Selected strategy: mean_reversion_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for SILVER
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:32:30 IST)" executed successfully
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.34), Bear (0.66) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: RELIANCE.NS -> SELL (Conf: 0.66)
+INFO:app.agents.risk_agent:Risk Assessed: SELL | SL: 1434.24 | Size: $10000.00 | Risk: $186.37
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.71), Bear (0.29) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: SILVER -> BUY (Conf: 0.71)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 82.02 | Size: $7355.30 | Risk: $200.00
+INFO:app.feedback.loop:Logged prediction for RELIANCE.NS to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: RELIANCE.NS [SHORT]
+INFO:app.radar.scheduler:Scanning GOLD for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for GC=F with interval 1h
+INFO:app.feedback.loop:Logged prediction for SILVER to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: SILVER [SHORT]
+INFO:app.radar.scheduler:Scanning BANKNIFTY for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for ^NSEBANK with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BANKNIFTY
+INFO:app.agents.strategy_agent:Regime evaluated as 'low_volatility_ranging'. Selected strategy: accumulation_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for GOLD
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.60), Bear (0.40) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BANKNIFTY -> BUY (Conf: 0.60)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 57173.03 | Size: $10000.00 | Risk: $105.46
+INFO:app.agents.options_agent:Simulating options chain for Indian Index BANKNIFTY to bypass yfinance hang.
+INFO:app.feedback.loop:Logged prediction for BANKNIFTY to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: BANKNIFTY [SHORT]
+INFO:app.radar.scheduler:Scanning SENSEX for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for ^BSESN with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for SENSEX
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.80), Bear (0.20) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: GOLDBEES -> BUY (Conf: 0.80)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 129.33 | Size: $10000.00 | Risk: $101.47
+INFO:app.feedback.loop:Logged prediction for GOLDBEES to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: GOLDBEES [SHORT]
+INFO:app.radar.scheduler:Scanning NIFTY for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for ^NSEI with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for NIFTY
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.59), Bear (0.41) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: SENSEX -> HOLD (Conf: 0.59)
+INFO:app.agents.options_agent:Simulating options chain for Indian Index SENSEX to bypass yfinance hang.
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.53), Bear (0.47) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: GOLD -> HOLD (Conf: 0.53)
+INFO:app.radar.scheduler:Autonomous Scan Success: SENSEX [SHORT]
+INFO:app.radar.scheduler:Scanning BTC for SHORT horizon...
+INFO:app.agents.data_agent:Fetching crypto data for BTC/USDT with interval 1h
+INFO:app.radar.scheduler:Autonomous Scan Success: GOLD [SHORT]
+INFO:app.radar.scheduler:Scanning TSLA for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for TSLA with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'ranging'. Selected strategy: mean_reversion_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for TSLA
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BTC/USDT
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.68), Bear (0.32) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: NIFTY -> BUY (Conf: 0.68)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 24232.41 | Size: $10000.00 | Risk: $96.85
+INFO:app.agents.options_agent:Simulating options chain for Indian Index NIFTY to bypass yfinance hang.
+INFO:app.feedback.loop:Logged prediction for NIFTY to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: NIFTY [SHORT]
+INFO:app.radar.scheduler:Scanning AAPL for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for AAPL with interval 1h
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:32:40 IST)" (scheduled at 2026-03-08 12:32:30.013486+05:30)
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for AAPL
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.74), Bear (0.26) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BTC/USDT -> BUY (Conf: 0.74)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 66471.38 | Size: $10000.00 | Risk: $104.01
+INFO:app.feedback.loop:Logged prediction for BTC/USDT to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: BTC [SHORT]
+INFO:     127.0.0.1:52484 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52484 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63847 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52484 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.53), Bear (0.47) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: AAPL -> HOLD (Conf: 0.53)
+INFO:app.radar.scheduler:Autonomous Scan Success: AAPL [SHORT]
+ERROR:app.radar.scheduler:Failed pipeline for DOGEUSDT: Insufficient data
+INFO:     127.0.0.1:52484 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63847 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58393 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52484 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63847 - "GET /journal/eod-history HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62262 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61550 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.53), Bear (0.47) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: TSLA -> HOLD (Conf: 0.53)
+INFO:app.radar.scheduler:Autonomous Scan Success: TSLA [SHORT]
+INFO:app.radar.scheduler:=== Autonomous Radar Scan Loop Complete ===
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 8 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 11 for BTC/USDT: 'Response' object is not subscriptable
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:32:40 IST)" skipped: maximum number of running instances reached (1)
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 14 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 17 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 20 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 23 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 32 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:32:50 IST)" executed successfully
+WARNING:app.feedback.loop:Could not evaluate trade 35 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 41 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 44 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 46 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 49 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 52 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 59 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 62 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 64 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 66 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:33:00 IST)" (scheduled at 2026-03-08 12:32:50.013486+05:30)
+WARNING:app.feedback.loop:Could not evaluate trade 68 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 70 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 72 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 74 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 76 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 78 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 80 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 82 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 84 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 86 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 88 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 90 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 92 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 94 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 96 for BTC/USDT: 'Response' object is not subscriptable
+INFO:apscheduler.executors.default:Job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-08 12:37:10 IST)" executed successfully
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:33:00 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:59514 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59514 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59514 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59514 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:33:10 IST)" executed successfully
+INFO:     127.0.0.1:59514 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59514 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59514 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59514 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59514 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59514 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59514 - "GET /journal/eod-history HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:33:20 IST)" (scheduled at 2026-03-08 12:33:10.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:33:20 IST)" skipped: maximum number of running instances reached (1)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:33:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:55284 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55284 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55284 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55284 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:33:40 IST)" executed successfully
+INFO:     127.0.0.1:55284 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52271 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56412 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55284 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52271 - "GET /journal/eod-history HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55284 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56412 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:33:50 IST)" (scheduled at 2026-03-08 12:33:40.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:33:50 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:34:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:34:10 IST)" (scheduled at 2026-03-08 12:34:00.013486+05:30)
+INFO:     127.0.0.1:62691 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62691 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62691 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62691 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62691 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57562 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62691 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57562 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62691 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57562 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62691 - "GET /journal/eod-history HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:34:10 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:34:20 IST)" (scheduled at 2026-03-08 12:34:10.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:34:20 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:34:30 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:34:40 IST)" (scheduled at 2026-03-08 12:34:30.013486+05:30)
+INFO:     127.0.0.1:52657 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52657 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52657 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52657 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52657 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52319 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52059 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52657 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62494 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52059 - "GET /journal/eod-history HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52657 - "GET /journal/eod-report HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:34:40 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:34:50 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:35:00 IST)" (scheduled at 2026-03-08 12:34:50.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:35:00 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:60131 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60131 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60131 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60131 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60131 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56534 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60131 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56534 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60131 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56534 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60131 - "GET /journal/eod-history HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:35:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:35:20 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:35:30 IST)" (scheduled at 2026-03-08 12:35:20.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:35:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:60392 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60392 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60392 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60392 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60392 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62993 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63582 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60392 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63582 - "GET /journal/eod-history HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60806 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62993 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:35:40 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:35:50 IST)" (scheduled at 2026-03-08 12:35:40.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:35:50 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:36:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:36:10 IST)" (scheduled at 2026-03-08 12:36:00.013486+05:30)
+INFO:     127.0.0.1:60158 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60158 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60158 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60158 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60158 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61126 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60158 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61126 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60158 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61126 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60158 - "GET /journal/eod-history HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:36:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:36:20 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:36:30 IST)" (scheduled at 2026-03-08 12:36:20.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:36:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:50310 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50310 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50310 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50310 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:36:40 IST)" executed successfully
+INFO:     127.0.0.1:50310 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54871 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58608 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50310 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50310 - "GET /journal/eod-history HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54871 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58608 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:36:50 IST)" (scheduled at 2026-03-08 12:36:40.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:36:50 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:37:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:37:10 IST)" (scheduled at 2026-03-08 12:37:00.013486+05:30)
+INFO:     127.0.0.1:50567 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50567 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50567 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50567 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50567 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50567 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50567 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:37:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Running job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-08 12:42:10 IST)" (scheduled at 2026-03-08 12:37:10.009436+05:30)
+INFO:app.radar.scheduler:Scanning DOGEUSDT for SHORT horizon...
+INFO:app.radar.scheduler:Scanning ETHUSDT for INTRADAY horizon...
+INFO:app.agents.data_agent:Fetching stock data for DOGEUSDT with interval 1h
+INFO:app.agents.data_agent:Fetching crypto data for ETH/USDT with interval 5m
+INFO:app.radar.scheduler:Scanning BTCUSDT for INTRADAY horizon...
+INFO:app.radar.scheduler:Scanning BTC-USD for SHORT horizon...
+INFO:app.agents.data_agent:Fetching crypto data for BTC/USDT with interval 5m
+INFO:app.agents.data_agent:Fetching stock data for BTC-USD with interval 1h
+ERROR:yfinance:$DOGEUSDT: possibly delisted; no price data found  (period=1mo) (Yahoo error = "No data found, symbol may be delisted")
+WARNING:app.agents.data_agent:No data found for DOGEUSDT
+INFO:app.agents.failsafe_agent:Attempting fallback scraping for DOGEUSDT
+INFO:app.agents.strategy_agent:Regime evaluated as 'low_volatility_ranging'. Selected strategy: accumulation_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for ETH/USDT
+INFO:app.agents.strategy_agent:Regime evaluated as 'low_volatility_ranging'. Selected strategy: accumulation_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BTC/USDT
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BTC-USD
+INFO:     127.0.0.1:64341 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57353 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64341 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57353 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64341 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57353 - "GET /journal/eod-history HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64341 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64341 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57353 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64341 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57353 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64341 - "GET /journal/eod-history HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:37:20 IST)" executed successfully
+ERROR:app.radar.scheduler:Failed pipeline for DOGEUSDT: Insufficient data
+INFO:app.radar.scheduler:Scanning GOLDBEES.NS for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for GOLDBEES.NS with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for GOLDBEES.NS
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.35), Bear (0.65) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: ETH/USDT -> SELL (Conf: 0.65)
+INFO:app.agents.risk_agent:Risk Assessed: SELL | SL: 1961.99 | Size: $10000.00 | Risk: $32.79
+INFO:app.feedback.loop:Logged prediction for ETH/USDT to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: ETHUSDT [INTRADAY]
+INFO:app.radar.scheduler:Scanning BAJAJFINSV.NS for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for BAJAJFINSV.NS with interval 1h
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:37:30 IST)" (scheduled at 2026-03-08 12:37:20.013486+05:30)
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BAJAJFINSV.NS
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.74), Bear (0.26) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BTC-USD -> BUY (Conf: 0.74)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 66587.72 | Size: $10000.00 | Risk: $90.45
+INFO:app.feedback.loop:Logged prediction for BTC-USD to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: BTC-USD [SHORT]
+INFO:app.radar.scheduler:Scanning RELIANCE.NS for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for RELIANCE.NS with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for RELIANCE.NS
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.38), Bear (0.62) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: BTC/USDT -> SELL (Conf: 0.62)
+INFO:app.agents.risk_agent:Risk Assessed: SELL | SL: 67524.71 | Size: $10000.00 | Risk: $26.19
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.80), Bear (0.20) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: GOLDBEES.NS -> BUY (Conf: 0.80)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 129.33 | Size: $10000.00 | Risk: $101.47
+INFO:app.feedback.loop:Logged prediction for BTC/USDT to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: BTCUSDT [INTRADAY]
+INFO:app.radar.scheduler:Scanning GOLDBEES for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for GOLDBEES.NS with interval 1h
+INFO:app.feedback.loop:Logged prediction for GOLDBEES.NS to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: GOLDBEES.NS [SHORT]
+INFO:app.radar.scheduler:Scanning SILVER for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for SI=F with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'ranging'. Selected strategy: mean_reversion_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for SILVER
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for GOLDBEES
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.50), Bear (0.50) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BAJAJFINSV.NS -> HOLD (Conf: 0.50)
+INFO:app.radar.scheduler:Autonomous Scan Success: BAJAJFINSV.NS [SHORT]
+INFO:app.radar.scheduler:Scanning GOLD for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for GC=F with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'low_volatility_ranging'. Selected strategy: accumulation_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for GOLD
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.34), Bear (0.66) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: RELIANCE.NS -> SELL (Conf: 0.66)
+INFO:app.agents.risk_agent:Risk Assessed: SELL | SL: 1434.24 | Size: $10000.00 | Risk: $186.37
+INFO:app.feedback.loop:Logged prediction for RELIANCE.NS to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: RELIANCE.NS [SHORT]
+INFO:app.radar.scheduler:Scanning BANKNIFTY for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for ^NSEBANK with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BANKNIFTY
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.71), Bear (0.29) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: SILVER -> BUY (Conf: 0.71)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 82.02 | Size: $7355.30 | Risk: $200.00
+INFO:app.feedback.loop:Logged prediction for SILVER to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: SILVER [SHORT]
+INFO:app.radar.scheduler:Scanning SENSEX for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for ^BSESN with interval 1h
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.80), Bear (0.20) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: GOLDBEES -> BUY (Conf: 0.80)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 129.33 | Size: $10000.00 | Risk: $101.47
+INFO:app.feedback.loop:Logged prediction for GOLDBEES to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: GOLDBEES [SHORT]
+INFO:app.radar.scheduler:Scanning NIFTY for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for ^NSEI with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for SENSEX
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for NIFTY
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.60), Bear (0.40) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BANKNIFTY -> BUY (Conf: 0.60)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 57173.03 | Size: $10000.00 | Risk: $105.46
+INFO:app.agents.options_agent:Simulating options chain for Indian Index BANKNIFTY to bypass yfinance hang.
+INFO:app.feedback.loop:Logged prediction for BANKNIFTY to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: BANKNIFTY [SHORT]
+INFO:app.radar.scheduler:Scanning BTC for SHORT horizon...
+INFO:app.agents.data_agent:Fetching crypto data for BTC/USDT with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BTC/USDT
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.68), Bear (0.32) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: NIFTY -> BUY (Conf: 0.68)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 24232.41 | Size: $10000.00 | Risk: $96.85
+INFO:app.agents.options_agent:Simulating options chain for Indian Index NIFTY to bypass yfinance hang.
+INFO:app.feedback.loop:Logged prediction for NIFTY to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: NIFTY [SHORT]
+INFO:app.radar.scheduler:Scanning TSLA for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for TSLA with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'ranging'. Selected strategy: mean_reversion_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for TSLA
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.51), Bear (0.49) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BTC/USDT -> HOLD (Conf: 0.51)
+INFO:app.radar.scheduler:Autonomous Scan Success: BTC [SHORT]
+INFO:app.radar.scheduler:Scanning AAPL for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for AAPL with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for AAPL
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:37:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:61536 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61536 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61536 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61536 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.53), Bear (0.47) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: TSLA -> HOLD (Conf: 0.53)
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.59), Bear (0.41) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: SENSEX -> HOLD (Conf: 0.59)
+INFO:app.agents.options_agent:Simulating options chain for Indian Index SENSEX to bypass yfinance hang.
+INFO:app.radar.scheduler:Autonomous Scan Success: SENSEX [SHORT]
+INFO:app.radar.scheduler:Autonomous Scan Success: TSLA [SHORT]
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.53), Bear (0.47) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: GOLD -> HOLD (Conf: 0.53)
+INFO:app.radar.scheduler:Autonomous Scan Success: GOLD [SHORT]
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.53), Bear (0.47) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: AAPL -> HOLD (Conf: 0.53)
+INFO:app.radar.scheduler:Autonomous Scan Success: AAPL [SHORT]
+INFO:app.radar.scheduler:=== Autonomous Radar Scan Loop Complete ===
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 8 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 11 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 14 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 17 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 20 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 23 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+INFO:     127.0.0.1:57618 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:app.feedback.loop:Could not evaluate trade 32 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 35 for BTC/USDT: 'Response' object is not subscriptable
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:37:40 IST)" skipped: maximum number of running instances reached (1)
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:37:50 IST)" executed successfully
+WARNING:app.feedback.loop:Could not evaluate trade 41 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 44 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 46 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 49 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 52 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 59 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 62 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 64 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+INFO:     127.0.0.1:51120 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54191 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51120 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54191 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51120 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54191 - "GET /journal/eod-history HTTP/1.1" 200 OK
+WARNING:app.feedback.loop:Could not evaluate trade 66 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 68 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 70 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 72 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 74 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 76 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 78 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 80 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:38:00 IST)" (scheduled at 2026-03-08 12:37:50.013486+05:30)
+WARNING:app.feedback.loop:Could not evaluate trade 82 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 84 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 86 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 88 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 90 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 92 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 94 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 96 for BTC/USDT: 'Response' object is not subscriptable
+INFO:apscheduler.executors.default:Job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-08 12:42:10 IST)" executed successfully
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:38:00 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:60996 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60996 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54058 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60996 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:38:10 IST)" executed successfully
+INFO:     127.0.0.1:62416 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:38:20 IST)" (scheduled at 2026-03-08 12:38:10.013486+05:30)
+INFO:     127.0.0.1:49677 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49677 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49677 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49677 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49677 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49677 - "GET /journal/eod-history HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:38:20 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:38:30 IST)" executed successfully
+INFO:     127.0.0.1:58493 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58493 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59257 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58493 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60772 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59257 - "GET /journal/eod-history HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58493 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59257 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58493 - "GET /journal/eod-history HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60772 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63240 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63240 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60776 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60776 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:38:40 IST)" (scheduled at 2026-03-08 12:38:30.013486+05:30)
+INFO:     127.0.0.1:60776 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60776 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60776 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60776 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:38:40 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:38:50 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:39:00 IST)" (scheduled at 2026-03-08 12:38:50.013486+05:30)
+INFO:     127.0.0.1:50958 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50958 - "GET /journal/active-targets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50958 - "GET /journal/targets?status=COMPLETED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50958 - "GET /journal/targets?status=FAILED HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50958 - "GET /journal/trades?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50958 - "GET /journal/eod-report HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50958 - "GET /journal/eod-history HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:39:00 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:50958 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50958 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50958 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59059 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:39:10 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:39:20 IST)" (scheduled at 2026-03-08 12:39:10.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:39:20 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:39:30 IST)" executed successfully
+INFO:     127.0.0.1:65129 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:39:40 IST)" (scheduled at 2026-03-08 12:39:30.013486+05:30)
+INFO:     127.0.0.1:64339 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64339 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64339 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64339 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:39:40 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:39:50 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:40:00 IST)" (scheduled at 2026-03-08 12:39:50.013486+05:30)
+INFO:     127.0.0.1:58772 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:40:00 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:65065 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65065 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65065 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65065 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:40:10 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:40:20 IST)" (scheduled at 2026-03-08 12:40:10.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:40:20 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:54899 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:40:30 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:40:40 IST)" (scheduled at 2026-03-08 12:40:30.013486+05:30)
+INFO:     127.0.0.1:63372 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63372 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63372 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63372 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:40:40 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:40:50 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:41:00 IST)" (scheduled at 2026-03-08 12:40:50.013486+05:30)
+INFO:     127.0.0.1:56381 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:41:00 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:49674 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:41:10 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:41:20 IST)" (scheduled at 2026-03-08 12:41:10.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:41:20 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:65341 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:41:30 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:41:40 IST)" (scheduled at 2026-03-08 12:41:30.013486+05:30)
+INFO:     127.0.0.1:57225 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57225 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57225 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57225 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:41:40 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:41:50 IST)" executed successfully
+INFO:     127.0.0.1:54858 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54858 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:42:00 IST)" (scheduled at 2026-03-08 12:41:50.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:42:00 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:50480 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50480 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50480 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50480 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:42:10 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-08 12:47:10 IST)" (scheduled at 2026-03-08 12:42:10.009436+05:30)
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:42:20 IST)" (scheduled at 2026-03-08 12:42:10.013486+05:30)
+INFO:app.radar.scheduler:Scanning DOGEUSDT for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for DOGEUSDT with interval 1h
+INFO:app.radar.scheduler:Scanning ETHUSDT for INTRADAY horizon...
+INFO:app.agents.data_agent:Fetching crypto data for ETH/USDT with interval 5m
+INFO:app.radar.scheduler:Scanning BTCUSDT for INTRADAY horizon...
+INFO:app.agents.data_agent:Fetching crypto data for BTC/USDT with interval 5m
+INFO:app.radar.scheduler:Scanning BTC-USD for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for BTC-USD with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BTC-USD
+INFO:app.agents.strategy_agent:Regime evaluated as 'low_volatility_ranging'. Selected strategy: accumulation_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for ETH/USDT
+ERROR:yfinance:$DOGEUSDT: possibly delisted; no price data found  (period=1mo) (Yahoo error = "No data found, symbol may be delisted")
+WARNING:app.agents.data_agent:No data found for DOGEUSDT
+INFO:app.agents.failsafe_agent:Attempting fallback scraping for DOGEUSDT
+INFO:app.agents.strategy_agent:Regime evaluated as 'low_volatility_ranging'. Selected strategy: accumulation_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BTC/USDT
+ERROR:app.radar.scheduler:Failed pipeline for DOGEUSDT: Insufficient data
+INFO:app.radar.scheduler:Scanning GOLDBEES.NS for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for GOLDBEES.NS with interval 1h
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.41), Bear (0.59) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: BTC/USDT -> HOLD (Conf: 0.59)
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.35), Bear (0.65) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: ETH/USDT -> SELL (Conf: 0.65)
+INFO:app.agents.risk_agent:Risk Assessed: SELL | SL: 1962.60 | Size: $10000.00 | Risk: $32.71
+INFO:app.radar.scheduler:Autonomous Scan Success: BTCUSDT [INTRADAY]
+INFO:app.radar.scheduler:Scanning BAJAJFINSV.NS for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for BAJAJFINSV.NS with interval 1h
+INFO:app.feedback.loop:Logged prediction for ETH/USDT to feedback database.
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.radar.scheduler:Autonomous Scan Success: ETHUSDT [INTRADAY]
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for GOLDBEES.NS
+INFO:app.radar.scheduler:Scanning RELIANCE.NS for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for RELIANCE.NS with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BAJAJFINSV.NS
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for RELIANCE.NS
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.51), Bear (0.49) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BTC-USD -> HOLD (Conf: 0.51)
+INFO:app.radar.scheduler:Autonomous Scan Success: BTC-USD [SHORT]
+INFO:app.radar.scheduler:Scanning GOLDBEES for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for GOLDBEES.NS with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for GOLDBEES
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.80), Bear (0.20) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: GOLDBEES -> BUY (Conf: 0.80)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 129.33 | Size: $10000.00 | Risk: $101.47
+INFO:app.feedback.loop:Logged prediction for GOLDBEES to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: GOLDBEES [SHORT]
+INFO:app.radar.scheduler:Scanning SILVER for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for SI=F with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'ranging'. Selected strategy: mean_reversion_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for SILVER
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.80), Bear (0.20) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: GOLDBEES.NS -> BUY (Conf: 0.80)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 129.33 | Size: $10000.00 | Risk: $101.47
+INFO:app.feedback.loop:Logged prediction for GOLDBEES.NS to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: GOLDBEES.NS [SHORT]
+INFO:app.radar.scheduler:Scanning GOLD for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for GC=F with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'low_volatility_ranging'. Selected strategy: accumulation_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for GOLD
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.50), Bear (0.50) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BAJAJFINSV.NS -> HOLD (Conf: 0.50)
+INFO:app.radar.scheduler:Autonomous Scan Success: BAJAJFINSV.NS [SHORT]
+INFO:app.radar.scheduler:Scanning BANKNIFTY for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for ^NSEBANK with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BANKNIFTY
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.71), Bear (0.29) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: SILVER -> BUY (Conf: 0.71)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 82.02 | Size: $7355.30 | Risk: $200.00
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.34), Bear (0.66) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: RELIANCE.NS -> SELL (Conf: 0.66)
+INFO:app.agents.risk_agent:Risk Assessed: SELL | SL: 1434.24 | Size: $10000.00 | Risk: $186.37
+INFO:app.feedback.loop:Logged prediction for SILVER to feedback database.
+INFO:app.feedback.loop:Logged prediction for RELIANCE.NS to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: SILVER [SHORT]
+INFO:app.radar.scheduler:Scanning SENSEX for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for ^BSESN with interval 1h
+INFO:app.radar.scheduler:Autonomous Scan Success: RELIANCE.NS [SHORT]
+INFO:app.radar.scheduler:Scanning NIFTY for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for ^NSEI with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for SENSEX
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for NIFTY
+INFO:     127.0.0.1:59330 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.60), Bear (0.40) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BANKNIFTY -> BUY (Conf: 0.60)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 57173.03 | Size: $10000.00 | Risk: $105.46
+INFO:app.agents.options_agent:Simulating options chain for Indian Index BANKNIFTY to bypass yfinance hang.
+INFO:app.feedback.loop:Logged prediction for BANKNIFTY to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: BANKNIFTY [SHORT]
+INFO:app.radar.scheduler:Scanning BTC for SHORT horizon...
+INFO:app.agents.data_agent:Fetching crypto data for BTC/USDT with interval 1h
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.68), Bear (0.32) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: NIFTY -> BUY (Conf: 0.68)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 24232.41 | Size: $10000.00 | Risk: $96.85
+INFO:app.agents.options_agent:Simulating options chain for Indian Index NIFTY to bypass yfinance hang.
+INFO:app.feedback.loop:Logged prediction for NIFTY to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: NIFTY [SHORT]
+INFO:app.radar.scheduler:Scanning TSLA for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for TSLA with interval 1h
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.59), Bear (0.41) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: SENSEX -> HOLD (Conf: 0.59)
+INFO:app.agents.options_agent:Simulating options chain for Indian Index SENSEX to bypass yfinance hang.
+INFO:app.radar.scheduler:Autonomous Scan Success: SENSEX [SHORT]
+INFO:app.radar.scheduler:Scanning AAPL for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for AAPL with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BTC/USDT
+INFO:app.agents.strategy_agent:Regime evaluated as 'ranging'. Selected strategy: mean_reversion_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for TSLA
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for AAPL
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:42:20 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:42:30 IST)" (scheduled at 2026-03-08 12:42:20.013486+05:30)
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.53), Bear (0.47) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: GOLD -> HOLD (Conf: 0.53)
+INFO:app.radar.scheduler:Autonomous Scan Success: GOLD [SHORT]
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.51), Bear (0.49) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BTC/USDT -> HOLD (Conf: 0.51)
+INFO:app.radar.scheduler:Autonomous Scan Success: BTC [SHORT]
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.53), Bear (0.47) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: TSLA -> HOLD (Conf: 0.53)
+INFO:app.radar.scheduler:Autonomous Scan Success: TSLA [SHORT]
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.53), Bear (0.47) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: AAPL -> HOLD (Conf: 0.53)
+INFO:app.radar.scheduler:Autonomous Scan Success: AAPL [SHORT]
+INFO:app.radar.scheduler:=== Autonomous Radar Scan Loop Complete ===
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 8 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 11 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 14 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 17 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 20 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 23 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 32 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 35 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 41 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 44 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:42:30 IST)" skipped: maximum number of running instances reached (1)
+WARNING:app.feedback.loop:Could not evaluate trade 46 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 49 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 52 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+INFO:     127.0.0.1:64643 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64643 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64643 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64643 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:app.feedback.loop:Could not evaluate trade 59 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 62 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 64 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 66 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 68 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:42:40 IST)" executed successfully
+WARNING:app.feedback.loop:Could not evaluate trade 70 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 72 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 74 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 76 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 78 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 80 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 82 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 84 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 86 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:42:50 IST)" (scheduled at 2026-03-08 12:42:40.013486+05:30)
+WARNING:app.feedback.loop:Could not evaluate trade 88 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 90 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 92 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 94 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 96 for BTC/USDT: 'Response' object is not subscriptable
+INFO:apscheduler.executors.default:Job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-08 12:47:10 IST)" executed successfully
+INFO:     127.0.0.1:55277 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:42:50 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:43:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:43:10 IST)" (scheduled at 2026-03-08 12:43:00.013486+05:30)
+INFO:     127.0.0.1:64500 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64500 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64500 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64500 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:43:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:63900 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:43:20 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:43:30 IST)" (scheduled at 2026-03-08 12:43:20.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:43:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:50471 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50471 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50471 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50471 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:43:40 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:43:50 IST)" (scheduled at 2026-03-08 12:43:40.013486+05:30)
+INFO:     127.0.0.1:51737 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:43:50 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:44:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:44:10 IST)" (scheduled at 2026-03-08 12:44:00.013486+05:30)
+INFO:     127.0.0.1:55261 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55261 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55261 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55261 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:44:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:44:20 IST)" executed successfully
+INFO:     127.0.0.1:58773 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:44:30 IST)" (scheduled at 2026-03-08 12:44:20.013486+05:30)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:44:30 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:44:40 IST)" (scheduled at 2026-03-08 12:44:30.013486+05:30)
+INFO:     127.0.0.1:55464 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55464 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55464 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55464 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:44:40 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:44:50 IST)" (scheduled at 2026-03-08 12:44:40.013486+05:30)
+INFO:     127.0.0.1:63628 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:44:50 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:45:00 IST)" (scheduled at 2026-03-08 12:44:50.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:45:00 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:45:10 IST)" executed successfully
+INFO:     127.0.0.1:53986 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53986 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53986 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53986 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:45:20 IST)" (scheduled at 2026-03-08 12:45:10.013486+05:30)
+INFO:     127.0.0.1:53992 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:45:20 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:45:30 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:45:40 IST)" (scheduled at 2026-03-08 12:45:30.013486+05:30)
+INFO:     127.0.0.1:64309 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64309 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64309 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64309 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:45:40 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:45:50 IST)" executed successfully
+INFO:     127.0.0.1:53280 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:46:00 IST)" (scheduled at 2026-03-08 12:45:50.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:46:00 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:59080 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59080 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59080 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59080 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:46:10 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:46:20 IST)" (scheduled at 2026-03-08 12:46:10.013486+05:30)
+INFO:     127.0.0.1:56946 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:46:20 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:46:30 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:46:40 IST)" (scheduled at 2026-03-08 12:46:30.013486+05:30)
+INFO:     127.0.0.1:64307 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64307 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64307 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64307 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:46:40 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:46:50 IST)" (scheduled at 2026-03-08 12:46:40.013486+05:30)
+INFO:     127.0.0.1:65315 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:46:50 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:47:00 IST)" (scheduled at 2026-03-08 12:46:50.013486+05:30)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:47:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:47:10 IST)" (scheduled at 2026-03-08 12:47:00.013486+05:30)
+INFO:     127.0.0.1:55589 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55589 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55589 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55589 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:47:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Running job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-08 12:52:10 IST)" (scheduled at 2026-03-08 12:47:10.009436+05:30)
+INFO:app.radar.scheduler:Scanning DOGEUSDT for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for DOGEUSDT with interval 1h
+INFO:app.radar.scheduler:Scanning ETHUSDT for INTRADAY horizon...
+INFO:app.agents.data_agent:Fetching crypto data for ETH/USDT with interval 5m
+INFO:app.radar.scheduler:Scanning BTCUSDT for INTRADAY horizon...
+INFO:app.agents.data_agent:Fetching crypto data for BTC/USDT with interval 5m
+INFO:app.radar.scheduler:Scanning BTC-USD for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for BTC-USD with interval 1h
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:47:20 IST)" executed successfully
+ERROR:yfinance:$DOGEUSDT: possibly delisted; no price data found  (period=1mo) (Yahoo error = "No data found, symbol may be delisted")
+WARNING:app.agents.data_agent:No data found for DOGEUSDT
+INFO:app.agents.failsafe_agent:Attempting fallback scraping for DOGEUSDT
+INFO:app.agents.strategy_agent:Regime evaluated as 'low_volatility_ranging'. Selected strategy: accumulation_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for ETH/USDT
+INFO:app.agents.strategy_agent:Regime evaluated as 'low_volatility_ranging'. Selected strategy: accumulation_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BTC/USDT
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BTC-USD
+ERROR:app.radar.scheduler:Failed pipeline for DOGEUSDT: Insufficient data
+INFO:app.radar.scheduler:Scanning GOLDBEES.NS for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for GOLDBEES.NS with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for GOLDBEES.NS
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.41), Bear (0.59) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: BTC/USDT -> HOLD (Conf: 0.59)
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.35), Bear (0.65) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: ETH/USDT -> SELL (Conf: 0.65)
+INFO:app.agents.risk_agent:Risk Assessed: SELL | SL: 1963.18 | Size: $10000.00 | Risk: $31.78
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.51), Bear (0.49) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BTC-USD -> HOLD (Conf: 0.51)
+INFO:app.feedback.loop:Logged prediction for ETH/USDT to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: BTC-USD [SHORT]
+INFO:app.radar.scheduler:Scanning BAJAJFINSV.NS for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for BAJAJFINSV.NS with interval 1h
+INFO:app.radar.scheduler:Autonomous Scan Success: BTCUSDT [INTRADAY]
+INFO:app.radar.scheduler:Scanning RELIANCE.NS for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for RELIANCE.NS with interval 1h
+INFO:app.radar.scheduler:Autonomous Scan Success: ETHUSDT [INTRADAY]
+INFO:app.radar.scheduler:Scanning GOLDBEES for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for GOLDBEES.NS with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BAJAJFINSV.NS
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for GOLDBEES
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for RELIANCE.NS
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.80), Bear (0.20) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: GOLDBEES.NS -> BUY (Conf: 0.80)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 129.33 | Size: $10000.00 | Risk: $101.47
+INFO:app.feedback.loop:Logged prediction for GOLDBEES.NS to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: GOLDBEES.NS [SHORT]
+INFO:app.radar.scheduler:Scanning SILVER for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for SI=F with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'ranging'. Selected strategy: mean_reversion_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for SILVER
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.80), Bear (0.20) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: GOLDBEES -> BUY (Conf: 0.80)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 129.33 | Size: $10000.00 | Risk: $101.47
+INFO:app.feedback.loop:Logged prediction for GOLDBEES to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: GOLDBEES [SHORT]
+INFO:app.radar.scheduler:Scanning GOLD for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for GC=F with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'low_volatility_ranging'. Selected strategy: accumulation_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for GOLD
+INFO:     127.0.0.1:60058 - "GET /radar/signals HTTP/1.1" 200 OK
+ERROR:app.radar.scheduler:Radar Error on SILVER: 'MinMaxScaler' object has no attribute 'min_'
+INFO:app.radar.scheduler:Scanning BANKNIFTY for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for ^NSEBANK with interval 1h
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.50), Bear (0.50) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BAJAJFINSV.NS -> HOLD (Conf: 0.50)
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BANKNIFTY
+INFO:app.radar.scheduler:Autonomous Scan Success: BAJAJFINSV.NS [SHORT]
+INFO:app.radar.scheduler:Scanning SENSEX for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for ^BSESN with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for SENSEX
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.34), Bear (0.66) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: RELIANCE.NS -> SELL (Conf: 0.66)
+INFO:app.agents.risk_agent:Risk Assessed: SELL | SL: 1434.24 | Size: $10000.00 | Risk: $186.37
+INFO:app.feedback.loop:Logged prediction for RELIANCE.NS to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: RELIANCE.NS [SHORT]
+INFO:app.radar.scheduler:Scanning NIFTY for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for ^NSEI with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for NIFTY
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:47:30 IST)" (scheduled at 2026-03-08 12:47:20.013486+05:30)
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.60), Bear (0.40) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BANKNIFTY -> BUY (Conf: 0.60)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 57173.03 | Size: $10000.00 | Risk: $105.46
+INFO:app.agents.options_agent:Simulating options chain for Indian Index BANKNIFTY to bypass yfinance hang.
+INFO:app.feedback.loop:Logged prediction for BANKNIFTY to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: BANKNIFTY [SHORT]
+INFO:app.radar.scheduler:Scanning BTC for SHORT horizon...
+INFO:app.agents.data_agent:Fetching crypto data for BTC/USDT with interval 1h
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.53), Bear (0.47) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: GOLD -> HOLD (Conf: 0.53)
+INFO:app.radar.scheduler:Autonomous Scan Success: GOLD [SHORT]
+INFO:app.radar.scheduler:Scanning TSLA for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for TSLA with interval 1h
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.59), Bear (0.41) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: SENSEX -> HOLD (Conf: 0.59)
+INFO:app.agents.options_agent:Simulating options chain for Indian Index SENSEX to bypass yfinance hang.
+INFO:app.radar.scheduler:Autonomous Scan Success: SENSEX [SHORT]
+INFO:app.radar.scheduler:Scanning AAPL for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for AAPL with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for AAPL
+INFO:app.agents.strategy_agent:Regime evaluated as 'ranging'. Selected strategy: mean_reversion_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for TSLA
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BTC/USDT
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.68), Bear (0.32) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: NIFTY -> BUY (Conf: 0.68)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 24232.41 | Size: $10000.00 | Risk: $96.85
+INFO:app.agents.options_agent:Simulating options chain for Indian Index NIFTY to bypass yfinance hang.
+INFO:app.feedback.loop:Logged prediction for NIFTY to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: NIFTY [SHORT]
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.50), Bear (0.50) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BTC/USDT -> HOLD (Conf: 0.50)
+INFO:app.radar.scheduler:Autonomous Scan Success: BTC [SHORT]
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.53), Bear (0.47) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: AAPL -> HOLD (Conf: 0.53)
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.53), Bear (0.47) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: TSLA -> HOLD (Conf: 0.53)
+INFO:app.radar.scheduler:Autonomous Scan Success: AAPL [SHORT]
+INFO:app.radar.scheduler:Autonomous Scan Success: TSLA [SHORT]
+INFO:app.radar.scheduler:=== Autonomous Radar Scan Loop Complete ===
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 8 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 11 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 14 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 17 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 20 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 23 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:47:30 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:47:40 IST)" (scheduled at 2026-03-08 12:47:30.013486+05:30)
+WARNING:app.feedback.loop:Could not evaluate trade 32 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 35 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 41 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+INFO:     127.0.0.1:51773 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51773 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51773 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51773 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:app.feedback.loop:Could not evaluate trade 44 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 46 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 49 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 52 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 59 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 62 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 64 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 66 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 68 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 70 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 72 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 74 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 76 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:47:40 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:47:50 IST)" executed successfully
+WARNING:app.feedback.loop:Could not evaluate trade 78 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 80 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 82 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 84 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 86 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 88 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 90 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 92 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 94 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 96 for BTC/USDT: 'Response' object is not subscriptable
+INFO:apscheduler.executors.default:Job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-08 12:52:10 IST)" executed successfully
+INFO:     127.0.0.1:63540 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:48:00 IST)" (scheduled at 2026-03-08 12:47:50.013486+05:30)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:48:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:48:10 IST)" (scheduled at 2026-03-08 12:48:00.013486+05:30)
+INFO:     127.0.0.1:57510 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57510 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57510 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57510 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:48:10 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:48:20 IST)" (scheduled at 2026-03-08 12:48:10.013486+05:30)
+INFO:     127.0.0.1:64716 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:48:20 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:48:30 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:48:40 IST)" (scheduled at 2026-03-08 12:48:30.013486+05:30)
+INFO:     127.0.0.1:57958 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57958 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57958 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57958 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:48:40 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:48:50 IST)" executed successfully
+INFO:     127.0.0.1:64868 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:49:00 IST)" (scheduled at 2026-03-08 12:48:50.013486+05:30)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:49:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:49:10 IST)" (scheduled at 2026-03-08 12:49:00.013486+05:30)
+INFO:     127.0.0.1:58293 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58293 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58293 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58293 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:49:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:49:20 IST)" executed successfully
+INFO:     127.0.0.1:53679 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:49:30 IST)" (scheduled at 2026-03-08 12:49:20.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:49:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:54915 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54915 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54915 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54915 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:49:40 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:49:50 IST)" (scheduled at 2026-03-08 12:49:40.013486+05:30)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:49:50 IST)" executed successfully
+INFO:     127.0.0.1:57177 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:50:00 IST)" (scheduled at 2026-03-08 12:49:50.013486+05:30)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:50:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:50:10 IST)" (scheduled at 2026-03-08 12:50:00.013486+05:30)
+INFO:     127.0.0.1:60623 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60623 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60623 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60623 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:50:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:50:20 IST)" executed successfully
+INFO:     127.0.0.1:52151 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:50:30 IST)" (scheduled at 2026-03-08 12:50:20.013486+05:30)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:50:30 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:50:40 IST)" (scheduled at 2026-03-08 12:50:30.013486+05:30)
+INFO:     127.0.0.1:62855 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62855 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62855 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62855 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:50:40 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:50:50 IST)" (scheduled at 2026-03-08 12:50:40.013486+05:30)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:50:50 IST)" executed successfully
+INFO:     127.0.0.1:58092 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:51:00 IST)" (scheduled at 2026-03-08 12:50:50.013486+05:30)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:51:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:51:10 IST)" (scheduled at 2026-03-08 12:51:00.013486+05:30)
+INFO:     127.0.0.1:58424 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58424 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58424 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58424 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:51:10 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:51:20 IST)" (scheduled at 2026-03-08 12:51:10.013486+05:30)
+INFO:     127.0.0.1:53821 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:51:20 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:51:30 IST)" (scheduled at 2026-03-08 12:51:20.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:51:30 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:51:40 IST)" executed successfully
+INFO:     127.0.0.1:61958 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61958 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61958 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61958 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:51:50 IST)" (scheduled at 2026-03-08 12:51:40.013486+05:30)
+INFO:     127.0.0.1:58578 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:51:50 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:52:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:52:10 IST)" (scheduled at 2026-03-08 12:52:00.013486+05:30)
+INFO:     127.0.0.1:53963 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53963 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53963 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53963 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-08 12:57:10 IST)" (scheduled at 2026-03-08 12:52:10.009436+05:30)
+INFO:app.radar.scheduler:Scanning DOGEUSDT for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for DOGEUSDT with interval 1h
+INFO:app.radar.scheduler:Scanning ETHUSDT for INTRADAY horizon...
+INFO:app.agents.data_agent:Fetching crypto data for ETH/USDT with interval 5m
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:52:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:app.radar.scheduler:Scanning BTCUSDT for INTRADAY horizon...
+INFO:app.agents.data_agent:Fetching crypto data for BTC/USDT with interval 5m
+INFO:app.radar.scheduler:Scanning BTC-USD for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for BTC-USD with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'low_volatility_ranging'. Selected strategy: accumulation_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BTC/USDT
+INFO:app.agents.strategy_agent:Regime evaluated as 'low_volatility_ranging'. Selected strategy: accumulation_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for ETH/USDT
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BTC-USD
+ERROR:yfinance:$DOGEUSDT: possibly delisted; no price data found  (period=1mo) (Yahoo error = "No data found, symbol may be delisted")
+WARNING:app.agents.data_agent:No data found for DOGEUSDT
+INFO:app.agents.failsafe_agent:Attempting fallback scraping for DOGEUSDT
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:52:20 IST)" executed successfully
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.35), Bear (0.65) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: ETH/USDT -> SELL (Conf: 0.65)
+INFO:app.agents.risk_agent:Risk Assessed: SELL | SL: 1962.89 | Size: $10000.00 | Risk: $32.73
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.41), Bear (0.59) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: BTC/USDT -> HOLD (Conf: 0.59)
+INFO:app.radar.scheduler:Autonomous Scan Success: BTCUSDT [INTRADAY]
+INFO:app.radar.scheduler:Scanning GOLDBEES.NS for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for GOLDBEES.NS with interval 1h
+INFO:app.feedback.loop:Logged prediction for ETH/USDT to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: ETHUSDT [INTRADAY]
+INFO:app.radar.scheduler:Scanning BAJAJFINSV.NS for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for BAJAJFINSV.NS with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BAJAJFINSV.NS
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for GOLDBEES.NS
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.51), Bear (0.49) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BTC-USD -> HOLD (Conf: 0.51)
+INFO:app.radar.scheduler:Autonomous Scan Success: BTC-USD [SHORT]
+INFO:app.radar.scheduler:Scanning RELIANCE.NS for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for RELIANCE.NS with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for RELIANCE.NS
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.80), Bear (0.20) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: GOLDBEES.NS -> BUY (Conf: 0.80)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 129.33 | Size: $10000.00 | Risk: $101.47
+INFO:app.feedback.loop:Logged prediction for GOLDBEES.NS to feedback database.
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.50), Bear (0.50) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BAJAJFINSV.NS -> HOLD (Conf: 0.50)
+INFO:app.radar.scheduler:Autonomous Scan Success: GOLDBEES.NS [SHORT]
+INFO:app.radar.scheduler:Scanning GOLDBEES for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for GOLDBEES.NS with interval 1h
+INFO:app.radar.scheduler:Autonomous Scan Success: BAJAJFINSV.NS [SHORT]
+INFO:app.radar.scheduler:Scanning SILVER for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for SI=F with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for GOLDBEES
+INFO:app.agents.strategy_agent:Regime evaluated as 'ranging'. Selected strategy: mean_reversion_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for SILVER
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.34), Bear (0.66) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: RELIANCE.NS -> SELL (Conf: 0.66)
+INFO:app.agents.risk_agent:Risk Assessed: SELL | SL: 1434.24 | Size: $10000.00 | Risk: $186.37
+INFO:app.feedback.loop:Logged prediction for RELIANCE.NS to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: RELIANCE.NS [SHORT]
+INFO:app.radar.scheduler:Scanning GOLD for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for GC=F with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'low_volatility_ranging'. Selected strategy: accumulation_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for GOLD
+INFO:     127.0.0.1:63239 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.71), Bear (0.29) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: SILVER -> BUY (Conf: 0.71)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 82.02 | Size: $7355.30 | Risk: $200.00
+INFO:app.feedback.loop:Logged prediction for SILVER to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: SILVER [SHORT]
+INFO:app.radar.scheduler:Scanning BANKNIFTY for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for ^NSEBANK with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BANKNIFTY
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:52:30 IST)" (scheduled at 2026-03-08 12:52:20.013486+05:30)
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.53), Bear (0.47) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: GOLD -> HOLD (Conf: 0.53)
+INFO:app.radar.scheduler:Autonomous Scan Success: GOLD [SHORT]
+INFO:app.radar.scheduler:Scanning SENSEX for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for ^BSESN with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for SENSEX
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.60), Bear (0.40) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BANKNIFTY -> BUY (Conf: 0.60)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 57173.03 | Size: $10000.00 | Risk: $105.46
+INFO:app.agents.options_agent:Simulating options chain for Indian Index BANKNIFTY to bypass yfinance hang.
+INFO:app.feedback.loop:Logged prediction for BANKNIFTY to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: BANKNIFTY [SHORT]
+INFO:app.radar.scheduler:Scanning NIFTY for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for ^NSEI with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for NIFTY
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.59), Bear (0.41) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: SENSEX -> HOLD (Conf: 0.59)
+INFO:app.agents.options_agent:Simulating options chain for Indian Index SENSEX to bypass yfinance hang.
+INFO:app.radar.scheduler:Autonomous Scan Success: SENSEX [SHORT]
+INFO:app.radar.scheduler:Scanning BTC for SHORT horizon...
+INFO:app.agents.data_agent:Fetching crypto data for BTC/USDT with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for BTC/USDT
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.68), Bear (0.32) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: NIFTY -> BUY (Conf: 0.68)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 24232.41 | Size: $10000.00 | Risk: $96.85
+INFO:app.agents.options_agent:Simulating options chain for Indian Index NIFTY to bypass yfinance hang.
+INFO:app.feedback.loop:Logged prediction for NIFTY to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: NIFTY [SHORT]
+INFO:app.radar.scheduler:Scanning TSLA for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for TSLA with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'ranging'. Selected strategy: mean_reversion_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for TSLA
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.80), Bear (0.20) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: GOLDBEES -> BUY (Conf: 0.80)
+INFO:app.agents.risk_agent:Risk Assessed: BUY | SL: 129.33 | Size: $10000.00 | Risk: $101.47
+INFO:app.feedback.loop:Logged prediction for GOLDBEES to feedback database.
+INFO:app.radar.scheduler:Autonomous Scan Success: GOLDBEES [SHORT]
+INFO:app.radar.scheduler:Scanning AAPL for SHORT horizon...
+INFO:app.agents.data_agent:Fetching stock data for AAPL with interval 1h
+INFO:app.agents.strategy_agent:Regime evaluated as 'trending'. Selected strategy: trend_following_model
+INFO:app.sentiment.news_scraper:[SentimentEngine] Analyzing sentiment for AAPL
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.51), Bear (0.49) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: BTC/USDT -> HOLD (Conf: 0.51)
+INFO:app.radar.scheduler:Autonomous Scan Success: BTC [SHORT]
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.53), Bear (0.47) [Weights: XGB 0.4, LSTM 0.6]
+INFO:app.agents.debate_agent:Signal Generated: TSLA -> HOLD (Conf: 0.53)
+INFO:app.radar.scheduler:Autonomous Scan Success: TSLA [SHORT]
+INFO:app.models.ensemble:Ensemble Prediction: Bull (0.53), Bear (0.47) [Weights: XGB 0.6, LSTM 0.4]
+INFO:app.agents.debate_agent:Signal Generated: AAPL -> HOLD (Conf: 0.53)
+INFO:app.radar.scheduler:Autonomous Scan Success: AAPL [SHORT]
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:52:30 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:52:40 IST)" (scheduled at 2026-03-08 12:52:30.013486+05:30)
+INFO:     127.0.0.1:51870 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51870 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51870 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51870 - "GET /radar/signals HTTP/1.1" 200 OK
+ERROR:app.radar.scheduler:Failed pipeline for DOGEUSDT: Insufficient data
+INFO:app.radar.scheduler:=== Autonomous Radar Scan Loop Complete ===
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 8 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 11 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 14 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 17 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:52:40 IST)" executed successfully
+WARNING:app.feedback.loop:Could not evaluate trade 20 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 23 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 32 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 35 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:52:50 IST)" (scheduled at 2026-03-08 12:52:40.013486+05:30)
+WARNING:app.feedback.loop:Could not evaluate trade 41 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 44 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 46 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 49 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 52 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 59 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 62 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 64 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 66 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 68 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 70 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 72 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 74 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 76 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+INFO:     127.0.0.1:61527 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:app.feedback.loop:Could not evaluate trade 78 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 80 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:52:50 IST)" skipped: maximum number of running instances reached (1)
+WARNING:app.feedback.loop:Could not evaluate trade 82 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:53:00 IST)" executed successfully
+WARNING:app.feedback.loop:Could not evaluate trade 84 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 86 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 88 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 90 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 92 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 94 for BTC/USDT: 'Response' object is not subscriptable
+ERROR:yfinance:Failed to get ticker 'BTC/USDT' reason: unexpected character: line 1 column 1 (char 0)
+WARNING:app.feedback.loop:Could not evaluate trade 96 for BTC/USDT: 'Response' object is not subscriptable
+INFO:apscheduler.executors.default:Job "radar_job (trigger: interval[0:05:00], next run at: 2026-03-08 12:57:10 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:53:10 IST)" (scheduled at 2026-03-08 12:53:00.013486+05:30)
+INFO:     127.0.0.1:63103 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63103 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63103 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63103 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:53:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:53:20 IST)" executed successfully
+INFO:     127.0.0.1:62186 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:53:30 IST)" (scheduled at 2026-03-08 12:53:20.013486+05:30)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:53:30 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:53:40 IST)" (scheduled at 2026-03-08 12:53:30.013486+05:30)
+INFO:     127.0.0.1:64836 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64836 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64836 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64836 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:53:40 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:53:50 IST)" (scheduled at 2026-03-08 12:53:40.013486+05:30)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:53:50 IST)" executed successfully
+INFO:     127.0.0.1:56384 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:54:00 IST)" (scheduled at 2026-03-08 12:53:50.013486+05:30)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:54:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:54:10 IST)" (scheduled at 2026-03-08 12:54:00.013486+05:30)
+INFO:     127.0.0.1:59138 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59138 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59138 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59138 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:54:10 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:54:20 IST)" (scheduled at 2026-03-08 12:54:10.013486+05:30)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:54:20 IST)" executed successfully
+INFO:     127.0.0.1:51747 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:54:30 IST)" (scheduled at 2026-03-08 12:54:20.013486+05:30)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:54:30 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:54:40 IST)" (scheduled at 2026-03-08 12:54:30.013486+05:30)
+INFO:     127.0.0.1:54440 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54440 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54440 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54440 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:54:40 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:54:50 IST)" executed successfully
+INFO:     127.0.0.1:49169 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:55:00 IST)" (scheduled at 2026-03-08 12:54:50.013486+05:30)
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:55:00 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:54822 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54822 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54822 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54822 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:55:10 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:55:20 IST)" (scheduled at 2026-03-08 12:55:10.013486+05:30)
+INFO:     127.0.0.1:50645 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:55:20 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:55:30 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:55:40 IST)" (scheduled at 2026-03-08 12:55:30.013486+05:30)
+INFO:     127.0.0.1:51170 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51170 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51170 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51170 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:55:40 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:55:50 IST)" (scheduled at 2026-03-08 12:55:40.013486+05:30)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:55:50 IST)" executed successfully
+INFO:     127.0.0.1:50925 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:56:00 IST)" (scheduled at 2026-03-08 12:55:50.013486+05:30)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:56:00 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:56:10 IST)" (scheduled at 2026-03-08 12:56:00.013486+05:30)
+INFO:     127.0.0.1:49191 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49191 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49191 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49191 - "GET /radar/signals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51221 - "POST /admin/nse-sync HTTP/1.1" 404 Not Found
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:56:10 IST)" skipped: maximum number of running instances reached (1)
+INFO:     127.0.0.1:61250 - "GET /radar/signals HTTP/1.1" 200 OK
+WARNING:apscheduler.scheduler:Execution of job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:56:20 IST)" skipped: maximum number of running instances reached (1)
+INFO:apscheduler.executors.default:Job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:56:30 IST)" executed successfully
+INFO:apscheduler.executors.default:Running job "fast_price_job (trigger: interval[0:00:10], next run at: 2026-03-08 12:56:40 IST)" (scheduled at 2026-03-08 12:56:30.013486+05:30)

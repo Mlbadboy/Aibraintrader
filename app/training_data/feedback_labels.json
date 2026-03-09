@@ -1,0 +1,370 @@
+[
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6459287527931555,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6459287527931555,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6459287527931555,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6459287527931555,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6459287527931555,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6459287527931555,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6459287527931555,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6459287527931555,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6459287527931555,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6459287527931555,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6459287527931555,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6459287527931555,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6459287527931555,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6459287527931555,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6459287527931555,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6459287527931555,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6459287527931555,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6459287527931555,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "BTC",
+    "decision": "SELL",
+    "confidence": 0.6445183949167538,
+    "rr_ratio": 2.0,
+    "regime": "ranging",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6460523251404943,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "GOLD",
+    "decision": "BUY",
+    "confidence": 0.7769325852394104,
+    "rr_ratio": 2.0,
+    "regime": "trending",
+    "label": 0
+  },
+  {
+    "symbol": "GOLD",
+    "decision": "BUY",
+    "confidence": 0.7769325852394104,
+    "rr_ratio": 2.0,
+    "regime": "trending",
+    "label": 0
+  },
+  {
+    "symbol": "GOLD",
+    "decision": "BUY",
+    "confidence": 0.7769325852394104,
+    "rr_ratio": 2.0,
+    "regime": "trending",
+    "label": 0
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6460523251404943,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "GOLD",
+    "decision": "BUY",
+    "confidence": 0.7769325852394104,
+    "rr_ratio": 2.0,
+    "regime": "trending",
+    "label": 0
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6460523251404943,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "MSFT",
+    "decision": "SELL",
+    "confidence": 0.6466655514463745,
+    "rr_ratio": 2.001,
+    "regime": "low_volatility_ranging",
+    "label": 0
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6460523251404943,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6460523251404943,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.6460523251404943,
+    "rr_ratio": 1.999,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "MSFT",
+    "decision": "SELL",
+    "confidence": 0.6466655514463745,
+    "rr_ratio": 2.001,
+    "regime": "low_volatility_ranging",
+    "label": 0
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.742646292492975,
+    "rr_ratio": 2.0,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.742646292492975,
+    "rr_ratio": 2.0,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.742646292492975,
+    "rr_ratio": 2.0,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.742646292492975,
+    "rr_ratio": 2.0,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.742646292492975,
+    "rr_ratio": 2.0,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.742646292492975,
+    "rr_ratio": 2.0,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.742646292492975,
+    "rr_ratio": 2.0,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.742646292492975,
+    "rr_ratio": 2.0,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.742646292492975,
+    "rr_ratio": 2.0,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.742646292492975,
+    "rr_ratio": 2.0,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.742646292492975,
+    "rr_ratio": 2.0,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.742646292492975,
+    "rr_ratio": 2.0,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.742646292492975,
+    "rr_ratio": 2.0,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.742646292492975,
+    "rr_ratio": 2.0,
+    "regime": "trending",
+    "label": 1
+  },
+  {
+    "symbol": "AAPL",
+    "decision": "SELL",
+    "confidence": 0.741974595837579,
+    "rr_ratio": 2.0,
+    "regime": "trending",
+    "label": 1
+  }
+]

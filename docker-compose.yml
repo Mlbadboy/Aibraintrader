@@ -1,0 +1,148 @@
+version: "3.8"
+
+services:
+  # 1. Database Domain
+  postgres:
+    image: postgres:15-alpine
+    container_name: quant_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgress_secure_pwd}
+      POSTGRES_DB: ${POSTGRES_DB:-trading_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # 2. Caching Domain
+  redis:
+    image: redis:7-alpine
+    container_name: quant_cache
+    ports:
+      - "6379:6379"
+
+  # 3. Security Domain
+  auth-service:
+    build: .
+    container_name: auth_svc
+    volumes:
+      - ./services/auth:/app
+    environment:
+      - DATABASE_URL=${DATABASE_URL:-postgresql://postgres:postgress_secure_pwd@postgres:5432/trading_db}
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379/0}
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+    command: uvicorn main:app --host 0.0.0.0 --port 8001
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # 4. Market Data Domain
+  market-service:
+    build: .
+    container_name: market_svc
+    volumes:
+      - ./services/market:/app
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+    command: uvicorn main:app --host 0.0.0.0 --port 8002
+    depends_on:
+      - redis
+
+  # 5. AI/ML Inference Domain
+  ml-service:
+    build: .
+    container_name: ml_svc
+    volumes:
+      - ./services/ml:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 8003
+
+  # 6. Forecasting Domain (Prophet)
+  forecast-service:
+    build: .
+    container_name: forecast_svc
+    volumes:
+      - ./services/forecast:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 8004
+
+  # 7. Trading Orchestration
+  trading-service:
+    build: .
+    container_name: trading_svc
+    volumes:
+      - ./services/trading:/app
+    environment:
+      - MARKET_SERVICE_URL=http://market-service:8002
+      - ML_SERVICE_URL=http://ml-service:8003
+      - FORECAST_SERVICE_URL=http://forecast-service:8004
+    command: uvicorn main:app --host 0.0.0.0 --port 8005
+    depends_on:
+      - market-service
+      - ml-service
+      - forecast-service
+
+  # 8. API Gateway / Ingress Control
+  gateway:
+    image: nginx:alpine
+    container_name: quant_gateway
+    volumes:
+      - ./gateway/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "8000:80"
+    depends_on:
+      - auth-service
+      - market-service
+      - ml-service
+      - forecast-service
+      - trading-service
+      - api-service
+
+  # 11. Core API Hub (Orchestrator)
+  api-service:
+    build: .
+    container_name: quant_api
+    volumes:
+      - .:/app
+    environment:
+      - DATABASE_URL=${DATABASE_URL:-postgresql://postgres:postgress_secure_pwd@postgres:5432/trading_db}
+      - REDIS_URL=${REDIS_URL:-redis://redis:6379/0}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-*}
+      - APP_ENV=${APP_ENV:-production}
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # 9. MLOps Domain (MLflow)
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.10.2
+    container_name: quant_mlflow
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/app/mlruns
+    command: mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:///mlruns/mlflow.db --default-artifact-root /app/mlruns
+
+  # 10. ML Ops Domain (Retraining & Drift)
+  ml-ops-service:
+    build: .
+    container_name: ml_ops_svc
+    volumes:
+      - ./services/ml_ops:/app
+    environment:
+      - DATABASE_URL=${DATABASE_URL:-postgresql://postgres:postgress_secure_pwd@postgres:5432/trading_db}
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    command: uvicorn main:app --host 0.0.0.0 --port 8006
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mlflow:
+        condition: service_started
+
+volumes:
+  pgdata:

@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "e:\Stock Analysier and pedction machine\debug_startup.py", line 3, in <module>
+    import app.main
+  File "e:\Stock Analysier and pedction machine\app\main.py", line 88, in <module>
+    def _run_full_pipeline(symbol: str, df: pd.DataFrame, asset_type: str = "stock"):
+                                            ^^
+NameError: name 'pd' is not defined. Did you mean: 'id'?

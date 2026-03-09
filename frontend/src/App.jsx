@@ -18,9 +18,9 @@ import TradingViewChart from './components/TradingViewChart';
 import TradeJournalView from './components/TradeJournalView';
 import './index.css';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
-const AUTH_API_URL = import.meta.env.VITE_AUTH_API_URL || 'http://localhost:8001';
-const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || 'YOUR_GOOGLE_CLIENT_ID_HERE';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000';
+const AUTH_API_URL = import.meta.env.VITE_AUTH_API_URL ?? 'http://localhost:8001';
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID ?? 'YOUR_GOOGLE_CLIENT_ID_HERE';
 
 function App() {
   const [activeTab, setActiveTab] = useState('discover'); // discover, portfolio, terminal, sip, radar

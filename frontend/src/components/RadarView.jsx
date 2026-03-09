@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Radar, RefreshCw, ShieldAlert, Zap, TrendingUp, Filter, Bell, Rocket, Clock, Globe, Plus, ChevronDown, ChevronUp, BookOpen, BarChart2, Activity } from 'lucide-react';
 import { formatCurrency } from '../utils/formatters';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000';
 
 const RadarView = () => {
     const [data, setData] = useState([]);

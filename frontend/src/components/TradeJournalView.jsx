@@ -7,7 +7,7 @@ import {
     Flame, ShieldCheck, Eye, Brain, Cpu
 } from 'lucide-react';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000';
 const fmt = (v, d = 2) => (v ?? 0).toFixed(d);
 const fmtCur = (v) => {
     const n = Math.abs(v ?? 0);

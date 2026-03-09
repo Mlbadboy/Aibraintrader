@@ -13,8 +13,9 @@ A high-performance, distributed trading intelligence platform that combines mach
 
 ## 🏗️ Architecture
 
-The system is built as a microservice mesh:
-- **API Gateway (Nginx):** Unified entry point for all services.
+The system is built as a unified full-stack Docker mesh:
+- **API Gateway (Nginx):** The single entry point (Port 8000) that serves the React frontend and routes API traffic.
+- **Frontend (React/Vite):** Containerized UI served via Nginx with dynamic routing.
 - **Core Orchestrator (FastAPI):** Controls the data flow between agents and neural engines.
 - **Intelligence Services:**
   - `auth-service`: Google OAuth 2.0 & JWT management.
